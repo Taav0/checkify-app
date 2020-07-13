@@ -1,5 +1,5 @@
 # checkify-app
 Oleksandr - Lead / a bit of everything 
-Triin = database / testing 
+Triin Rebane = database / testing 
 Vladyslav = Backend 
 Taavo Leidorp = FrontEnd

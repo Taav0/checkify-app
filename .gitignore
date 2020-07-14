@@ -31,4 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
-/.mvn/
+/02-backend/spring-boot-checkify/.mvn/
+/02-backend/spring-boot-checkify/.mvn/

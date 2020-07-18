@@ -1,0 +1,7 @@
+USE `checkify` ;
+INSERT INTO `checkify`.`fridge` (`id`, `fridge_name`) VALUES ('1', 'moms fridge');
+INSERT INTO `checkify`.`fridge` (`id`, `fridge_name`) VALUES ('2', 'home fridge');
+INSERT INTO `checkify`.`fridge` (`id`, `fridge_name`) VALUES ('3', 'basket');
+INSERT INTO `checkify`.`product` (`id`, `barcode`, `description`, `image_url`, `name`, `fridge_id`) VALUES ('1', '1234567', 'random', 'assets/images/products/placeholder.png', 'red bull', '1');
+INSERT INTO `checkify`.`product` (`id`, `barcode`, `description`, `image_url`, `name`, `fridge_id`) VALUES ('2', '3333333333333', 'second', 'assets/images/products/placeholder.png', 'snickers', '1');
+

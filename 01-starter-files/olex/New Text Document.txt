@@ -1,0 +1,46 @@
+-- -----------------------------------------------------
+-- Schema checkify
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `checkify`;
+
+CREATE SCHEMA `checkify`;
+USE `checkify` ;
+
+-- -----------------------------------------------------
+-- Table `checkify`.`fridge`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `checkify`.`fridge` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `fridge_name` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+-- -----------------------------------------------------
+-- Table `checkify`.`product`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `checkify`.`product` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `description` VARCHAR(255) DEFAULT NULL,
+  `image_url` VARCHAR(255) DEFAULT NULL,
+  `active` BIT DEFAULT 1,
+  `expire_date` DATE,
+  `fridge_id` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_fridge` (`fridge_id`),
+  CONSTRAINT `fk_fridge` FOREIGN KEY (`fridge_id`) REFERENCES `fridge` (`id`)
+) 
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;
+
+CREATE TABLE IF NOT EXISTS `checkify`.`user` (
+   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(255) DEFAULT NULL,
+  `password` VARCHAR(255) DEFAULT NULL,
+  `name` VARCHAR(255) DEFAULT NULL,
+  `email` VARCHAR(255) DEFAULT NULL,
+  `is_premium` BIT DEFAULT 1,
+  PRIMARY KEY (`id`))
+ENGINE=InnoDB
+AUTO_INCREMENT = 1;

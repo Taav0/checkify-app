@@ -15,7 +15,7 @@ export class ProductService {
 
   getProductList(theFridgeId : number): Observable<Product[]> {
 
-    const searchUrl = `${this.baseUrl}/search/fundByFridgeId?=${theFridgeId}`;
+    const searchUrl = `${this.baseUrl}/search/findByFridgeId?id=${theFridgeId}`;
     
     return this.httpClient.get<GetResponse>(searchUrl).pipe(
       map(response => response._embedded.products)

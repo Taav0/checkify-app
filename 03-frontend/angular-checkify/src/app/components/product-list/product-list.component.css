@@ -1,0 +1,65 @@
+*{
+    font-family: 'Quicksand';
+  }
+  .fridge-table{
+    border-collapse: collapse;
+    margin: 150px auto;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .fridge-table thead tr {
+    background-color: #27808C;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .fridge-table th,
+  .fridge-table td {
+    padding: 12px 15px;
+  }
+  
+  .fridge-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .fridge-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .fridge-table tbody tr:last-of-type {
+    border-bottom: 2px solid #27808C;
+  }
+  
+  .fridge-table tbody tr.active-row {
+    font-weight: bold;
+    color: #27808C;
+  }
+  
+  .table-sortable th {
+    cursor: pointer;
+  }
+  
+  .table-sortable .th-sort-asc::after {
+    content: "\25b4";
+  }
+  
+  .table-sortable .th-sort-desc::after {
+    content: "\25be";
+  }
+  
+  .table-sortable .th-sort-asc::after,
+  .table-sortable .th-sort-desc::after {
+    margin-left: 5px;
+  }
+  
+  .table-sortable .th-sort-asc,
+  .table-sortable .th-sort-desc {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  

@@ -16,11 +16,11 @@ public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
+    private Long id;
 
     @Column(name = "NAME", length = 100)
     private String name;
 
-    @OneToMany(mappedBy = "CATEGORY")
-    private Set<Product> productsInCategory = new HashSet<>();
+    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
+    private Set<Product> productsInCategory;
 }

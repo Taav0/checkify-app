@@ -1,48 +1,31 @@
 package com.finalProject.checkify.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "FRIDGE")
-public class Fridge implements Serializable {
+@Getter
+@Setter
+public class Fridge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private int id;
+    private long id;
 
     @Column(name = "NAME", length = 100)
     private String name;
 
-    public Fridge() {
-    }
+    @OneToMany(mappedBy = "FRIDGE")
+    private Set<Product> productsInFridge = new HashSet<>();
 
-    public Fridge(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Fridge{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
+    @ManyToMany(cascade = CascadeType.ALL) // we have to declare the name of the table, that does the mapping, show witch
+    @JoinTable(name = "USER_FRIDGE",
+            joinColumns = @JoinColumn(name = "ID"),inverseJoinColumns = @JoinColumn(name= "USER_ID"))
+    private Set<User> users = new HashSet<>();
 }

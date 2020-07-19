@@ -16,16 +16,17 @@ public class Fridge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
+    private Long id;
 
     @Column(name = "NAME", length = 100)
     private String name;
 
-    @OneToMany(mappedBy = "FRIDGE")
-    private Set<Product> productsInFridge = new HashSet<>();
+    @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
+    private Set<Product> productsInFridge;
 
-    @ManyToMany(cascade = CascadeType.ALL) // we have to declare the name of the table, that does the mapping, show witch
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USER_FRIDGE",
-            joinColumns = @JoinColumn(name = "ID"),inverseJoinColumns = @JoinColumn(name= "USER_ID"))
-    private Set<User> users = new HashSet<>();
+            joinColumns = @JoinColumn(name = "FRIDGE_ID"),
+            inverseJoinColumns = @JoinColumn(name= "USER_ID"))
+    private Set<User> users;
 }

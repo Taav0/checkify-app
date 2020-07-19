@@ -10,12 +10,12 @@ import java.util.Set;
 @Entity
 @Table(name = "USER")
 @Data
-public class User implements Serializable {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
-    private long id;
+    private Long id;
 
     @Column(name = "USERNAME", length = 100)
     private String username;
@@ -32,6 +32,6 @@ public class User implements Serializable {
     @Column(name = "IS_PREMIUM")
     private boolean isPremium;
 
-    @ManyToMany(mappedBy = "USER")
-    private Set<Fridge> fridges = new HashSet<>();
+    @ManyToMany(mappedBy = "users")
+    private Set<Fridge> fridges;
 }

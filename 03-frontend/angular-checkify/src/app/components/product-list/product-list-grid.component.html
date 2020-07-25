@@ -19,14 +19,24 @@
   </thead>
   <tbody>
     <tr *ngFor="let tempProduct of products">
-        <td class="align-middle">{{ tempProduct.Id}}</td>
-        <td class="align-middle">
+
+            <!--<td class="align-middle">{{ tempProduct.id}}</td>-->
+            <a routerLink="/products/{{ tempProduct.name}}">
+              <img src="{{ tempProduct.imageUml }}" class="tableImg">
+            </a>
+
+        <!--<td class="align-middle">
             <img src="{{ tempProduct.imageUrl }}" width="30" />
-        </td>
-        <td class="align-middle">{{ tempProduct.name}}</td>
+        </td>-->
+        <a routerLink="/products/{{ tempProduct.name}}">
+            <td class="align-middle">{{ tempProduct.name}}</td>
+          </a>
+
+
+        <!--<td class="align-middle">/product/{{ tempProduct.name}}</td>-->
         <td class="align-middle">{{ tempProduct.barcode}}</td>
         <td class="align-middle">{{ tempProduct.expireDate}}</td>
-        <td class="align-middle">{{ tempProduct.description}}</td>
+        <!--<td class="align-middle">{{ tempProduct.description}}</td>-->
     </tr>
 
   </tbody>

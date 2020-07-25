@@ -1,4 +1,4 @@
-/* 
+/*
  * ----------------------------
  * Common CSS
  * ----------------------------
@@ -127,7 +127,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     box-shadow:-2px 0 4px #0000003b
 }
 
-/* 
+/*
  * ----------------------------
  * Header Desktop Section
  * ----------------------------
@@ -287,7 +287,7 @@ input.au-input.au-input-xl{
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:43px;
-    background:#205b8d
+    background:#205b8d;
 }
 
 .au-btn-submit:hover{
@@ -307,7 +307,7 @@ input.au-input.au-input-xl{
     transform:translate(-50%,-50%)
 }
 
-/* 
+/*
  * ----------------------------
  * Left Menu Bar
  * ----------------------------
@@ -381,7 +381,7 @@ input.au-input.au-input-xl{
     color:#0da8e4
 }
 
-/* 
+/*
  * ----------------------------
  * Header Mobile Section
  * ----------------------------
@@ -517,7 +517,7 @@ input.au-input.au-input-xl{
     padding:10% 15%!important
 }
 
-/* 
+/*
  * ----------------------------
  * Products List
  * ----------------------------
@@ -559,7 +559,7 @@ input.au-input.au-input-xl{
     color:#585858
 }
 
-/* 
+/*
  * ----------------------------
  * Shopping Cart Checkout
  * ----------------------------
@@ -666,14 +666,11 @@ label.date{
     -o-transform:rotate(45deg);
     transform:rotate(45deg)
 }
-option:first{
-    color:#ccc
-}
 select{
     color:#828482
 }
 
-/* 
+/*
  * ----------------------------
  * Shopping Cart Details
  * ----------------------------
@@ -708,7 +705,7 @@ table.table.table-bordered th{
     margin-left:5px
 }
 
-/* 
+/*
  * ----------------------------
  * Product Details
  * ----------------------------
@@ -722,9 +719,13 @@ table.table.table-bordered th{
 .detail-section{
     margin-top:60px
 }
+
+.detail.img{
+    width: 30%;
+}
 /**/
 
-/* 
+/*
  * ----------------------------
  * Buttons
  * ----------------------------
@@ -754,7 +755,7 @@ a.primary-btn:hover{
   font-weight: bold;
 }
 
-/* 
+/*
  * ----------------------------
  * Footer section
  * ----------------------------
@@ -779,7 +780,7 @@ footer ul li{
     padding:10px 20px
 }
 
-/* 
+/*
  * ----------------------------
  * Media Queries
  * ----------------------------
@@ -974,7 +975,7 @@ footer ul li{
         text-align:center
     }
     .product-box{
-        text-align:centerg
+        text-align:center
     }
     .page-container{
         position:relative;
@@ -1032,6 +1033,5 @@ footer ul li{
         padding:6px 0;
         background:#fff;
         border:0;
-        padding:8px 0
     }
 }

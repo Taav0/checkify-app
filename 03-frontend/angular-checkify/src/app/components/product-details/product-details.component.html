@@ -1,0 +1,25 @@
+
+
+<div class="detail-section">
+    <div class="container-fluid">
+        <br>
+        <h6>ProductImage</h6>
+        <img src="{{ product.imageUml }}" class="detail-img">
+        <h3>{{ product.name }}</h3>
+
+        
+        <div class="expireDate">{{ product.expireDate}}</div>
+        
+        <h6>Barcode</h6>
+        <p>{{ product.barcode}}</p>
+
+        <div class="detailBtns">
+            <a href="#" class="detailViewBtnEdit">Edit</a>
+        
+            <a href="#" class="detailViewBtnDelete">Delete</a>
+        </div>
+        <hr>
+
+        <a routerLink="/products" class="mt-5">Back to Product List</a>
+    </div>
+</div>

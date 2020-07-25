@@ -11,22 +11,24 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
-  currentFridgeId : number;
-  
-  constructor(private productService: ProductService, 
-              private route : ActivatedRoute) { }
+  currentFridgeId: number;
 
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) { }
+
+  // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.route.paramMap.subscribe(()=> {
+    this.route.paramMap.subscribe(() => {
     this.listProducts();
   });
   }
 
+  // tslint:disable-next-line:typedef
   listProducts() {
 
     const hasFridgeId: boolean = this.route.snapshot.paramMap.has('id');
 
-    if(hasFridgeId) {
+    if (hasFridgeId) {
       this.currentFridgeId = +this.route.snapshot.paramMap.get('id');
     } else {
       this.currentFridgeId = 1;
@@ -35,7 +37,7 @@ export class ProductListComponent implements OnInit {
       data => {
         this.products = data;
       }
-    )
+    );
   }
 
 }

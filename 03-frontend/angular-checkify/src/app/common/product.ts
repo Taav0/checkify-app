@@ -1,7 +1,5 @@
-import { LocationChangeEvent } from '@angular/common';
-
 export class Product {
-    
+    id: number;
     barcode : string;
     expireDate : Date;
     imageUrl : string;

@@ -4,6 +4,7 @@ export class Product {
     
     barcode : string;
     expireDate : Date;
-    imageUml : string;
+    imageUrl : string;
     name : string;
+    categoryId: number;
 }

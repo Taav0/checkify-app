@@ -1,0 +1,51 @@
+
+<!--
+<div class="detail-section">
+    <div class="container-fluid">
+        <br>
+        <h6>ProductImage</h6>
+        <!--<img src="{{ product.imageUml }}" class="detail-img">
+        <img src="{{ product.imageUrl }}" class="detail-img">
+        <h3>{{ product.name }}</h3>
+
+        
+        <div class="expireDate">{{ product.expireDate}}</div>
+        
+        <h6>Barcode</h6>
+        <p>{{ product.barcode}}</p>
+
+        <div class="detailBtns">
+            <!--<a href="#" class="detailViewBtnEdit">Edit</a>
+            <button (click)= "editFromFridge(product)" class="detailViewBtnEdit">Edit</button>
+            <!--<a href="#" class="detailViewBtnDelete">Delete</a>
+            <button (click)="deleteFromFridge(product)" class="detailViewBtnDelete">Delete</button>
+        </div>
+        <hr>
+
+        <a routerLink="/products" class="mt-5">Back to Product List</a>
+    </div>
+</div>
+-->
+
+<div class="detail-section">
+    <div class="container-fluid">
+
+        <img src="{{ product.imageUrl }}" class="detail-img">
+
+        <h3>{{ product.name }}</h3>
+
+        <p>it works</p>
+        <hr>
+        <h4>Description</h4>
+        <p>{{ product.description }}</p>
+
+        <a routerLink="/products" class="mt-5">Back to Product List</a>
+
+        <div class="detailBtns">
+            <a href="#" class="detailViewBtnEdit">Edit</a>
+            <button (click)= "editFromFridge(product)" class="detailViewBtnEdit">Edit</button>
+            <a href="#" class="detailViewBtnDelete">Delete</a>
+            <button (click)="deleteFromFridge(product)" class="detailViewBtnDelete">Delete</button>
+        </div>
+    </div>
+</div>

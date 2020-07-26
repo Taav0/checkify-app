@@ -5,7 +5,7 @@
         <br>
         <h6>ProductImage</h6>
         <!--<img src="{{ product.imageUml }}" class="detail-img">-->
-        <img src="{{ product.imageUml }}">
+        <img src="{{ product.imageUrl }}" width="200px">
         <h3>{{ product.name }}</h3>
 
         
@@ -13,6 +13,9 @@
         
         <h6>Barcode</h6>
         <p>{{ product.barcode}}</p>
+
+        <h6>Description</h6>
+        <p>{{ product.description}}</p>
 
         <div class="detailBtns">
             <!--<a href="#" class="detailViewBtnEdit">Edit</a>-->

@@ -18,18 +18,20 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
-    });
+    })
   }
-  // tslint:disable-next-line:typedef
+
   handleProductDetails() {
+
+    // get the "id" param string. convert string to a number using the "+" symbol
     const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
     this.productService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
+      }
+    )
   }
-);
-}
 
 editFromFridge(theProduct: Product) {
   console.log(`Editing item in fridge: ${theProduct.name}`);

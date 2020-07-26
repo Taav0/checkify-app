@@ -5,6 +5,6 @@ export class Product {
     id: string;
     barcode: string;
     expireDate: Date;
-    imageUml: string;
+    imageUrl: string;
     name: string;
 }

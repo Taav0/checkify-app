@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
-import { Routes, RouterModule} from '@angular/router'
+import { Routes, RouterModule} from '@angular/router';
+import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component'
 
 const routes: Routes = [
   {path: 'fridge/:id' , component : ProductListComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    ProductListComponent
+    ProductListComponent,
+    FridgeMenuComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

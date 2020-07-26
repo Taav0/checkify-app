@@ -1,0 +1,49 @@
+.detailBtns{
+    align-items: center;
+}
+.btn-info{
+    color:#fff;
+    background-color:#0da8e4!important;
+    border-color:#0da8e4!important
+}
+.detailViewBtn{
+    background:#05143f;
+    padding:7px 20px;
+    text-align:center;
+    display:inline-block;
+    color:#fff;
+    border-radius:2px;
+    font-size:14px;
+    margin-top:5px;
+    margin: 5px;
+}
+.detailViewBtnEdit{
+    background: green;
+    padding:7px 20px;
+    text-align:center;
+    display:inline-block;
+    color:#fff;
+    border-radius:2px;
+    font-size:14px;
+    margin-top:5px;
+    margin: 5px;
+}
+.detailViewBtnDelete{
+    background: rgb(224, 0, 0);
+    padding:7px 20px;
+    text-align:center;
+    display:inline-block;
+    color:#fff;
+    border-radius:2px;
+    font-size:14px;
+    margin-top:5px;
+    margin: 5px;
+}
+.detailViewBtnDelete:hover{
+    background:red;
+    color:#fff
+}
+.detailViewBtnEdit:hover{
+    background:rgb(0, 190, 0);
+    color:#fff
+}

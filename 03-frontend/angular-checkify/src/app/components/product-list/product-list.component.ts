@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
-
 
 @Component({
   selector: 'app-product-list',
@@ -13,26 +11,24 @@ import * as moment from 'moment';
 export class ProductListComponent implements OnInit {
 
   products: Product[];
-  currentFridgeId : number;
-  moment: any = moment;
+  currentFridgeId: number;
 
-  currentTime : any;
-  
-  constructor(private productService: ProductService, 
-              private route : ActivatedRoute) { }
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute) { }
 
+  // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.currentTime = moment().format(`DD/MM/YYYY`);
-    this.route.paramMap.subscribe(()=> {
+    this.route.paramMap.subscribe(() => {
     this.listProducts();
   });
   }
 
+  // tslint:disable-next-line:typedef
   listProducts() {
 
     const hasFridgeId: boolean = this.route.snapshot.paramMap.has('id');
 
-    if(hasFridgeId) {
+    if (hasFridgeId) {
       this.currentFridgeId = +this.route.snapshot.paramMap.get('id');
     } else {
       this.currentFridgeId = 1;
@@ -41,6 +37,8 @@ export class ProductListComponent implements OnInit {
       data => {
         this.products = data;
       }
-    )
+    );
   }
+
+
 }

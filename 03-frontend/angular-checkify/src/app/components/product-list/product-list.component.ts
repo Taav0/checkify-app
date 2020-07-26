@@ -40,4 +40,7 @@ export class ProductListComponent implements OnInit {
     );
   }
 
+  deleteFromFridge(theProduct: Product) {
+    console.log(`Deleting from fridge: ${theProduct.name}`);
+  }
 }

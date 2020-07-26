@@ -22,12 +22,23 @@ export class ProductDetailsComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   handleProductDetails() {
-      const theProductId: number = +this.route.snapshot.paramMap.get('id');
+    const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
-      this.productService.getProduct(theProductId).subscribe(
-  data => {
-    this.product = data;
+    this.productService.getProduct(theProductId).subscribe(
+      data => {
+        this.product = data;
   }
 );
 }
+
+editFromFridge(theProduct: Product) {
+  console.log(`Editing item in fridge: ${theProduct.name}`);
+}
+
+deleteFromFridge(theProduct: Product) {
+  console.log(`Deleting item from fridge: ${theProduct.name}`);
+}
+
+
+
 }

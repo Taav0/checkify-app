@@ -4,7 +4,8 @@
     <div class="container-fluid">
         <br>
         <h6>ProductImage</h6>
-        <img src="{{ product.imageUml }}" class="detail-img">
+        <!--<img src="{{ product.imageUml }}" class="detail-img">-->
+        <img src="{{ product.imageUml }}">
         <h3>{{ product.name }}</h3>
 
         
@@ -14,9 +15,10 @@
         <p>{{ product.barcode}}</p>
 
         <div class="detailBtns">
-            <a href="#" class="detailViewBtnEdit">Edit</a>
-        
-            <a href="#" class="detailViewBtnDelete">Delete</a>
+            <!--<a href="#" class="detailViewBtnEdit">Edit</a>-->
+            <button (click)= "editFromFridge(product)" class="detailViewBtnEdit">Edit</button>
+            <!--<a href="#" class="detailViewBtnDelete">Delete</a>-->
+            <button (click)="deleteFromFridge(product)" class="detailViewBtnDelete">Delete</button>
         </div>
         <hr>
 

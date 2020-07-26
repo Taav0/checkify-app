@@ -7,18 +7,11 @@
         <img src="assets/images/logo.png" alt="checkify" class="img-responsive">
       </a>
     </div>
-    <div class="menu-sidebar-content js-scrollbar1">
-      <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar-list">
-          <li>
-            <a routerLink="/fridge/1" routerActive = "active-link">fridge1</a>
-          </li>
-          <li>
-            <a routerLink="/fridge/2" routerActive = "active-link">fridge2</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+
+    <app-fridge-menu></app-fridge-menu>
+
+
+
   </aside>
   <!-- END MENU SIDEBAR-->
 
@@ -48,7 +41,7 @@
     <!-- END HEADER DESKTOP-->
 
     <!-- MAIN CONTENT-->
-    <router-outlet></router-outlet>    
+    <router-outlet></router-outlet>
 
   </div>
 </div>

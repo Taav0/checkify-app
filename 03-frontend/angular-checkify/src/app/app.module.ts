@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component'
 
 const routes: Routes = [
   {path: 'products/:id' , component : ProductDetailsComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    FridgeMenuComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

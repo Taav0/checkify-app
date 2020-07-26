@@ -2,9 +2,10 @@ import { LocationChangeEvent } from '@angular/common';
 
 export class Product {
 
-    id: string;
+    id: number;
     barcode: string;
-    expireDate: Date;
-    imageUml: string;
     name: string;
+    expireDate: Date;
+    description: string;
+    imageUrl: string;
 }

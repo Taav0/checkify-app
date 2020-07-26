@@ -1,68 +1,39 @@
-<!--<!doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <link rel="stylesheet"  href="product-list.component.css"/>
-  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Quicksand">
+  <link rel="stylesheet" href="product-list.component.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
 </head>
+
 <body>
-<table class="fridge-table">
-  <thead>
-  <tr>
-    <th>Id</th>
-    <th>Image</th>
-    <th>Name</th>
-    <th>Barcode</th>
-    <th>Expire Date</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let tempProduct of products">
+  <table class="fridge-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Barcode</th>
+        <th>Expire Date</th>
+        <th>Category</th>
+        <th>Days left</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr routerLink="/products/{{tempProduct.id}}" *ngFor="let tempProduct of products">
+        <td class="align-middle">
+          <img src="{{ tempProduct.imageUrl }}" width="30" />
+        </td>
+        <td class="align-middle">{{ tempProduct.name}}</td>
+        <td class="align-middle">{{ tempProduct.barcode}}</td>
+        <td class="align-middle">{{ tempProduct.expireDate }}</td>
+        <td class="align-middle">{{ tempProduct.categoryId}}</td>
+        <td class="align-middle">{{ tempProduct.expireDate}}</td>
 
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">{{ tempProduct.Id}}</td>
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">
-          <img src="{{ tempProduct.imageUrl }}" class="tableImg"></td>
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">{{ tempProduct.name}}</td>
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">{{ tempProduct.barcode}}</td>
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">{{ tempProduct.expireDate}}</td>
-        <td class="align-middle" routerLink="/products/{{ tempProduct.name}}">{{ tempProduct.description}}</td>
-    </tr>
+        <!-- <td class="align-middle">{{moment(tempProduct.expireDate).format('DD/MM/YYYY')}}</td> -->
+      </tr>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<!-- <script src="tableSort.js"></script> 
+  <!-- <script src="tableSort.js"></script> -->
 </body>
--->
-
-<div class="main-content">
-  <div class="section-content section-content-p30">
-      <div class="container-fluid">
-          <div class="row">
-
-              <!-- loop over the collection of products -->
-              <div *ngFor="let tempProduct of products" class="col-md-3">
-
-                  <div class="product-box">
-
-                      <a routerLink="/products/{{ tempProduct.id }}">
-                          <img src="{{ tempProduct.imageUrl }}" class="img-responsive">
-                      </a>
-
-                      <a routerLink="/products/{{ tempProduct.id }}">
-                          <h1>{{ tempProduct.name }}</h1>
-                      </a>
-                      
-
-              </div>
-
-              <!-- if products empty then display a message-->
-              <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                  No products found.
-              </div>
-
-          </div>
-      </div>
-  </div>
-</div>

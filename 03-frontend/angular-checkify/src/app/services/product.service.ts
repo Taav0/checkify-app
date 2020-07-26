@@ -21,6 +21,7 @@ export class ProductService {
       map(response => response._embedded.products)
     );
   }
+  
   getProduct(theProductId: number): Observable<Product> {
 
     // need to build URL based on product id
@@ -29,7 +30,7 @@ export class ProductService {
     return this.httpClient.get<Product>(productUrl);
   }
 
-
+  
 }
 
 interface GetResponseProducts {

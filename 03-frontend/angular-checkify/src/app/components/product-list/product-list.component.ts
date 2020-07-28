@@ -63,5 +63,14 @@ export class ProductListComponent implements OnInit {
     );
   }
 
-
+  deleteFromFridge(id: string) {
+    this.productService.deleteProduct(id)
+    .subscribe(
+      data => {
+        console.log(data);
+        this.handleListProducts();
+      },
+      error => console.log(error));
+      console.log("inside compnent.ts");
+}
 }

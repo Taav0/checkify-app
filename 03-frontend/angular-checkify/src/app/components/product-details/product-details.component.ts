@@ -30,18 +30,17 @@ export class ProductDetailsComponent implements OnInit {
       data => {
         this.product = data;
       }
-    )
+    );
   }
 
 
+// tslint:disable-next-line:typedef
 editFromFridge(theProduct: Product) {
   console.log(`Editing item in fridge: ${theProduct.name}`);
 }
 
+// tslint:disable-next-line:typedef
 deleteFromFridge(theProduct: Product) {
-  console.log(`Deleting item from fridge: ${theProduct.name}`);
+  console.log(`Deleting item from fridge: ${theProduct.id}`);
 }
-
-
-
 }

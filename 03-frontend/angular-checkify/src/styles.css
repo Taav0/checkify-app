@@ -1,4 +1,4 @@
-/* 
+/*
  * ----------------------------
  * Common CSS
  * ----------------------------
@@ -122,12 +122,12 @@ a,a:hover{
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
     background:0 0;
-    z-index:99999999;
+    z-index:21;
     height:75px;
     box-shadow:-2px 0 4px #0000003b
 }
 
-/* 
+/*
  * ----------------------------
  * Header Desktop Section
  * ----------------------------
@@ -287,7 +287,7 @@ input.au-input.au-input-xl{
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
     border-radius:43px;
-    background:#205b8d
+    background:#205b8d;
 }
 
 .au-btn-submit:hover{
@@ -307,7 +307,7 @@ input.au-input.au-input-xl{
     transform:translate(-50%,-50%)
 }
 
-/* 
+/*
  * ----------------------------
  * Left Menu Bar
  * ----------------------------
@@ -320,7 +320,11 @@ input.au-input.au-input-xl{
     top:0;
     bottom:0;
     background:#fff;
-    overflow-y:auto
+    -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
+    border-right:1px solid #e5e5e5;
+    /*overflow-y:auto*/
 }
 
 .menu-sidebar .logo{
@@ -381,7 +385,7 @@ input.au-input.au-input-xl{
     color:#0da8e4
 }
 
-/* 
+/*
  * ----------------------------
  * Header Mobile Section
  * ----------------------------
@@ -517,7 +521,7 @@ input.au-input.au-input-xl{
     padding:10% 15%!important
 }
 
-/* 
+/*
  * ----------------------------
  * Products List
  * ----------------------------
@@ -559,7 +563,7 @@ input.au-input.au-input-xl{
     color:#585858
 }
 
-/* 
+/*
  * ----------------------------
  * Shopping Cart Checkout
  * ----------------------------
@@ -666,14 +670,11 @@ label.date{
     -o-transform:rotate(45deg);
     transform:rotate(45deg)
 }
-option:first{
-    color:#ccc
-}
 select{
     color:#828482
 }
 
-/* 
+/*
  * ----------------------------
  * Shopping Cart Details
  * ----------------------------
@@ -708,7 +709,7 @@ table.table.table-bordered th{
     margin-left:5px
 }
 
-/* 
+/*
  * ----------------------------
  * Product Details
  * ----------------------------
@@ -722,9 +723,13 @@ table.table.table-bordered th{
 .detail-section{
     margin-top:60px
 }
+
+.detail.img{
+    width: 30%;
+}
 /**/
 
-/* 
+/*
  * ----------------------------
  * Buttons
  * ----------------------------
@@ -754,7 +759,7 @@ a.primary-btn:hover{
   font-weight: bold;
 }
 
-/* 
+/*
  * ----------------------------
  * Footer section
  * ----------------------------
@@ -765,8 +770,8 @@ footer ul li a{
 }
 footer{
     background:#232324;
-    z-index:1;
-    position:relative;
+    z-index:30;
+    position: inherit;
     text-align:center
 }
 footer li a{
@@ -779,7 +784,7 @@ footer ul li{
     padding:10px 20px
 }
 
-/* 
+/*
  * ----------------------------
  * Media Queries
  * ----------------------------
@@ -974,7 +979,7 @@ footer ul li{
         text-align:center
     }
     .product-box{
-        text-align:centerg
+        text-align:center
     }
     .page-container{
         position:relative;
@@ -1032,6 +1037,5 @@ footer ul li{
         padding:6px 0;
         background:#fff;
         border:0;
-        padding:8px 0
     }
 }

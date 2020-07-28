@@ -21,14 +21,23 @@
     "@angular/router": "~10.0.3",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.5.0",
+<<<<<<< HEAD
     "quagga": "^0.12.1",
+=======
+    "moment": "^2.27.0",
+>>>>>>> a461dad4b595c8ae6c0ed1ca49df07ae45714793
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@angular-devkit/build-angular": "^0.1000.3",
     "@angular/cli": "~10.0.2",
+=======
+    "@angular-devkit/build-angular": "~0.1000.2",
+    "@angular/cli": "^10.0.4",
+>>>>>>> a461dad4b595c8ae6c0ed1ca49df07ae45714793
     "@angular/compiler-cli": "~10.0.3",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",

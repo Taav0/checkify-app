@@ -7,24 +7,11 @@
         <img src="assets/images/logo.png" alt="checkify" class="img-responsive">
       </a>
     </div>
-    <div class="menu-sidebar-content js-scrollbar1">
-      <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar-list">
-          <li>
-            <a href="#">Books</a>
-          </li>
-          <li>
-            <a href="#">Coffee Mugs</a>
-          </li>
-          <li>
-            <a href="#">Mouse Pads</a>
-          </li>
-          <li>
-            <a href="#">Luggage Tags</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+
+    <app-fridge-menu></app-fridge-menu>
+
+
+
   </aside>
   <!-- END MENU SIDEBAR-->
 
@@ -35,17 +22,21 @@
       <div class="section-content section-content-p30">
         <div class="container-fluid">
           <div class="header-wrap">
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search" placeholder="Search for data ..." />
-              <button class="au-btn-submit" type="submit">
-                Search
-              </button>
-            </form>
+
+            <app-search></app-search>
+
+
             <div class="cart-area d-n">
-              <a href="shopping-detail.html">
-                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              <a href=" ">
+                <div id="addBtn" class="wrapper">
+                  <button class="circle">
+                    <img id="addSign" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png" alt="" />
+                  </button>
+                </div>
+              
               </a>
             </div>
+
           </div>
           <div class="account-wrap"></div>
         </div>
@@ -54,7 +45,7 @@
     <!-- END HEADER DESKTOP-->
 
     <!-- MAIN CONTENT-->
-    <app-product-list></app-product-list>
+    <router-outlet></router-outlet>
 
   </div>
 </div>

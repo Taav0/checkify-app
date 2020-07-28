@@ -11,18 +11,34 @@ import Quagga from 'quagga';
 import { from } from 'rxjs';
 // const routes: Routes = [
 //   {path: 'category/:id' , component : ProductListComponent},
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
+import { SearchComponent } from './components/search/search.component';
 
-// ];
+const routes: Routes = [
+  {path: 'products/:id' , component : ProductDetailsComponent},
+  {path: 'search/:keyword', component: ProductListComponent},
+  {path: 'fridge/:id' , component : ProductListComponent},
+  {path: 'fridge' , component : ProductListComponent},
+  {path: 'products' , component : ProductListComponent},
+  {path: '' , redirectTo: '/products', pathMatch: 'full'},
+  {path: '**' , redirectTo: '/products', pathMatch: 'full'}
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    BarcodeReaderComponent
+    BarcodeReaderComponent,
+    ProductDetailsComponent,
+    FridgeMenuComponent,
+    SearchComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

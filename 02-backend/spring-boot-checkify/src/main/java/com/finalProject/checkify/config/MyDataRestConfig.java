@@ -3,6 +3,7 @@ package com.finalProject.checkify.config;
 import com.finalProject.checkify.entity.Fridge;
 import com.finalProject.checkify.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.http.HttpMethod;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+@Configuration
 public class MyDataRestConfig  implements RepositoryRestConfigurer {
 
     private EntityManager entityManager;

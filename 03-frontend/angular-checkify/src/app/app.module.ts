@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
 import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
-
+import Quagga from 'quagga';
+import { from } from 'rxjs';
 // const routes: Routes = [
 //   {path: 'category/:id' , component : ProductListComponent},
 

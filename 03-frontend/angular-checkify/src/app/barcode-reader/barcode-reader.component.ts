@@ -2,8 +2,8 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewCh
 import Quagga from 'quagga';
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: 'barcode-reader.component.html',
+  styleUrls: ['barcode-reader.component.css']
 })
 export class BarcodeReaderComponent implements AfterViewInit {
   title = 'scanner-classycode';

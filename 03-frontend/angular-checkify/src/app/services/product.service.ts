@@ -1,9 +1,10 @@
-import { Fridge } from './../common/fridge';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../common/product';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { Product } from '../common/product';
+import { Fridge } from './../common/fridge';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,15 @@ export class ProductService {
     const productUrl = `${this.baseUrl}/${theProductId}`;
 
     return this.httpClient.get<Product>(productUrl);
+  }
+
+  deleteProduct(theProductId: string): Observable<any>  {
+
+    // need to build URL based on product id
+    // const productUrl = `${this.baseUrl}/${theProductId}`;
+
+    console.log("inside service.ts");
+    return this.httpClient.delete(`${this.baseUrl}/${theProductId}`, { responseType: 'text' });
   }
 
   searchProducts(theKeyword: string): Observable<Product[]> {

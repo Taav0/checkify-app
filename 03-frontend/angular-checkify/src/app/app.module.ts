@@ -6,9 +6,12 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
+import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
+import Quagga from 'quagga';
+import { from } from 'rxjs';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
-import { SearchComponent } from './components/search/search.component'
+import { SearchComponent } from './components/search/search.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -27,6 +30,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
+    BarcodeReaderComponent,
     ProductDetailsComponent,
     FridgeMenuComponent,
     SearchComponent

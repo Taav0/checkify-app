@@ -9,8 +9,6 @@ import { Routes, RouterModule} from '@angular/router';
 import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
 import Quagga from 'quagga';
 import { from } from 'rxjs';
-// const routes: Routes = [
-//   {path: 'category/:id' , component : ProductListComponent},
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
 import { SearchComponent } from './components/search/search.component';

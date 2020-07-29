@@ -10,9 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
-  products: Product[];
-  currentFridgeId: number;
-  searchMode: boolean;
+  products: Product[] = [];
+  currentFridgeId: number = 1;
+  previousFridgeId: number = 1;
+  searchMode: boolean = false;
+
+    // new properties for pagination
+    thePageNumber: number = 1;
+    thePageSize: number = 5;
+    theTotalElements: number = 0;
+    
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
@@ -56,11 +63,30 @@ export class ProductListComponent implements OnInit {
     } else {
       this.currentFridgeId = 1;
     }
-    this.productService.getProductList(this.currentFridgeId).subscribe(
-      data => {
-        this.products = data;
-      }
-    );
+    // check if we have a different fridge than previous
+    if (this.previousFridgeId != this.currentFridgeId) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousFridgeId = this.currentFridgeId;
+
+    console.log(`currentFridgeId=${this.currentFridgeId}, thePageNumber=${this.thePageNumber}`);
+
+
+
+    this.productService.getProductListPaginate(this.thePageNumber - 1,
+                                              this.thePageSize,
+                                              this.currentFridgeId)
+                                    .subscribe(this.processResult());
+  }
+
+  processResult() {
+    return data => {
+      this.products = data._embedded.products;
+      this.thePageNumber = data.page.number + 1;
+      this.thePageSize = data.page.size;
+      this.theTotalElements = data.page.totalElements;
+    };
   }
 
 

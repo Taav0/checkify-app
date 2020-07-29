@@ -22,7 +22,7 @@
     <tbody>
       <tr *ngFor="let tempProduct of products">
         <td routerLink="/products/{{tempProduct.id}}" class="align-middle">
-          <img src="{{ tempProduct.imageUrl }}" width="30" />
+          <img src="{{ tempProduct.imageUrl }}" width="50px" />
         </td>
         <td routerLink="/products/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
         <td class="align-middle">{{ tempProduct.barcode}}</td>

@@ -21,6 +21,7 @@
     "@angular/router": "~10.0.3",
     "@fortawesome/fontawesome-free": "^5.14.0",
     "bootstrap": "^4.5.0",
+    "quagga": "^0.12.1",
     "moment": "^2.27.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

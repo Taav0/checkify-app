@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quagga from 'quagga';
 @Component({
-  selector: 'app-root',
+  selector: 'app-barcode-reader',
   templateUrl: 'barcode-reader.component.html',
   styleUrls: ['barcode-reader.component.css']
 })

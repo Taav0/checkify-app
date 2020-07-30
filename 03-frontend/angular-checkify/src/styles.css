@@ -382,7 +382,11 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-    color:#0da8e4
+    
+    color:#444;
+    transition: 0.2s;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
 }
 
 /*
@@ -756,6 +760,7 @@ a.primary-btn:hover{
 }
 
 .active-link {
+    /*transition: 0.2s;*/
   font-weight: bold;
 }
 

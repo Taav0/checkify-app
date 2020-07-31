@@ -1,5 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quagga from 'quagga';
+import {BarcodeService} from '../services/barcode-service';
+import { Product } from '../common/product';
 @Component({
   selector: 'app-barcode-reader',
   templateUrl: 'barcode-reader.component.html',
@@ -10,6 +12,15 @@ export class BarcodeReaderComponent implements AfterViewInit {
  
   errorMessage: string;
   code: string;
+  product: Product;
+
+  constructor(private barcodeService:BarcodeService){
+    this.product = new Product();
+  }
+
+  onCreate():void{
+    this.barcodeService.createProduct(this.product).subscribe(result => this.product = result);
+  }
 
   ngAfterViewInit(): void {
     if (!navigator.mediaDevices || !(typeof navigator.mediaDevices.getUserMedia === 'function')) {
@@ -41,8 +52,14 @@ export class BarcodeReaderComponent implements AfterViewInit {
       }else{
         this.code = result.codeResult.code;
         Quagga.stop();
+        this.barcodeService.findProductByBarcode(this.code).subscribe(data => {
+          this.product = data;
+        });
+        
       }
       console.log(this.code)
     })
+    
+   
 }
 }

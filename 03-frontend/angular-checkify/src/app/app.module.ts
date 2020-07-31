@@ -12,7 +12,7 @@ import { from } from 'rxjs';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
 import { SearchComponent } from './components/search/search.component';
-
+import {BarcodeService} from './services/barcode-service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
@@ -33,7 +33,7 @@ const routes: Routes = [
     BarcodeReaderComponent,
     ProductDetailsComponent,
     FridgeMenuComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

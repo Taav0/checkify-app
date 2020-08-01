@@ -25,6 +25,7 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
+  // list products according to fridges with pagination
   getProductListPaginate(thePage: number, 
                           thePageSize: number, 
                           theFridgeId: number): Observable<GetResponseProducts> {
@@ -34,6 +35,18 @@ export class ProductService {
                   + `&page=${thePage}&size=${thePageSize}`;
 
   return this.httpClient.get<GetResponseProducts>(searchUrl);
+}
+
+// search products according to keyword using searchbar
+searchProductsPaginate(thePage: number, 
+                      thePageSize: number, 
+                      theKeyword: string): Observable<GetResponseProducts> {
+
+// need to build URL based on keyword, page and size 
+const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
+                + `&page=${thePage}&size=${thePageSize}`;
+
+return this.httpClient.get<GetResponseProducts>(searchUrl);
 }
 
   getProduct(theProductId: number): Observable<Product> {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
 import { ActivatedRoute } from '@angular/router';
+import { DatePipe } from '@angular/common';
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-product-list',
@@ -14,6 +17,8 @@ export class ProductListComponent implements OnInit {
   currentFridgeId: number = 1;
   previousFridgeId: number = 1;
   searchMode: boolean = false;
+  
+
 
     // new properties for pagination
     thePageNumber: number = 1;
@@ -117,4 +122,17 @@ export class ProductListComponent implements OnInit {
       error => console.log(error));
       console.log("inside compnent.ts");
 }
+     showDaysLeft(date : Date){
+      let todayDate = new Date();
+      var productExpireDate = new Date(date);
+      let daysLeft = Math.floor((productExpireDate.getTime() - todayDate.getTime()) / 1000 / 60 / 60 / 24);
+
+      if(daysLeft>0){
+      return daysLeft;
+      }else
+        {return "expired";}
+
+    }
+
+    
 }

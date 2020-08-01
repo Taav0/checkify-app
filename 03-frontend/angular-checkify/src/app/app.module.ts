@@ -5,14 +5,15 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
+import {BarcodeService} from './services/barcode.service';
 import { Routes, RouterModule} from '@angular/router';
-import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
+import { BarcodeReaderComponent } from './components/barcode-reader/barcode-reader.component'
 import Quagga from 'quagga';
 import { from } from 'rxjs';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
 import { SearchComponent } from './components/search/search.component';
-import {BarcodeService} from './services/barcode-service';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
@@ -21,8 +22,10 @@ const routes: Routes = [
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
   {path: 'products' , component : ProductListComponent},
+  {path: 'barcode', component : BarcodeReaderComponent},
   {path: '' , redirectTo: '/products', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/products', pathMatch: 'full'}
+  {path: '**' , redirectTo: '/products', pathMatch: 'full'},
+  
 
 ];
 
@@ -33,15 +36,15 @@ const routes: Routes = [
     BarcodeReaderComponent,
     ProductDetailsComponent,
     FridgeMenuComponent,
-    SearchComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, BarcodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

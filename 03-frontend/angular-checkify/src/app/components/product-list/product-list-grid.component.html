@@ -26,9 +26,9 @@
         </td>
         <td routerLink="/products/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
         <td class="align-middle">{{ tempProduct.barcode}}</td>
-        <td class="align-middle">{{ tempProduct.expireDate }}</td>
-        <td class="align-middle">{{ tempProduct.categoryId}}</td>
-        <td class="align-middle">{{ tempProduct.expireDate}}</td>
+        <td class="align-middle">{{ tempProduct.date |date}}</td>
+        <td class="align-middle">{{ tempProduct.productCategory}}</td>
+        <td class="align-middle">{{ showDaysLeft(tempProduct.date)}}</td>
         <td>
           <button (click)="deleteFromFridge(tempProduct.id)" class="detailViewBtnDelete"></button>
         </td>
@@ -38,11 +38,12 @@
   </table>
 
   <div id="addBtn" class="wrapper">
-    <button class="circle">
+    <button routerLink="/barcode" class="circle">
       <img id="addSign"
         src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png"
         alt="" />
     </button>
+    
   </div>
 
 

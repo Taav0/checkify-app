@@ -108,4 +108,11 @@ button {
 		width: 30px;
 		height: 30px;
 		transition: 0.5s;
-	}
+  }
+  
+  .flagExpired {
+    color: red;
+  }
+  .flagGood {
+    color: green;
+  }

@@ -27,7 +27,7 @@
         <td routerLink="/products/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
         <td class="align-middle">{{ tempProduct.barcode}}</td>
         <td class="align-middle">{{ tempProduct.date |date}}</td>
-        <td class="align-middle">{{ tempProduct.productCategory}}</td>
+        <td class="align-middle">{{ showCategoryName(tempProduct.productCategory)}}</td>
         <td class="align-middle">{{ showDaysLeft(tempProduct.date)}}</td>
         <td>
           <button (click)="deleteFromFridge(tempProduct.id)" class="detailViewBtnDelete"></button>
@@ -69,7 +69,7 @@
                               </ngb-pagination>
 
                           </div>
-                          <!--
+                          
                           <div class="col-md-3 mt-2" style="text-align: right;">
                               <span class="mr-2">Page Size</span>
 
@@ -80,8 +80,9 @@
                                   <option>10</option>
                                   <option>20</option>
                                   <option>50</option>
+                                  <option>100</option>
                               </select>
-                          </div>-->
+                          </div>
 
                       </div>
                   </div>

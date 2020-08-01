@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
+import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import * as moment from 'moment';
+import jp from 'jsonpath';
 
 
 @Component({
@@ -22,9 +23,10 @@ export class ProductListComponent implements OnInit {
 
     // new properties for pagination
     thePageNumber: number = 1;
-    thePageSize: number = 10;
+    thePageSize: number = 5;
     theTotalElements: number = 0;
     
+    previousKeyword: string = null;
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
@@ -48,14 +50,25 @@ export class ProductListComponent implements OnInit {
   }
   
   handleSearchProducts() {
+
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
 
+    // if we have a different keyword than previous
+    // then set thePageNumber to 1
+
+    if (this.previousKeyword != theKeyword) {
+      this.thePageNumber = 1;
+    }
+
+    this.previousKeyword = theKeyword;
+
+    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
+
     // now search for the products using keyword
-    this.productService.searchProducts(theKeyword).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+    this.productService.searchProductsPaginate(this.thePageNumber - 1,
+                                               this.thePageSize,
+                                               theKeyword).subscribe(this.processResult());
+                                               
   }
 
   // tslint:disable-next-line:typedef
@@ -94,6 +107,12 @@ export class ProductListComponent implements OnInit {
     };
   }
 
+  updatePageSize(pageSize: number) {
+    this.thePageSize = pageSize;
+    this.thePageNumber = 1;
+    this.listProducts();
+  }
+
   deleteFromFridge(id: string) {
     this.productService.deleteProduct(id)
     .subscribe(
@@ -120,4 +139,8 @@ export class ProductListComponent implements OnInit {
       
     }
     
+    showCategoryName(theCategory : Category){
+      var categoryName = jp.query(theCategory, '$..name');
+      return categoryName;
+    }   
 }

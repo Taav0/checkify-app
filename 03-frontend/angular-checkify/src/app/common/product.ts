@@ -5,7 +5,7 @@ export class Product {
     id: string;
     barcode: string;
     name: string;
-    expireDate: Date;
+    date: Date;
     description: string;
     imageUrl: string;
     categoryId: string;

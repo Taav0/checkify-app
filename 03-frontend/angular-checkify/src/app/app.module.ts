@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
-import {BarcodeService} from './services/barcode.service';
 import { Routes, RouterModule} from '@angular/router';
 import { BarcodeReaderComponent } from './components/barcode-reader/barcode-reader.component'
 import Quagga from 'quagga';
@@ -44,7 +43,7 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
   ],
-  providers: [ProductService, BarcodeService],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

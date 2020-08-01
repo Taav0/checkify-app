@@ -1,17 +1,14 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quagga from 'quagga';
-import {BarcodeService} from '/Users/Vladi/checkify/03-frontend/angular-checkify/src/app/services/barcode.service';
 import { Product } from '/Users/Vladi/checkify/03-frontend/angular-checkify/src/app/common/product';
-import { ActivatedRoute } from '@angular/router';
+import {BarcodeService} from "src/app/services/barcode.service"
 
 
 @Component({
   selector: 'app-barcode-reader',
   templateUrl: 'barcode-reader.component.html',
   styleUrls: ['barcode-reader.component.css'],
-  providers: [
-    BarcodeService
-  ]
+ 
 })
 export class BarcodeReaderComponent implements AfterViewInit {
   title = 'scanner-classycode';
@@ -20,8 +17,7 @@ export class BarcodeReaderComponent implements AfterViewInit {
   code: string;
   product: Product;
 
-  constructor(private barcodeService:BarcodeService,
-){
+  constructor(private service: BarcodeService){
     this.product = new Product();
   }
 
@@ -59,10 +55,7 @@ export class BarcodeReaderComponent implements AfterViewInit {
         this.code = result.codeResult.code;
         //console.log(this.code)
         Quagga.stop();
-        this.barcodeService.findProductByBarcode(this.code).subscribe(data => {
-          this.product = data;
-        });
-        
+        this.barcodeService.getAll(); 
       }
       
     })

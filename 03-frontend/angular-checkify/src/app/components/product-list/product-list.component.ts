@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
+import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import * as moment from 'moment';
+import jp from 'jsonpath';
 
 
 @Component({
@@ -133,6 +134,8 @@ export class ProductListComponent implements OnInit {
         {return "expired";}
 
     }
-
-    
+    showCategoryName(theCategory : Category){
+      var categoryName = jp.query(theCategory, '$..name');
+      return categoryName;
+    }   
 }

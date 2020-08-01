@@ -24,6 +24,7 @@
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "bootstrap": "^4.5.0",
+    "http": "0.0.1-security",
     "jsonpath": "^1.0.2",
     "moment": "^2.27.0",
     "quagga": "^0.12.1",

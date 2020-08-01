@@ -8,5 +8,5 @@ export class Product {
     date: Date;
     description: string;
     imageUrl: string;
-    categoryId: string;
+    productCategory: string;
 }

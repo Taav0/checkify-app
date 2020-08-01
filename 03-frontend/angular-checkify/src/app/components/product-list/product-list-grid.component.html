@@ -27,7 +27,7 @@
         <td routerLink="/products/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
         <td class="align-middle">{{ tempProduct.barcode}}</td>
         <td class="align-middle">{{ tempProduct.date |date}}</td>
-        <td class="align-middle">{{ tempProduct.productCategory}}</td>
+        <td class="align-middle">{{ showCategoryName(tempProduct.productCategory)}}</td>
         <td class="align-middle">{{ showDaysLeft(tempProduct.date)}}</td>
         <td>
           <button (click)="deleteFromFridge(tempProduct.id)" class="detailViewBtnDelete"></button>

@@ -27,15 +27,15 @@ public class MyDataRestConfig  implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
-        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.POST};
+        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT};
 
-        //disable HTTP methods for Product: PUT, POST
+        //disable HTTP methods for Product: PUT
         config.getExposureConfiguration()
                 .forDomainType(Product.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
 
-        //disable HTTP methods for ProductCategory: PUT, POST
+        //disable HTTP methods for ProductCategory: PUT
         config.getExposureConfiguration()
                 .forDomainType(Fridge.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))

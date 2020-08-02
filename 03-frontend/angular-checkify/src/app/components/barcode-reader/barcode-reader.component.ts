@@ -14,17 +14,15 @@ export class BarcodeReaderComponent implements AfterViewInit {
   title = 'scanner-classycode';
  
   errorMessage: string;
-  code: string;
+  barCode: string;
   product: Product;
+  receivedCode: string;
 
   constructor(private service: BarcodeService){
     this.product = new Product();
   }
-
-  
-
-
   ngAfterViewInit(): void {
+
     if (!navigator.mediaDevices || !(typeof navigator.mediaDevices.getUserMedia === 'function')) {
       this.errorMessage = 'getUserMedia is not supported';
       return;
@@ -39,27 +37,26 @@ export class BarcodeReaderComponent implements AfterViewInit {
         readers : ["code_128_reader",
                     "ean_reader"]
       }
-    }, function(err) {
+    }, (err) => {
         if (err) {
             console.log(err);
             return
+        }else{
+          Quagga.start();
+          Quagga.onDetected((res) => {
+            this.onBarcodeScanned(res.codeResult.code);
+          });
         }
-        console.log("Initialization finished. Ready to start");
-        Quagga.start();
     });
+  
+  }
 
-    Quagga.onDetected(function(result){
-      if(this.code === null){
-        
-      }else{
-        this.code = result.codeResult.code;
-        console.log(this.code)
-        Quagga.stop();
-      
-      }
-      
-    })
-    this.service.getAll(this.code);
-    
-}
+  onBarcodeScanned(code: string) {
+    console.log('this is code: ' + code);
+    this.service.getAll(code);
+    Quagga.stop();
+  }
+
+   
+   
 }

@@ -10,13 +10,13 @@ export class BarcodeService {
 
   private baseUrl = 'http://localhost:8080/api/products/register';
  
-
+  //`${this.baseUrl}/${barcode}`
   constructor(private http: HttpClient) {
    }
 
    
    getAll(barcode: string) {
-    const apiURL = `${this.baseUrl}/${barcode}`;
-    this.http.post<string>(apiURL, String);
+    const apiURL ='http://localhost:8080/api/products/register/' + barcode;
+    this.http.post<String>(apiURL, String);
    }
 }

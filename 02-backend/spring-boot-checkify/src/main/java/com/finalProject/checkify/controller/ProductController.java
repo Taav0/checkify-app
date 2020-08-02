@@ -1,48 +1,56 @@
-/*
 package com.finalProject.checkify.controller;
 
-import com.finalProject.checkify.dao.ProductRepository;
 import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/")
+// TODO add products to URL and remove from the end point
 public class ProductController {
 
+    private final ProductServiceImpl productService;
+
     @Autowired
-    private ProductRepository productRepository;
+    public ProductController(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productService.findAll();
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long productId)
-            throws ResourceNotFoundException {
-        Product theProduct = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + productId));
-        return ResponseEntity.ok().body(theProduct);
+    public Product getProductById(@PathVariable(value = "id") Long productId) {
+
+        return productService.findById(productId);
+    }
+
+    @PostMapping("/products/{id}")
+    public void saveProduct(@RequestBody Product theProduct){
+        productService.save(theProduct);
     }
 
     @DeleteMapping("/products/{id}")
-    public Map<String, Boolean> deleteProduct(@PathVariable(value = "id") Long productId)
-            throws ResourceNotFoundException {
-        Product theProduct = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + productId));
-
-        productRepository.delete(theProduct);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
+    public void deleteProduct(@PathVariable(value = "id") Long productId){
+        productService.deleteById(productId);
     }
+
+  /*  @GetMapping("/products/search/findByFridgeId/{id}")
+    public Page<Product> findByFridgeId(@PathVariable(value = "id") Long productId, Pageable pageable) {
+
+        return productService.findByFridgeId(productId, pageable);
+    }*/
+
+
+//
+//    Page<Product> findByFridgeId(@RequestParam("id") Long id, Pageable pageable);
+//
+//    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
 }
-*/

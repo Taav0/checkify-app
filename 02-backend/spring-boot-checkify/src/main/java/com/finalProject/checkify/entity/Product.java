@@ -29,13 +29,15 @@ public class Product {
 
     @Column(name = "IMAGE_URL")
     private String imageUrl;
+/*
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
-    private  ProductCategory productCategory;
+    private Category categoryId;
 
     @ManyToOne
     @JoinColumn(name = "FRIDGE_ID")
     private  Fridge fridge;
+*/
 
 }

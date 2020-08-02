@@ -16,6 +16,8 @@ export class ProductService {
 
   private fridgeUrl = 'http://localhost:8080/api/fridge';
 
+  private barcodeMonsterUrl = 'https://barcode.monster/api';
+
   constructor(private httpClient: HttpClient) { }
 
   getProductList(theFridgeId: number): Observable<Product[]> {
@@ -59,10 +61,6 @@ return this.httpClient.get<GetResponseProducts>(searchUrl);
 
   deleteProduct(theProductId: string): Observable<any>  {
 
-    // need to build URL based on product id
-    // const productUrl = `${this.baseUrl}/${theProductId}`;
-
-    console.log("inside service.ts");
     return this.httpClient.delete(`${this.baseUrl}/${theProductId}`, { responseType: 'text' });
   }
 
@@ -74,6 +72,16 @@ return this.httpClient.get<GetResponseProducts>(searchUrl);
   private getProducts(searchUrl: string): Observable<Product[]> {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
   }
+
+   getProductFromApi (theProductBarcode: string): Observable<Product> {
+
+    // need to build URL based on product id
+    const productUrl = `${this.barcodeMonsterUrl}/${theProductBarcode}`;
+    console.log(this.httpClient.get<Product>(productUrl));
+
+    return this.httpClient.get<Product>(productUrl);
+  }
+
 
   getFridges(): Observable<Fridge[]> {
 

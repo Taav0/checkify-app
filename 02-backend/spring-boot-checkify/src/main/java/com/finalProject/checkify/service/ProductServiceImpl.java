@@ -1,11 +1,9 @@
 package com.finalProject.checkify.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.finalProject.checkify.dao.ProductListRepository;
 import com.finalProject.checkify.dao.ProductRepository;
 import com.finalProject.checkify.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,9 +14,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private final ProductRepository productRepository;
+    @Autowired
+    private final ProductListRepository productListRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository,
+                              ProductListRepository productListRepository) {
         this.productRepository = productRepository;
+        this.productListRepository=productListRepository;
     }
 
     @Override
@@ -58,12 +60,5 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteById(Long id) {
         productRepository.deleteById(id);
-
-    }
-
-    @Override
-    public void saveJsonObjectToDatabase() {
-
-
     }
 }

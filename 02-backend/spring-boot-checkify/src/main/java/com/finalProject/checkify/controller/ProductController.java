@@ -1,14 +1,14 @@
 package com.finalProject.checkify.controller;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.entity.ProductList;
 import com.finalProject.checkify.service.ProductServiceImpl;
+import jackson.ProductListDeserialization;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -43,37 +43,6 @@ public class ProductController {
     public void saveProduct(@RequestBody Product theProduct){
         productService.save(theProduct);
     }
-
-    @PostMapping("/products/register/{barcode}")
-    public void getBarcode(@PathVariable(value = "barcode") String barcode){
-        localBarcode = barcode;
-        System.out.println(localBarcode);
-    }
-
-    @GetMapping("/products/getBarcode/{barcode}")
-    public void  getAndSaveProductJsonFromApiToDB(@PathVariable String barcode) {
-
-        final String uri = "https://barcode.monster/api/" + barcode;
-
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.configure(
-                    DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-            Product testProduct = mapper.readValue(result, Product.class);
-            saveProduct(testProduct);
-
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
 
     @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable(value = "id") Long productId){

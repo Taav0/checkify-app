@@ -44,7 +44,7 @@ public class ProductController {
         productService.save(theProduct);
     }
 
-    @GetMapping("/products/register/{barcode}")
+    @PostMapping("/products/register/{barcode}")
     public void getBarcode(@PathVariable(value = "barcode") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);

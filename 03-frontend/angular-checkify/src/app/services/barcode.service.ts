@@ -8,13 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class BarcodeService {
 
+  private baseUrl = 'http://localhost:8080/api/products/register';
  
-  
+
   constructor(private http: HttpClient) {
    }
 
    
-   getAll() {
-    console.log('scanned this code')
+   getAll(barcode: string) {
+    const apiURL = `${this.baseUrl}/${barcode}`;
+    this.http.post<string>(apiURL, String);
    }
 }

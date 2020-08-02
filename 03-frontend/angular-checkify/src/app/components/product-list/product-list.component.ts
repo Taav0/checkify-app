@@ -144,7 +144,5 @@ export class ProductListComponent implements OnInit {
       //return categoryName;
     }   
 
-    getProductFromApi(bacode: string) {
-    this.productService.getProductFromApi(bacode);
-    }
+    
 }

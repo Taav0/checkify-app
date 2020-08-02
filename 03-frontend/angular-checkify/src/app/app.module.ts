@@ -6,7 +6,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
-import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
+import { BarcodeReaderComponent } from './components/barcode-reader/barcode-reader.component'
 import Quagga from 'quagga';
 import { from } from 'rxjs';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -21,8 +21,11 @@ const routes: Routes = [
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
   {path: 'products' , component : ProductListComponent},
+  {path: 'barcode', component : BarcodeReaderComponent},
+  
   {path: '' , redirectTo: '/products', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/products', pathMatch: 'full'}
+  {path: '**' , redirectTo: '/products', pathMatch: 'full'},
+  
 
 ];
 
@@ -39,7 +42,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

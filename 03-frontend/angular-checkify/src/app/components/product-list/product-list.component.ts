@@ -4,7 +4,7 @@ import { Product } from 'src/app/common/product';
 import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import jp from 'jsonpath';
+//import jp from 'jsonpath';
 
 
 @Component({
@@ -134,9 +134,14 @@ export class ProductListComponent implements OnInit {
         {return "expired";}
 
     }
+
+    addProduct():void{
+      
+    }
+    
     showCategoryName(theCategory : Category){
-      var categoryName = jp.query(theCategory, '$..name');
-      return categoryName;
+     // var categoryName = jp.query(theCategory, '$..name');
+      //return categoryName;
     }   
 
     getProductFromApi(bacode: string) {

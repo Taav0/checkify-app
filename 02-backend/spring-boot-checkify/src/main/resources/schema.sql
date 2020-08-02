@@ -18,7 +18,7 @@ create table if not exists `CHECKIFY`.`fridge`
 	name varchar(100) null
 );
 
-create table if not exists `CHECKIFY`.`product`
+create table if not exists `CHECKIFY`.`product_list`
 (
 	id bigint auto_increment
 		primary key,
@@ -35,7 +35,7 @@ create table if not exists `CHECKIFY`.`product`
         foreign key (fridge_id) references fridge (id)
 );
 
-create table if not exists `CHECKIFY`.`product_list`
+create table if not exists `CHECKIFY`.`product`
 (
 	id bigint auto_increment
 		primary key,

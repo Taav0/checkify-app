@@ -7,11 +7,8 @@ import java.util.List;
 public interface ProductService {
 
      List<Product> findAll();
-     Product findById(Long theId);
- /*    Page<Product> findByFridgeId(Long fridgeId, Pageable pageable);
-     Page<Product> findByNameContaining(String name, Pageable pageable);
-*/
+     Product findByBarcode(String barcode);
      void save(Product theProduct);
-     void deleteById(Long id);
+     void deleteByBarcode(String barcode);
 
 }

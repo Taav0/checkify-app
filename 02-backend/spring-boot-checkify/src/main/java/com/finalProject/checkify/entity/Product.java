@@ -3,7 +3,6 @@ package com.finalProject.checkify.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -15,14 +14,11 @@ public class Product {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "BARCODE", length = 20)
+    @Column(name = "BARCODE", length = 20, nullable = false ,unique = true)
     private String barcode;
 
     @Column(name = "NAME", length = 150)
     private String name;
-
-    @Column(name = "EXPIRE_DATE")
-    private Date date;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -30,12 +26,9 @@ public class Product {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "CATEGORY_ID")
-    private Category categoryId;
-
-    @ManyToOne
-    @JoinColumn(name = "FRIDGE_ID")
-    private  Fridge fridge;
-
+    public Product(String barcode, String name, String imageUrl) {
+        this.barcode = barcode;
+        this.name = name;
+        this.imageUrl = imageUrl;
+    }
 }

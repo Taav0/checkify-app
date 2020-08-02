@@ -1,7 +1,7 @@
 package com.finalProject.checkify.config;
 
 import com.finalProject.checkify.entity.Fridge;
-import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.entity.ProductList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -31,7 +31,7 @@ public class MyDataRestConfig  implements RepositoryRestConfigurer {
 
         //disable HTTP methods for Product: PUT
         config.getExposureConfiguration()
-                .forDomainType(Product.class)
+                .forDomainType(ProductList.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)));
 

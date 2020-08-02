@@ -15,11 +15,14 @@ public class ProductList {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "BARCODE", length = 20, nullable = false ,unique = true)
+    @Column(name = "BARCODE", length = 20)
     private String barcode;
 
     @Column(name = "NAME", length = 150)
     private String name;
+
+    @Column(name = "EXPIRE_DATE")
+    private Date date;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -27,9 +30,12 @@ public class ProductList {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    public ProductList(String barcode, String name, String imageUrl) {
-        this.barcode = barcode;
-        this.name = name;
-        this.imageUrl = imageUrl;
-    }
+    @ManyToOne
+    @JoinColumn(name = "CATEGORY_ID")
+    private Category categoryId;
+
+    @ManyToOne
+    @JoinColumn(name = "FRIDGE_ID")
+    private  Fridge fridge;
+
 }

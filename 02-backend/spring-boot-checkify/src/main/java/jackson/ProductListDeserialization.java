@@ -5,11 +5,11 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.finalProject.checkify.entity.ProductList;
+import com.finalProject.checkify.entity.Product;
 
 import java.io.IOException;
 
-public class ProductListDeserialization extends StdDeserializer<ProductList> {
+public class ProductListDeserialization extends StdDeserializer<Product> {
 
     public ProductListDeserialization() {
         this(null);
@@ -20,14 +20,14 @@ public class ProductListDeserialization extends StdDeserializer<ProductList> {
     }
 
     @Override
-    public ProductList deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+    public Product deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
             throws IOException {
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
         String barcode =  node.get("code").asText();
         String name =  node.get("description").asText();
         String imageUrl =  node.get("image_url").asText();
 
-        return new ProductList(barcode, name , imageUrl);
+        return new Product(barcode, name , imageUrl);
     }
 
 

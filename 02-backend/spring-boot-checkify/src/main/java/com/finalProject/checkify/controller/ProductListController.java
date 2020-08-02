@@ -1,19 +1,16 @@
 package com.finalProject.checkify.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.finalProject.checkify.entity.ProductList;
 import com.finalProject.checkify.service.ProductListServiceImpl;
-import jackson.ProductListDeserialization;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/productList")
+@RequestMapping("/api/")
 public class ProductListController {
 
     private final ProductListServiceImpl productListService;
@@ -24,53 +21,36 @@ public class ProductListController {
         this.productListService = productListService;
     }
 
-    @GetMapping("/show")
-    public List<ProductList> getAllProducts() {
+    @GetMapping("/productList")
+    public List<ProductList> getAllProductList() {
         return productListService.findAll();
     }
 
-    @GetMapping("/{barcode}")
-    public ProductList getProductListByBarcode(@PathVariable(value = "barcode") String theBarcode) {
+    @GetMapping("/productList/{id}")
+    public ProductList getProductById(@PathVariable(value = "id") Long productId) {
 
-        return productListService.findByBarcode(theBarcode);
+        return productListService.findById(productId);
     }
 
-    @PostMapping()
-    public void saveProduct(@RequestBody ProductList theProduct){
-        productListService.save(theProduct);
+    @PostMapping("/productList/{id}")
+    public void saveProduct(@RequestBody ProductList productList){
+        productListService.save(productList);
     }
 
-    @DeleteMapping("/{barcode}")
-    public void deleteProduct(@PathVariable(value = "barcode") String  barcode){
-        productListService.deleteByBarcode(barcode);
+    @DeleteMapping("/productList/{id}")
+    public void deleteProduct(@PathVariable(value = "id") Long productId){
+        productListService.deleteById(productId);
     }
 
-    @PostMapping("/register/{barcode}")
-    public void getBarcode(@PathVariable(value = "barcode") String barcode){
-        localBarcode = barcode;
-        System.out.println(localBarcode);
+    @GetMapping("/products/search/findByFridgeId/{id}")
+    public Page<ProductList> findByFridgeId(@PathVariable(value = "id") Long productId, Pageable pageable) {
+
+        return productListService.findByFridgeId(productId, pageable);
     }
 
-    @GetMapping("/save-product-from-api/{barcode}")
-    public void  getAndSaveProductJsonFromApiToDB(@PathVariable String barcode) {
+    @GetMapping("/products/search/findByNameContaining/{name}")
+    public Page<ProductList> findByNameContaining(@PathVariable(value = "name") String name, Pageable pageable) {
 
-        final String uri = "https://barcode.monster/api/" + barcode;
-
-        RestTemplate restTemplate = new RestTemplate();
-        String jsonResult = restTemplate.getForObject(uri, String.class);
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            SimpleModule module = new SimpleModule();
-
-            module.addDeserializer(ProductList.class, new ProductListDeserialization());
-            mapper.registerModule(module);
-
-            ProductList testProduct = mapper.readValue(jsonResult, ProductList.class);
-            saveProduct(testProduct);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return productListService.findByNameContaining(name, pageable);
     }
 }

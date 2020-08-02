@@ -21,7 +21,7 @@ public class Fridge {
     private String name;
 
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
-    private Set<Product> productsInFridge;
+    private Set<ProductList> productsInFridge;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CUSTOMER_FRIDGE",

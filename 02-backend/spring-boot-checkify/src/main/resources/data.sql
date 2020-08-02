@@ -27,7 +27,7 @@ VALUES
 ('SWEETS'),
 ('BREAD');
 
-INSERT INTO CHECKIFY.PRODUCT_LIST (BARCODE, NAME, DESCRIPTION, IMAGE_URL)
+INSERT INTO CHECKIFY.PRODUCT (BARCODE, NAME, DESCRIPTION, IMAGE_URL)
 VALUES
 ('3068320014067', 'Evian Water', null,'https://www.tastefuldelights.com.au/211015-thickbox_default/Array.jpg'),
 ('5060335636225', 'Monster Energy', null, 'https://m2.kaubamaja.ee/media/catalog/product/cache/1/image/840x/6dcdb3bec3b7d3d8fa2d31ce95a0090e/5/0/5060335636225.jpg'),
@@ -44,7 +44,7 @@ VALUES
 ('0044000032029', 'OREO Chocolate Sandwich Cookies',null, 'https://images-na.ssl-images-amazon.com/images/I/513LGJisOgL._UL320_.jpg'),
 ('50173976', 'Orbit Winterfresh', null, 'https://m1.selver.ee/media/catalog/product/cache/1/image/409x/9df78eab33525d08d6e5fb8d27136e95/5/0/50173976.jpg');
 
-INSERT INTO CHECKIFY.PRODUCT (BARCODE, NAME, EXPIRE_DATE, DESCRIPTION, IMAGE_URL, CATEGORY_ID, FRIDGE_ID)
+INSERT INTO CHECKIFY.PRODUCT_LIST (BARCODE, NAME, EXPIRE_DATE, DESCRIPTION, IMAGE_URL, CATEGORY_ID, FRIDGE_ID)
 VALUES
 ('3068320014067', 'Evian Water', '2023-07-18','It"s a buddle of water', 'https://www.tastefuldelights.com.au/211015-thickbox_default/Array.jpg', 1, 2),
 ('5060335636225', 'Monster Energy', '2021-07-18','It"s a monster enery drink', 'https://m2.kaubamaja.ee/media/catalog/product/cache/1/image/840x/6dcdb3bec3b7d3d8fa2d31ce95a0090e/5/0/5060335636225.jpg',1, 1),

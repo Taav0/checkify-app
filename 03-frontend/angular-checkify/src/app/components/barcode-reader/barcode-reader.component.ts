@@ -59,7 +59,7 @@ export class BarcodeReaderComponent implements AfterViewInit {
       }
       
     })
-    this.service.getAll();
+    this.service.getAll(this.code);
     
 }
 }

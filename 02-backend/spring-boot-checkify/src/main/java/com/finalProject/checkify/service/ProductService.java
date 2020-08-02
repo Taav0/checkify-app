@@ -16,5 +16,7 @@ public interface ProductService {
      void save(Product theProduct);
      void deleteById(Long id);
 
+     void saveJsonObjectToDatabase();
+
 
 }

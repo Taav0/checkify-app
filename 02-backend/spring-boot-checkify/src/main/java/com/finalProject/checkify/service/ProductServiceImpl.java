@@ -1,5 +1,6 @@
 package com.finalProject.checkify.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finalProject.checkify.dao.ProductRepository;
 import com.finalProject.checkify.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteById(Long id) {
         productRepository.deleteById(id);
+
+    }
+
+    @Override
+    public void saveJsonObjectToDatabase() {
+
 
     }
 }

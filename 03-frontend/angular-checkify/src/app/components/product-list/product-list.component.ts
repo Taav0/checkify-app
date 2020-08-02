@@ -143,4 +143,8 @@ export class ProductListComponent implements OnInit {
      // var categoryName = jp.query(theCategory, '$..name');
       //return categoryName;
     }   
+
+    getProductFromApi(bacode: string) {
+    this.productService.getProductFromApi(bacode);
+    }
 }

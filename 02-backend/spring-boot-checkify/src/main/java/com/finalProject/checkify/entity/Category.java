@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name = "CATEGORY")
 @Getter
 @Setter
-public class ProductCategory {
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,10 @@ public class ProductCategory {
 
     @Column(name = "NAME", length = 100)
     private String name;
+/*
+    @OneToMany(mappedBy = "categoryId")
+    private Set<Product> products;
+*/
 
-    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
-    private Set<Product> productsInCategory;
+
 }

@@ -19,7 +19,7 @@ public class Fridge {
 
     @Column(name = "NAME", length = 100)
     private String name;
-
+/*
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
     private Set<Product> productsInFridge;
 
@@ -27,5 +27,5 @@ public class Fridge {
     @JoinTable(name = "USER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),
             inverseJoinColumns = @JoinColumn(name= "USER_ID"))
-    private Set<User> users;
+    private Set<User> users;*/
 }

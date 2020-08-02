@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'fridge' , component : ProductListComponent},
   {path: 'products' , component : ProductListComponent},
   {path: 'barcode', component : BarcodeReaderComponent},
+  
   {path: '' , redirectTo: '/products', pathMatch: 'full'},
   {path: '**' , redirectTo: '/products', pathMatch: 'full'},
   

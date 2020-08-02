@@ -53,11 +53,13 @@ export class BarcodeReaderComponent implements AfterViewInit {
         
       }else{
         this.code = result.codeResult.code;
-        //console.log(this.code)
+        console.log(this.code)
         Quagga.stop();
-        this.barcodeService.getAll(); 
+      
       }
       
     })
+    this.service.getAll();
+    
 }
 }

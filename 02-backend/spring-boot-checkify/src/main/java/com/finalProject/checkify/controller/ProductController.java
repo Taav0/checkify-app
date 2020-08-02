@@ -1,12 +1,18 @@
 package com.finalProject.checkify.controller;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -39,9 +45,33 @@ public class ProductController {
     }
 
     @GetMapping("/products/register/{barcode}")
-    public void getBarcode(@PathVariable String barcode){
+    public void getBarcode(@PathVariable(value = "barcode") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);
+    }
+
+    @GetMapping("/products/getBarcode/{barcode}")
+    public void  getAndSaveProductJsonFromApiToDB(@PathVariable String barcode) {
+
+        final String uri = "https://barcode.monster/api/" + barcode;
+
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(
+                    DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            Product testProduct = mapper.readValue(result, Product.class);
+            saveProduct(testProduct);
+
+        } catch (JsonGenerationException e) {
+            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

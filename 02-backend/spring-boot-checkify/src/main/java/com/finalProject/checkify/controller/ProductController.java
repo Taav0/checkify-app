@@ -45,7 +45,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/register/{barcode}")
-    public void getBarcode(@PathVariable String barcode){
+    public void getBarcode(@PathVariable(value = "barcode") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);
     }

@@ -31,7 +31,7 @@ public class Customer {
 
     @Column(name = "IS_PREMIUM")
     private boolean isPremium;
-/*
-    @ManyToMany(mappedBy = "users")
-    private Set<Fridge> fridges;*/
+
+    @ManyToMany(mappedBy = "customers")
+    private Set<Fridge> fridges;
 }

@@ -29,7 +29,6 @@ public class Product {
 
     @Column(name = "IMAGE_URL")
     private String imageUrl;
-/*
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
@@ -38,6 +37,5 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "FRIDGE_ID")
     private  Fridge fridge;
-*/
 
 }

@@ -1,23 +1,14 @@
 package com.finalProject.checkify.controller;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.finalProject.checkify.entity.Product;
-import com.finalProject.checkify.entity.ProductList;
 import com.finalProject.checkify.service.ProductServiceImpl;
-import jackson.ProductListDeserialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
-// TODO add products to URL and remove from the end point
 public class ProductController {
 
     private final ProductServiceImpl productService;

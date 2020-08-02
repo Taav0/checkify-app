@@ -20,10 +20,9 @@ public class Category {
 
     @Column(name = "NAME", length = 100)
     private String name;
-/*
+
     @OneToMany(mappedBy = "categoryId")
     private Set<Product> products;
-*/
 
 
 }

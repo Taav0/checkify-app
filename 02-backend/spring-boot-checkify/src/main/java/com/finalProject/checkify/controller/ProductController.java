@@ -15,6 +15,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductServiceImpl productService;
+    private String localBarcode;
 
     @Autowired
     public ProductController(ProductServiceImpl productService) {
@@ -36,6 +37,13 @@ public class ProductController {
     public void saveProduct(@RequestBody Product theProduct){
         productService.save(theProduct);
     }
+
+    @GetMapping("/products/register/{barcode}")
+    public void getBarcode(@PathVariable String barcode){
+        localBarcode = barcode;
+        System.out.println(localBarcode);
+    }
+
 
     @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable(value = "id") Long productId){

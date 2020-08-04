@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.service.ProductServiceImpl;
+import com.finalProject.common.Barcode;
 import jackson.ProductListDeserialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,9 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/products")
+
 public class ProductController {
 
     private final ProductServiceImpl productService;
@@ -45,9 +48,9 @@ public class ProductController {
         productService.deleteByBarcode(barcode);
     }
 
-    @PostMapping("/register/{barcode}")
-    public void getBarcode(@PathVariable(value = "barcode") String barcode){
-        localBarcode = barcode;
+    @PostMapping("/register")
+    public void getBarcode(@RequestBody Barcode barcode){
+        localBarcode = barcode.getCode();
         System.out.println(localBarcode);
     }
 

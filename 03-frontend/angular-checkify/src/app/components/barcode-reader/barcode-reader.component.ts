@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewCh
 import Quagga from 'quagga';
 import { Product } from '/Users/Vladi/checkify/03-frontend/angular-checkify/src/app/common/product';
 import {BarcodeService} from "src/app/services/barcode.service"
+import { Barcode } from 'src/app/common/barcode';
 
 
 @Component({
@@ -10,18 +11,18 @@ import {BarcodeService} from "src/app/services/barcode.service"
   styleUrls: ['barcode-reader.component.css'],
  
 })
-export class BarcodeReaderComponent implements AfterViewInit {
+export class BarcodeReaderComponent  {
   title = 'scanner-classycode';
  
   errorMessage: string;
-  barCode: string;
-  product: Product;
-  receivedCode: string;
+  barcode: Barcode;
+  
+  
 
   constructor(private service: BarcodeService){
-    this.product = new Product();
+    this.barcode = new Barcode();
   }
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
 
     if (!navigator.mediaDevices || !(typeof navigator.mediaDevices.getUserMedia === 'function')) {
       this.errorMessage = 'getUserMedia is not supported';
@@ -53,9 +54,15 @@ export class BarcodeReaderComponent implements AfterViewInit {
 
   onBarcodeScanned(code: string) {
     console.log('this is code: ' + code);
-    this.service.getAll(code);
+    console.log("before getAll()");
+    this.barcode.setCode(code);
+    this.service.getAll(this.barcode);
+    console.log("after getAll()");
     Quagga.stop();
+    console.log("after Stop");
   }
+
+  
 
    
    

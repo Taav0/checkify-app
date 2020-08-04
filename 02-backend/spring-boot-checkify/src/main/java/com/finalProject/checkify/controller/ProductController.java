@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.service.ProductServiceImpl;
+import com.finalProject.common.Barcode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
+@CrossOrigin(origins = "*",  allowedHeaders = "*")
 // TODO add products to URL and remove from the end point
 public class ProductController {
 
@@ -30,7 +32,9 @@ public class ProductController {
 
     @GetMapping("/products")
     public List<Product> getAllProducts() {
+        System.out.println("Inside getAllProducts()");
         return productService.findAll();
+
     }
 
     @GetMapping("/products/{id}")
@@ -44,9 +48,9 @@ public class ProductController {
         productService.save(theProduct);
     }
 
-    @PostMapping("/products/register/{barcode}")
-    public void getBarcode(@PathVariable(value = "barcode") String barcode){
-        localBarcode = barcode;
+    @PostMapping("/register")
+    public void getBarcode(@RequestBody Barcode barcode){
+        localBarcode = barcode.getCode();
         System.out.println(localBarcode);
     }
 

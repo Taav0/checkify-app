@@ -1,5 +1,6 @@
 package com.finalProject.checkify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,18 +31,20 @@ public class ProductList {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-  /*  @ManyToOne
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category categoryId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "FRIDGE_ID")
-    private  Fridge fridge;*/
-
+    private  Fridge fridge;
+/*
     @Column(name = "CATEGORY_ID")
     private Long categoryId;
 
     @Column(name = "FRIDGE_ID")
-    private  Long fridgeId;
+    private  Long fridgeId;*/
 
 }

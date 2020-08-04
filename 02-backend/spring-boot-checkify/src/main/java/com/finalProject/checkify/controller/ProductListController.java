@@ -10,45 +10,44 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/product-list")
 public class ProductListController {
 
     private final ProductListServiceImpl productListService;
-    private String localBarcode;
 
     @Autowired
     public ProductListController(ProductListServiceImpl productListService) {
         this.productListService = productListService;
     }
 
-    @GetMapping("/productList")
+    @GetMapping()
     public List<ProductList> getAllProductList() {
         return productListService.findAll();
     }
 
-    @GetMapping("/productList/{id}")
+    @GetMapping("/{id}")
     public ProductList getProductById(@PathVariable(value = "id") Long productId) {
 
         return productListService.findById(productId);
     }
 
-    @PostMapping("/productList/{id}")
+    @PostMapping("/{id}")
     public void saveProduct(@RequestBody ProductList productList){
         productListService.save(productList);
     }
 
-    @DeleteMapping("/productList/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable(value = "id") Long productId){
         productListService.deleteById(productId);
     }
 
-    @GetMapping("/products/search/findByFridgeId/{id}")
+    @GetMapping("/search/findByFridgeId/{id}")
     public Page<ProductList> findByFridgeId(@PathVariable(value = "id") Long productId, Pageable pageable) {
 
         return productListService.findByFridgeId(productId, pageable);
     }
 
-    @GetMapping("/products/search/findByNameContaining/{name}")
+    @GetMapping("/search/findByNameContaining/{name}")
     public Page<ProductList> findByNameContaining(@PathVariable(value = "name") String name, Pageable pageable) {
 
         return productListService.findByNameContaining(name, pageable);

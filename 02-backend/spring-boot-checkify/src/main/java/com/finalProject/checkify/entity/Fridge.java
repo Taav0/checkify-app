@@ -19,13 +19,12 @@ public class Fridge {
 
     @Column(name = "NAME", length = 100)
     private String name;
-/*
+
     //TODO change object to the foreign key
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
     private Set<ProductList> productsInFridge;
 
-*/
-    private Long productsInFridge;
+/*    private Long productsInFridge;*/
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CUSTOMER_FRIDGE",

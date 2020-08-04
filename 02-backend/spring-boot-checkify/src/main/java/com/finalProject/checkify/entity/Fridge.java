@@ -24,8 +24,6 @@ public class Fridge {
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
     private Set<ProductList> productsInFridge;
 
-/*    private Long productsInFridge;*/
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CUSTOMER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),

@@ -17,15 +17,15 @@ import {Barcode} from "./common/barcode"
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
-  {path: 'productList/:id' , component : ProductDetailsComponent},
+  {path: 'product-list/:id' , component : ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
-  {path: 'productList' , component : ProductListComponent},
+  {path: 'product-list' , component : ProductListComponent},
   {path: 'barcode', component : BarcodeReaderComponent},
   
-  {path: '' , redirectTo: '/productList', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/productList', pathMatch: 'full'},
+  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
+  {path: '**' , redirectTo: '/product-list', pathMatch: 'full'},
   
 
 ];

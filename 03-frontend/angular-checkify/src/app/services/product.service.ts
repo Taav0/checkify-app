@@ -12,7 +12,7 @@ import { Fridge } from './../common/fridge';
 export class ProductService {
 
 
-  private baseUrl = 'http://localhost:8080/api/productList';
+  private baseUrl = 'http://localhost:8080/api/product-list';
 
   private fridgeUrl = 'http://localhost:8080/api/fridge';
 

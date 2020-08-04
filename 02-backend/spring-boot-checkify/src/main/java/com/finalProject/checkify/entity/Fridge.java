@@ -19,13 +19,13 @@ public class Fridge {
 
     @Column(name = "NAME", length = 100)
     private String name;
-/*
+
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
-    private Set<Product> productsInFridge;
+    private Set<ProductList> productsInFridge;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_FRIDGE",
+    @JoinTable(name = "CUSTOMER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),
-            inverseJoinColumns = @JoinColumn(name= "USER_ID"))
-    private Set<User> users;*/
+            inverseJoinColumns = @JoinColumn(name= "CUSTOMER_ID"))
+    private Set<Customer> customers;
 }

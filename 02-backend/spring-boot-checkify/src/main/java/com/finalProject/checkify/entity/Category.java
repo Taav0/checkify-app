@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -20,10 +19,10 @@ public class Category {
 
     @Column(name = "NAME", length = 100)
     private String name;
-/*
+
+    //TODO change object to the foreign key
     @OneToMany(mappedBy = "categoryId")
-    private Set<Product> products;
-*/
+    private Set<ProductList> products;
 
 
 }

@@ -1,11 +1,8 @@
 package com.finalProject.checkify.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finalProject.checkify.dao.ProductRepository;
 import com.finalProject.checkify.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +11,12 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
 
+
     @Autowired
     private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+        this.productRepository =productRepository;
     }
 
     @Override
@@ -27,43 +25,27 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(Long theId) {
-        Optional<Product> result = productRepository.findById(theId);
-        Product product = null;
+    public Product findByBarcode(String barcode) {
+        Optional<Product> result = productRepository.findByBarcode(barcode);
+        Product theProduct = null;
 
         if (result.isPresent()) {
-            product = result.get();
+            theProduct = result.get();
         } else {
-            throw new RuntimeException("Did not find Product id - " + theId);
+            throw new RuntimeException("Did not find Product by barcode - " + barcode);
         }
-        return product;
+        return theProduct;
     }
-/*
-    @Override
-    public Page<Product> findByFridgeId(Long fridgeId, Pageable pageable) {
-        return productRepository.findByFridgeId(fridgeId, pageable);
-    }
-
-    @Override
-    public Page<Product> findByNameContaining(String name, Pageable pageable) {
-        return productRepository.findByNameContaining(name, pageable);
-    }*/
 
     @Override
     public void save(Product theProduct) {
         productRepository.save(theProduct);
-
     }
 
-    @Override
-    public void deleteById(Long id) {
-        productRepository.deleteById(id);
-
-    }
 
     @Override
-    public void saveJsonObjectToDatabase() {
-
+    public void deleteByBarcode(String barcode) {
+        productRepository.deleteByBarcode(barcode);
 
     }
 }

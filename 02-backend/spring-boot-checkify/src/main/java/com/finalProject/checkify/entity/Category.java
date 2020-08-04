@@ -21,7 +21,7 @@ public class Category {
     private String name;
 
     //TODO change object to the foreign key
-    @OneToMany(mappedBy = "categoryId")
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<ProductList> products;
 
 

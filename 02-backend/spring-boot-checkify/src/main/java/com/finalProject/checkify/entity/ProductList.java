@@ -33,7 +33,7 @@ public class ProductList {
     //@JsonIgnore
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
-    private Category categoryId;
+    private Category category;
 
     //@JsonIgnore
     @ManyToOne

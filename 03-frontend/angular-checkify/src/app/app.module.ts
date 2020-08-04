@@ -16,15 +16,15 @@ import { SearchComponent } from './components/search/search.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
-  {path: 'products/:id' , component : ProductDetailsComponent},
+  {path: 'productList/:id' , component : ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
-  {path: 'products' , component : ProductListComponent},
+  {path: 'productList' , component : ProductListComponent},
   {path: 'barcode', component : BarcodeReaderComponent},
   
-  {path: '' , redirectTo: '/products', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/products', pathMatch: 'full'},
+  {path: '' , redirectTo: '/productList', pathMatch: 'full'},
+  {path: '**' , redirectTo: '/productList', pathMatch: 'full'},
   
 
 ];

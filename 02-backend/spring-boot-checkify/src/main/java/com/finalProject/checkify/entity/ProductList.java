@@ -30,12 +30,18 @@ public class ProductList {
     @Column(name = "IMAGE_URL")
     private String imageUrl;
 
-    @ManyToOne
+  /*  @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
     private Category categoryId;
 
     @ManyToOne
     @JoinColumn(name = "FRIDGE_ID")
-    private  Fridge fridge;
+    private  Fridge fridge;*/
+
+    @Column(name = "CATEGORY_ID")
+    private Long categoryId;
+
+    @Column(name = "FRIDGE_ID")
+    private  Long fridgeId;
 
 }

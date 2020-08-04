@@ -13,10 +13,9 @@ import java.util.Optional;
 @Service
 public class ProductListServiceImpl implements ProductListService {
 
-    @Autowired
     private final ProductListRepository productListRepository;
 
-
+    @Autowired
     public ProductListServiceImpl(ProductListRepository productListRepository) {
         this.productListRepository = productListRepository;
     }

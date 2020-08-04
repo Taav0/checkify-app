@@ -1,4 +1,4 @@
-package com.finalProject.common;
+package com.finalProject.checkify.common;
 
 public class Barcode {
 

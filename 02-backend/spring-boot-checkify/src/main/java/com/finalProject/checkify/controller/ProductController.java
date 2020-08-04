@@ -1,16 +1,11 @@
 package com.finalProject.checkify.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.service.ProductServiceImpl;
-import com.finalProject.common.Barcode;
-import jackson.ProductListDeserialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -49,31 +44,22 @@ public class ProductController {
     }
 
     @PostMapping("/register")
-    public void getBarcode(@RequestBody Barcode barcode){
+    public Product getBarcodeProcessAndReturnProduct(@RequestBody Barcode barcode){
         localBarcode = barcode.getCode();
-        System.out.println(localBarcode);
-    }
+        Product productTest = null;
 
-    @GetMapping("/save-product-from-api/{barcode}")
-    public void  getAndSaveProductJsonFromApiToDB(@PathVariable String barcode) {
+        if (productService.findByBarcode(localBarcode) != null){
+            return productService.findByBarcode(localBarcode);
 
-        final String uri = "https://barcode.monster/api/" + barcode;
+        }else if (productService.getProductFromMonsterApi(localBarcode) != null){
+            productService.save(productService.getProductFromMonsterApi(localBarcode));
+            return productService.findByBarcode(localBarcode);
 
-        RestTemplate restTemplate = new RestTemplate();
-        String jsonResult = restTemplate.getForObject(uri, String.class);
-
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            SimpleModule module = new SimpleModule();
-
-            module.addDeserializer(Product.class, new ProductListDeserialization());
-            mapper.registerModule(module);
-
-            Product testProduct = mapper.readValue(jsonResult, Product.class);
-            saveProduct(testProduct);
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else {
+            productTest = new Product();
+            productTest.setBarcode(localBarcode);
+            productTest.setImageUrl("assets/images/products/placeholder.png");
+            return productTest;
         }
     }
 }

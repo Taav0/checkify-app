@@ -1,4 +1,4 @@
-package jackson;
+package com.finalProject.checkify.jackson;
 
 
 import com.fasterxml.jackson.core.JsonParser;

@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     void deleteByBarcode(String barcode);
-    Optional<Product> findByBarcode(String barcode);
+    Product findByBarcode(String barcode);
 
 }
 

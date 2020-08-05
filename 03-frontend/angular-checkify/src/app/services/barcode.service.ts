@@ -16,9 +16,9 @@ export class BarcodeService {
 
 
    
-   public getAll(barcode: Barcode){
+   public getAll(barcode: string){
     console.log("called getAll()");
-    this.http.post<Barcode>("http://localhost:8080/api/products/register", barcode).subscribe();
+    this.http.post<string>("http://localhost:8080/api/products/register", barcode).subscribe();
     
    }
 

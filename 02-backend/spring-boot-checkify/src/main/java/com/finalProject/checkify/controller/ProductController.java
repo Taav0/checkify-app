@@ -4,6 +4,7 @@ import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,9 +44,11 @@ public class ProductController {
         productService.deleteByBarcode(barcode);
     }
 
+
     @PostMapping("/register")
-    public Product getBarcodeProcessAndReturnProduct(@RequestBody Barcode barcode){
-        localBarcode = barcode.getCode();
+    public Product getBarcodeProcessAndReturnProduct(@RequestBody String barcode){
+        localBarcode = barcode;
+        System.out.println(localBarcode);
         Product productTest = null;
 
         if (productService.findByBarcode(localBarcode) != null){

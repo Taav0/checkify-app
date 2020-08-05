@@ -1,5 +1,6 @@
 package com.finalProject.checkify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ public class Customer {
     @Column(name = "IS_PREMIUM")
     private boolean isPremium;
 
+    @JsonIgnoreProperties("customers")
     @ManyToMany(mappedBy = "customers")
     private Set<Fridge> fridges;
 }

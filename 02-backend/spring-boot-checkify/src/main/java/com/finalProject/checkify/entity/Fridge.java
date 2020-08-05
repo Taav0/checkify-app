@@ -1,5 +1,6 @@
 package com.finalProject.checkify.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,9 +22,13 @@ public class Fridge {
     private String name;
 
     //TODO change object to the foreign key
+
+
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
     private Set<ProductList> productsInFridge;
 
+
+    @JsonIgnoreProperties("fridges")
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "CUSTOMER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),

@@ -4,4 +4,8 @@ export class Barcode {
     setCode(code:string){
         this.code = code;
     }
+    
+    getCode(){
+        return this.code;
+    }
 }

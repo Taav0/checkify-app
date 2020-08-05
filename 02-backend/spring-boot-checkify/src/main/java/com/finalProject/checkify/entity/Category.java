@@ -21,7 +21,6 @@ public class Category {
     @Column(name = "NAME", length = 100)
     private String name;
 
-    //TODO change object to the foreign key
     @JsonIgnoreProperties("category")
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<ProductList> products;

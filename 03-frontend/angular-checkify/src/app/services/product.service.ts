@@ -1,5 +1,6 @@
+import { Category } from './../common/category';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -26,11 +27,11 @@ export class ProductService {
   }
 
   // list products according to fridges with pagination
-  getProductListPaginate(thePage: number, 
-                          thePageSize: number, 
+  getProductListPaginate(thePage: number,
+                          thePageSize: number,
                           theFridgeId: number): Observable<GetResponseProducts> {
 
-// need to build URL based on category id, page and size 
+// need to build URL based on category id, page and size
   const searchUrl = `${this.baseUrl}/search/findByFridgeId?id=${theFridgeId}`
                   + `&page=${thePage}&size=${thePageSize}`;
 
@@ -38,11 +39,11 @@ export class ProductService {
 }
 
 // search products according to keyword using searchbar
-searchProductsPaginate(thePage: number, 
-                      thePageSize: number, 
+searchProductsPaginate(thePage: number,
+                      thePageSize: number,
                       theKeyword: string): Observable<GetResponseProducts> {
 
-// need to build URL based on keyword, page and size 
+// need to build URL based on keyword, page and size
 const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
                 + `&page=${thePage}&size=${thePageSize}`;
 
@@ -81,6 +82,9 @@ return this.httpClient.get<GetResponseProducts>(searchUrl);
       map(response => response._embedded.fridge)
       );
   }
+
+  // PUT: update the product on the server
+
 }
 
 interface GetResponseProducts {
@@ -98,5 +102,11 @@ interface GetResponseProducts {
 interface GetResponseFridge {
   _embedded: {
     fridge: Fridge[];
+  }
+}
+
+interface GetResponseCategory {
+  _embedded: {
+    category: Category[];
   }
 }

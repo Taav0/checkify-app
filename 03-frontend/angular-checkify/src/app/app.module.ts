@@ -14,8 +14,15 @@ import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.compon
 import { SearchComponent } from './components/search/search.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
+import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
+
+
 
 const routes: Routes = [
+  {path: 'products/:id/editProduct' , component : EditProductViewComponent},
   {path: 'products/:id' , component : ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
@@ -33,15 +40,17 @@ const routes: Routes = [
     BarcodeReaderComponent,
     ProductDetailsComponent,
     FridgeMenuComponent,
-    SearchComponent
+    SearchComponent,
+    EditProductViewComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
-  providers: [ProductService],
-  bootstrap: [AppComponent]
+  providers: [ProductService, DatePipe],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

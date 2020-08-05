@@ -2,7 +2,7 @@ export class Category {
     id: string;
     name: string;
 
-    constructor(theId: string, theName: string) { 
+    constructor(theId: string, theName: string) {
         this.id = theId;
         this.name = theName;
     }

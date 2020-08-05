@@ -1,19 +1,25 @@
+import { Category } from './../../common/category';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { DatePipe } from '@angular/common';
+import * as jp from 'jsonpath';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-edit-product-view',
+  templateUrl: './edit-product-view.component.html',
+  styleUrls: ['./edit-product-view.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class EditProductViewComponent implements OnInit {
 
   product: Product = new Product();
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private location: Location,
+              public datepipe: DatePipe) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -32,16 +38,20 @@ export class ProductDetailsComponent implements OnInit {
       }
     );
   }
-
-// tslint:disable-next-line:typedef
-deleteFromFridge(id: string) {
-  this.productService.deleteProduct(id)
-  .subscribe(
-    data => {
-      console.log(data);
-      this.handleProductDetails;
-    },
-    error => console.log(error));
-  //console.log(`Deleting item from fridge: ${theProduct.id}`);
+ 
+putToDatabase() {
+  console.log(`Editing item in fridge: `);
+  
+  }
+// takes back to the previous component
+goBack():void {
+  this.location.back();
 }
+
+showCategoryName(theCategory : Category){
+  var categoryName = jp.query(theCategory, '$..name');
+  return categoryName;
+}
+
+
 }

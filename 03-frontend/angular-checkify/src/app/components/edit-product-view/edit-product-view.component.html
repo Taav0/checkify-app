@@ -14,29 +14,36 @@
     <h6>Description</h6>
     <p>{{ product.description }}</p>
    
+    <!-- IF PRODUCT DOESN'T HAVE CATEGORY OR FRIDGE, THEN SHOULD NOT SHOW THESE
     <h6>Category</h6>
-    <p>ProductCategory.name here</p>
-    <!--<p>{{ showCategoryName(product.productCategory)}}</p>-->
+    <p>ProductCategory.name here
+      {{ showCategoryName(product.productCategory)}}</p>
+
+    <h6>Fridge</h6>
+    <p>Fridge name here</p>-->
 
     <h6>Expire Date</h6>
     <p>{{ product.date | date:'dd-MM-yyyy'}}</p>
 
-    
-      <div id="nameInputContainer">
-        <label><b>Name: </b>
-          <input [(ngModel)]= "product.name" placeholder="name" size="42"/>
+    <form>
+      <div id="nameInputContainer" class="form-group">
+        <label for="name"><b>Name: </b>
+          <input type="text" class="form-control" id="name" 
+            [(ngModel)]= "product.name" placeholder="{{ product.name }}" name="name" size="42"/>
         </label>
       </div>
       <br>
 
-      <div id="descriptionInputContainer">
-        <label><b>Description: </b>
+      <div id="descriptionInputContainer" class="form-group">
+        <label for="description"><b>Description: </b>
           <br>
-          <textarea id="descriptionInput" [(ngModel)]= "product.description" placeholder="description"  rows="4" cols="50" >{{ product.description }}</textarea>
+          <textarea type="text"  class="form-control" id="description" 
+            [(ngModel)]= "product.description" placeholder="description"  name="description"
+              rows="4" cols="50" >{{ product.description }}</textarea>
         </label>
       </div>
   
-      <div><!--hardcoded at the moment!-->
+      <div id="productCategoryInputContainer" class="form-group"><!--hardcoded at the moment!-->
         <label for="productCategory"><b>Choose a category: </b></label>
         <select id="productCategory" name="productCategory">
           <option value="DRINKS">DRINKS</option>
@@ -49,28 +56,28 @@
         </select>
       </div>
 
-      <div><!--hardcoded at the moment!-->
+      <div id="fridgeInputContainer" class="form-group">
         <label for="fridge"><b>Choose a fridge: </b></label>
         <select id="fridge" name="fridge">
-          <option value="WORK">WORK</option>
-          <option value="MUM''S'">MUM'S</option>
-          <option value="HOME">HOME</option>
-          <option value="FRIEND''S">FRIENDS</option>
-          <option value="SUMMERHOUSE">SUMMERHOUSE</option>
+          <option *ngFor="let tempFridge of fridges">{{ tempFridge.name}}</option>
         </select>
       </div>
 
-      <div>
-        <label>Expire Date:
-          <input [(ngModel)]= "product.date"/>
-        </label>
+      <div id="dateInputContainer" class="form-group">
+        <label for="date"><b>Set Expire Date: </b></label>
+          <input id="date" name="date" [(ngModel)]="product.date"
+            type="text" bsDatepicker [bsConfig]="datePickerConfig"/>
       </div>
       
-    
+    </form>
+
       <div class="detailBtns">
-        <button (click)="putToDatabase()" class="detailViewBtnEdit">Save</button>
+        <button  type="submit" (click)="updateTheProduct()" class="detailViewBtnEdit">Update</button>
+
         <button (click)="goBack()" class="detailViewBtnDelete">Cancel</button>
+
+        <p>{{ message }}</p>
       </div>
- 
+
   </div>
 </div>

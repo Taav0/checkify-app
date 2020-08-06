@@ -84,6 +84,9 @@ return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
   // PUT: update the product on the server
+  updateProduct(id, data): Observable<any> {
+    return this.httpClient.put(`${this.baseUrl}/${id}`, data);
+  }
 
 }
 

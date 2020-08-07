@@ -52,18 +52,21 @@
             <!-- begin footer -->
             <div class="footer-pagination">
               <div class="row">
-                  <div class="col-md-6"></div>
+                  <div class="col-md-6 "></div>
 
-                  <div class="col-md-6">
-                      <div class="row">
-                          <div class="col-md-9" style="padding-left: 30%">
+                  <div class="col-md-6 ">
+                    <div class="row">
+                          <div class="col-md-9" style="padding-left: 30%" >
                           
-                              <ngb-pagination [(page)]="thePageNumber"
+                              <ngb-pagination 
+                                              [(page)]="thePageNumber"
                                               [pageSize]="thePageSize"
                                               [collectionSize]="theTotalElements"
                                               [maxSize]="5"
                                               [boundaryLinks]="true"
-                                              (pageChange)="listProducts()">
+                                              (pageChange)="listProducts()"
+                                              
+                                              >
 
                               </ngb-pagination>
 

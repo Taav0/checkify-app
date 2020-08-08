@@ -1,3 +1,5 @@
+import { Category } from './category';
+
 export class Product {
 
     id: string;
@@ -6,5 +8,5 @@ export class Product {
     date: Date;
     description: string;
     imageUrl: string;
-    productCategory: string;
+    productCategory: Category;
 }

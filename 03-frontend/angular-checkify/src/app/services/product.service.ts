@@ -12,7 +12,7 @@ import { Fridge } from './../common/fridge';
 export class ProductService {
 
 
-  private baseUrl = 'http://localhost:8080/api/product-list';
+  private baseUrl = 'http://localhost:8080/api/products';
 
   private fridgeUrl = 'http://localhost:8080/api/fridge';
 
@@ -68,33 +68,25 @@ return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
   private getProducts(searchUrl: string): Observable<Product[]> {
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response._embedded.products));
+    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response.content));
   }
 
 
 
   getFridges(): Observable<Fridge[]> {
 
-      return this.httpClient.get<GetResponseFridge>(this.fridgeUrl).pipe(
-      map(response => response._embedded.fridge)
-      );
+      return this.httpClient.get<Fridge[]>(this.fridgeUrl);
+      
   }
 }
 
 interface GetResponseProducts {
-  _embedded: {
-    products: Product[];
-  },
-  page: {
-    size: number,
-    totalElements: number,
-    totalPages: number,
-    number: number
-  }
+  content: Product[];
+page: {
+  size: number,
+  totalElements: number,
+  totalPages: number,
+  number: number
+}
 }
 
-interface GetResponseFridge {
-  _embedded: {
-    fridge: Fridge[];
-  }
-}

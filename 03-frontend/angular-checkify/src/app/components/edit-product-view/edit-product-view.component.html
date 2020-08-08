@@ -44,7 +44,7 @@
       </div>
   
       <div id="productCategoryInputContainer" class="form-group"><!--hardcoded at the moment!-->
-        <label for="productCategory"><b>Choose a category: </b></label>
+        <label for="productCategory"><b>Choose a category:</b></label>
         <select id="productCategory" name="productCategory">
           <option value="DRINKS">DRINKS</option>
           <option value="DAIRY">DAIRY</option>
@@ -56,10 +56,16 @@
         </select>
       </div>
 
-      <div id="fridgeInputContainer" class="form-group">
+      <!--<div id="fridgeInputContainer" class="form-group">
         <label for="fridge"><b>Choose a fridge: </b></label>
         <select id="fridge" name="fridge">
           <option *ngFor="let tempFridge of fridges">{{ tempFridge.name}}</option>
+        </select>
+      </div>-->
+      <div id="fridgeInputContainer" class="form-group">
+        <label for="fridge"><b>Choose a fridge: </b></label>
+        <select id="fridge" name="fridge">
+          <option *ngFor="let tempFridge of fridges" [ngValue]="tempFridge">{{ tempFridge.name}}</option>
         </select>
       </div>
 

@@ -19,7 +19,7 @@ export class EditProductViewComponent implements OnInit {
 
   datePickerConfig: Partial<BsDatepickerConfig>;
 
-  fridges: Fridge[];
+  fridges: Fridge[] = [];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
@@ -76,7 +76,6 @@ showCategoryName(theCategory : Category){
 }  
 
 listFridges() {
-
   this.productService.getFridges().subscribe(
     data => {
       console.log('Fridge=' + JSON.stringify(data));

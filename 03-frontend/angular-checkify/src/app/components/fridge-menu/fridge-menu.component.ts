@@ -12,8 +12,7 @@ export class FridgeMenuComponent implements OnInit {
 
   fridges: Fridge[];
 
-  constructor(private productService: ProductService,
-              private checkifyService: CheckifyService) { }
+  constructor(private checkifyService: CheckifyService) { }
 
   ngOnInit() {
     this.listFridges();

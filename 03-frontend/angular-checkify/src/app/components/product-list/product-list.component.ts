@@ -137,9 +137,6 @@ export class ProductListComponent implements OnInit {
       
     }
     
-    showCategoryName(theCategory : Category){
-      var categoryName = jp.query(theCategory, '$..name');
-     return categoryName;
-    }   
+    
 
 }

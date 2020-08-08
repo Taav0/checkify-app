@@ -1,11 +1,14 @@
 import { Category } from './../../common/category';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ProductService } from 'src/app/services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import * as jp from 'jsonpath';
+import { Fridge } from 'src/app/common/fridge';
+import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
 
 @Component({
   selector: 'app-edit-product-view',
@@ -14,14 +17,24 @@ import * as jp from 'jsonpath';
 })
 export class EditProductViewComponent implements OnInit {
 
+  datePickerConfig: Partial<BsDatepickerConfig>;
+
+  fridges: Fridge[] = [];
   product: Product = new Product();
+  model: NgbDateStruct;
+  message = '';
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute,
+              private router: Router,
               private location: Location,
-              public datepipe: DatePipe) { }
+              public datepipe: DatePipe,) {
+                this.datePickerConfig = Object.assign({}, { showWeekNumbers: false,
+                });
+               }
 
   ngOnInit(): void {
+    this.listFridges();
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     });
@@ -39,19 +52,38 @@ export class EditProductViewComponent implements OnInit {
     );
   }
  
-putToDatabase() {
-  console.log(`Editing item in fridge: `);
-  
+updateTheProduct(): void {
+  this.productService.updateProduct(this.product.id, this.product)
+    .subscribe(
+      response => {
+        console.log(response);
+          this.message = 'The product was updated successfully!';
+  },
+      error => {
+        console.log(error);
+      });
   }
-// takes back to the previous component
+
+
+  // takes back to the previous component
 goBack():void {
   this.location.back();
 }
 
 showCategoryName(theCategory : Category){
-  var categoryName = jp.query(theCategory, '$..name');
-  return categoryName;
+  var categoryName = jp.query(theCategory, '$..name') ;
+  return categoryName ;
+}  
+
+listFridges() {
+  this.productService.getFridges().subscribe(
+    data => {
+      console.log('Fridge=' + JSON.stringify(data));
+      this.fridges = data;
+    }
+  )
 }
+
 
 
 }

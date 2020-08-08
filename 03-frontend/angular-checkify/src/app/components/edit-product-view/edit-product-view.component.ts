@@ -8,7 +8,9 @@ import { DatePipe } from '@angular/common';
 import * as jp from 'jsonpath';
 import { Fridge } from 'src/app/common/fridge';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product-view',
@@ -20,6 +22,7 @@ export class EditProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
+  categories: any[] =['DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS'];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';

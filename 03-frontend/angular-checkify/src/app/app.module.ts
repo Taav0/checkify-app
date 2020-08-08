@@ -16,17 +16,17 @@ import { SearchComponent } from './components/search/search.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
+import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
 
 
 const routes: Routes = [
   {path: 'products/:id/editProduct' , component : EditProductViewComponent},
   {path: 'products/:id' , component : ProductDetailsComponent},
+  {path: 'addProduct' , component : AddProductViewComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
@@ -45,6 +45,7 @@ const routes: Routes = [
     FridgeMenuComponent,
     SearchComponent,
     EditProductViewComponent,
+    AddProductViewComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -52,6 +53,7 @@ const routes: Routes = [
     HttpClientModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot()

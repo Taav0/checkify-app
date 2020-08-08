@@ -134,7 +134,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-    background:#0da8e4;
+    background: linear-gradient(25deg, rgba(170, 206, 226, 1) 25%, rgba(139, 222, 181, 1) 100%);
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -218,13 +218,14 @@ section{
 }
 
 input.au-input.au-input-xl{
-    border-radius:40px!important;
-    margin-right:15px
+    border-radius:43px 0px 0px 43px!important;
+    /*margin-right:15px*/
 }
 
 .au-input{
     line-height:43px;
     border:1px solid #e5e5e5;
+    box-shadow: 0px 0px 5px 0px #e2e2e2;
     font-size:14px;
     color:#666;
     padding:0 17px;
@@ -283,15 +284,21 @@ input.au-input.au-input-xl{
     right:0;
     min-width:95px;
     color:#fff;
-    border:1px solid #205b8d;
+    /*border:1px solid #205b8d;
     -webkit-border-radius:3px;
     -moz-border-radius:3px;
-    border-radius:43px;
-    background:#205b8d;
+    border-radius:0px 43px 43px 0px;
+    background:#205b8d;*/
+
+    border: 1px solid #e2e2e2;
+    border-radius: 0px 43px 43px 0px;
+    background: rgb(111,182,222);
+    box-shadow: 0px 0px 5px 0px #e2e2e2;
+
 }
 
 .au-btn-submit:hover{
-    background:#05143f
+    background:rgb(125, 194, 235);
 }
 
 .au-btn-submit>i{
@@ -319,7 +326,7 @@ input.au-input.au-input-xl{
     left:0;
     top:0;
     bottom:0;
-    background:#fff;
+    background: linear-gradient(to bottom, rgba(255,255,255,1),rgba(255,255,255,1), rgba(222, 228, 231, 0.5));
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -382,7 +389,7 @@ input.au-input.au-input-xl{
 }
 
 .navbar-sidebar .navbar-list li a:hover{
-    
+
     color:#444;
     transition: 0.2s;
     text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -774,7 +781,7 @@ footer ul li a{
     color:#fff
 }
 footer{
-    background:#232324;
+    background:linear-gradient(66deg, rgba(220,220,220,0.50) 0%, rgba(60,60,60,1) 70%);
     z-index:30;
     position: inherit;
     text-align:center
@@ -1043,4 +1050,18 @@ footer ul li{
         background:#fff;
         border:0;
     }
+}
+.pagination > li > a,
+.pagination > li > span {
+    color: rgba(111, 182, 222, 1);
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+    background-color: rgba(111, 182, 222, 1) !important;
+    border-color: rgba(111, 182, 222, 1) !important;
 }

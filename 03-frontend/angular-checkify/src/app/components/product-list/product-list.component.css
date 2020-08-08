@@ -12,7 +12,7 @@
   }
   
   .fridge-table thead tr {
-    background-color: #27808C;
+    background-color: rgba(111, 182, 222, 1);
     color: #ffffff;
     text-align: left;
     font-weight: bold;
@@ -32,7 +32,7 @@
   }
   
   .fridge-table tbody tr:last-of-type {
-    border-bottom: 2px solid #27808C;
+    border-bottom: 2px solid rgba(111, 182, 222, 1);
   }
   
   .fridge-table tbody tr.active-row {
@@ -88,6 +88,7 @@ button {
 
 .wrapper {
   margin: auto;
+  margin-right: 2%;
   float: right;
   width: 60px;
 	height: 60px;
@@ -97,8 +98,8 @@ button {
 	border-radius: 50%;
 	height: 60px;
 	width: 60px;
-	background-color: deepskyblue;
-	opacity: 0.5;
+	background-color: rgba(111, 182, 222, 1);
+	opacity: 0.9;
 	display: flex;
 	transition: 0.2s;
 }
@@ -111,8 +112,11 @@ button {
   }
   
   .flagExpired {
-    color: red;
+    color: #ff0000;
   }
   .flagGood {
     color: green;
   }
+  
+
+ 

@@ -5,7 +5,7 @@ import { CheckifyService } from 'src/app/services/checkify.service';
 import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import jp from 'jsonpath';
+import * as jp from 'jsonpath';
 
 
 @Component({

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -15,9 +16,18 @@ import { SearchComponent } from './components/search/search.component';
 import {Barcode} from "./common/barcode"
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
+
 
 const routes: Routes = [
+  {path: 'product-list/:id/editProduct' , component : EditProductViewComponent},
   {path: 'product-list/:id' , component : ProductDetailsComponent},
+  {path: 'addProduct' , component : AddProductViewComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
@@ -38,15 +48,21 @@ const routes: Routes = [
     ProductDetailsComponent,
     FridgeMenuComponent,
     SearchComponent,
-    
+    EditProductViewComponent,
+    AddProductViewComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot()
   ],
-  providers: [ProductService],
-  bootstrap: [AppComponent]
+  providers: [ProductService, DatePipe],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

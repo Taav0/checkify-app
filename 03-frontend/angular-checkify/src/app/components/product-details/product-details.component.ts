@@ -34,14 +34,15 @@ export class ProductDetailsComponent implements OnInit {
     );
   }
 
-
 // tslint:disable-next-line:typedef
-editFromFridge(theProduct: Product) {
-  console.log(`Editing item in fridge: ${theProduct.name}`);
-}
-
-// tslint:disable-next-line:typedef
-deleteFromFridge(theProduct: Product) {
-  console.log(`Deleting item from fridge: ${theProduct.id}`);
+deleteFromFridge(id: string) {
+  this.productService.deleteProduct(id)
+  .subscribe(
+    data => {
+      console.log(data);
+      this.handleProductDetails;
+    },
+    error => console.log(error));
+  //console.log(`Deleting item from fridge: ${theProduct.id}`);
 }
 }

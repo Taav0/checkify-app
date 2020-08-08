@@ -134,7 +134,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-    background: linear-gradient(25deg, rgba(111,182,222,0.5) 25%, rgba(25, 221, 115, 0.45) 100%);
+    background: linear-gradient(25deg, rgba(170, 206, 226, 1) 25%, rgba(139, 222, 181, 1) 100%);
     -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
     box-shadow:0 2px 5px 0 rgba(0,0,0,.1);

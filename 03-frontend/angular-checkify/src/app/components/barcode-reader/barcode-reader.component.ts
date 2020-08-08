@@ -1,17 +1,28 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quagga from 'quagga';
+import { Product } from '/Users/Vladi/checkify/03-frontend/angular-checkify/src/app/common/product';
+import {BarcodeService} from "src/app/services/barcode.service"
+
+
 @Component({
-  selector: 'app-root',
+  selector: 'app-barcode-reader',
   templateUrl: 'barcode-reader.component.html',
-  styleUrls: ['barcode-reader.component.css']
+  styleUrls: ['barcode-reader.component.css'],
+ 
 })
 export class BarcodeReaderComponent implements AfterViewInit {
   title = 'scanner-classycode';
  
   errorMessage: string;
-  code: string;
+  barCode: string;
+  product: Product;
+  receivedCode: string;
 
+  constructor(private service: BarcodeService){
+    this.product = new Product();
+  }
   ngAfterViewInit(): void {
+
     if (!navigator.mediaDevices || !(typeof navigator.mediaDevices.getUserMedia === 'function')) {
       this.errorMessage = 'getUserMedia is not supported';
       return;
@@ -26,23 +37,26 @@ export class BarcodeReaderComponent implements AfterViewInit {
         readers : ["code_128_reader",
                     "ean_reader"]
       }
-    }, function(err) {
+    }, (err) => {
         if (err) {
             console.log(err);
             return
+        }else{
+          Quagga.start();
+          Quagga.onDetected((res) => {
+            this.onBarcodeScanned(res.codeResult.code);
+          });
         }
-        console.log("Initialization finished. Ready to start");
-        Quagga.start();
     });
+  
+  }
 
-    Quagga.onDetected(function(result){
-      if(this.code === null){
-        
-      }else{
-        this.code = result.codeResult.code;
-        Quagga.stop();
-      }
-      console.log(this.code)
-    })
-}
+  onBarcodeScanned(code: string) {
+    console.log('this is code: ' + code);
+    this.service.getAll(code);
+    Quagga.stop();
+  }
+
+   
+   
 }

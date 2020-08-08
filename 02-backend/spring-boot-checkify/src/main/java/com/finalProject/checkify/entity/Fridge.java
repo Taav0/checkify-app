@@ -1,6 +1,7 @@
 package com.finalProject.checkify.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,12 +23,13 @@ public class Fridge {
     private String name;
 
     @OneToMany(mappedBy = "fridge", cascade = CascadeType.ALL)
-    private Set<Product> productsInFridge;
+    private Set<ProductList> productsInFridge;
 
+
+    @JsonIgnoreProperties("fridges")
     @ManyToMany(cascade = CascadeType.ALL)
-    @JsonIgnore //Triin added to try out
-    @JoinTable(name = "USER_FRIDGE",
+    @JoinTable(name = "CUSTOMER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),
-            inverseJoinColumns = @JoinColumn(name= "USER_ID"))
-    private Set<User> users;
+            inverseJoinColumns = @JoinColumn(name= "CUSTOMER_ID"))
+    private Set<Customer> customers;
 }

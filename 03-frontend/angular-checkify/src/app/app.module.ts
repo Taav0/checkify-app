@@ -7,12 +7,13 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { Routes, RouterModule} from '@angular/router';
-import { BarcodeReaderComponent } from './barcode-reader/barcode-reader.component'
+import { BarcodeReaderComponent } from './components/barcode-reader/barcode-reader.component'
 import Quagga from 'quagga';
 import { from } from 'rxjs';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
 import { SearchComponent } from './components/search/search.component';
+import {Barcode} from "./common/barcode"
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
@@ -24,15 +25,18 @@ import { AddProductViewComponent } from './components/add-product-view/add-produ
 
 
 const routes: Routes = [
-  {path: 'products/:id/editProduct' , component : EditProductViewComponent},
-  {path: 'products/:id' , component : ProductDetailsComponent},
+  {path: 'product-list/:id/editProduct' , component : EditProductViewComponent},
+  {path: 'product-list/:id' , component : ProductDetailsComponent},
   {path: 'addProduct' , component : AddProductViewComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
-  {path: 'products' , component : ProductListComponent},
-  {path: '' , redirectTo: '/products', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/products', pathMatch: 'full'}
+  {path: 'product-list' , component : ProductListComponent},
+  {path: 'barcode', component : BarcodeReaderComponent},
+  
+  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
+  {path: '**' , redirectTo: '/product-list', pathMatch: 'full'},
+  
 
 ];
 
@@ -45,7 +49,7 @@ const routes: Routes = [
     FridgeMenuComponent,
     SearchComponent,
     EditProductViewComponent,
-    AddProductViewComponent,
+    AddProductViewComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

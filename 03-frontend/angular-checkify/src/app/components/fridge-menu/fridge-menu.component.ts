@@ -1,6 +1,7 @@
 import { ProductService } from './../../services/product.service';
 import { Fridge } from './../../common/fridge';
 import { Component, OnInit } from '@angular/core';
+import { CheckifyService } from 'src/app/services/checkify.service';
 
 @Component({
   selector: 'app-fridge-menu',
@@ -11,7 +12,7 @@ export class FridgeMenuComponent implements OnInit {
 
   fridges: Fridge[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private checkifyService: CheckifyService) { }
 
   ngOnInit() {
     this.listFridges();
@@ -19,12 +20,12 @@ export class FridgeMenuComponent implements OnInit {
 
   listFridges() {
 
-    this.productService.getFridges().subscribe(
+    this.checkifyService.getFridges().subscribe(
       data => {
-        console.log('Fridge=' + JSON.stringify(data));
         this.fridges = data;
       }
     )
   }
+
 
 }

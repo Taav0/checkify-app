@@ -1,48 +1,68 @@
-/*
 package com.finalProject.checkify.controller;
 
-import com.finalProject.checkify.dao.ProductRepository;
+import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/api/products")
+
 public class ProductController {
 
+    private final ProductServiceImpl productService;
+    private String localBarcode;
+
     @Autowired
-    private ProductRepository productRepository;
+    public ProductController(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
-    @GetMapping("/products")
+    @GetMapping("/show")
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productService.findAll();
     }
 
-    @GetMapping("/products/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long productId)
-            throws ResourceNotFoundException {
-        Product theProduct = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + productId));
-        return ResponseEntity.ok().body(theProduct);
+    @GetMapping("/{barcode}")
+    public Product getProductListByBarcode(@PathVariable(value = "barcode") String theBarcode) {
+
+        return productService.findByBarcode(theBarcode);
     }
 
-    @DeleteMapping("/products/{id}")
-    public Map<String, Boolean> deleteProduct(@PathVariable(value = "id") Long productId)
-            throws ResourceNotFoundException {
-        Product theProduct = productRepository.findById(productId)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found for this id :: " + productId));
+    @PostMapping()
+    public void saveProduct(@RequestBody Product theProduct){
+        productService.save(theProduct);
+    }
 
-        productRepository.delete(theProduct);
-        Map<String, Boolean> response = new HashMap<>();
-        response.put("deleted", Boolean.TRUE);
-        return response;
+    @DeleteMapping("/{barcode}")
+    public void deleteProduct(@PathVariable(value = "barcode") String  barcode){
+        productService.deleteByBarcode(barcode);
+    }
+
+
+    @PostMapping("/register")
+    public Product getBarcodeProcessAndReturnProduct(@RequestBody String barcode){
+        localBarcode = barcode;
+        System.out.println(localBarcode);
+        Product productTest = null;
+
+        if (productService.findByBarcode(localBarcode) != null){
+            return productService.findByBarcode(localBarcode);
+
+        }else if (productService.getProductFromMonsterApi(localBarcode) != null){
+            productService.save(productService.getProductFromMonsterApi(localBarcode));
+            return productService.findByBarcode(localBarcode);
+
+        }else {
+            productTest = new Product();
+            productTest.setBarcode(localBarcode);
+            productTest.setImageUrl("assets/images/products/placeholder.png");
+            return productTest;
+        }
     }
 }
-*/

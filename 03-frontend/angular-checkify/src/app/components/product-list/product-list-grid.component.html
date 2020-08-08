@@ -21,13 +21,13 @@
     </thead>
     <tbody>
       <tr *ngFor="let tempProduct of products">
-        <td routerLink="/products/{{tempProduct.id}}" class="align-middle">
+        <td routerLink="/product-list/{{tempProduct.id}}" class="align-middle">
           <img src="{{ tempProduct.imageUrl }}" width="50px" />
         </td>
-        <td routerLink="/products/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
+        <td routerLink="/product-list/{{tempProduct.id}}" class="align-middle">{{ tempProduct.name}}</td>
         <td class="align-middle">{{ tempProduct.barcode}}</td>
         <td class="align-middle">{{ tempProduct.date |date}}</td>
-        <td class="align-middle">{{ showCategoryName(tempProduct.productCategory)}}</td>
+        <td class="align-middle">{{ tempProduct.category.name}}</td>
         <td class="align-middle">{{ showDaysLeft(tempProduct.date)}}</td>
         <td>
           <button (click)="deleteFromFridge(tempProduct.id)" class="detailViewBtnDelete"></button>
@@ -38,19 +38,20 @@
   </table>
 
   <div id="addBtn" class="wrapper">
-    <button routerLink="/addProduct" class="circle" >
+    <button routerLink="/barcode" class="circle">
       <img id="addSign"
         src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png"
         alt="" />
     </button>
+    
   </div>
-
+  
 
   <!-- <script src="tableSort.js"></script> -->
 </body>
 
             <!-- begin footer -->
-            <div class="footer-pagination">
+           <!-- <div class="footer-pagination">
               <div class="row">
                   <div class="col-md-6 "></div>
 
@@ -90,5 +91,5 @@
                   </div>
 
               </div>
-          </div>
+          </div>-->
           <!-- end footer -->

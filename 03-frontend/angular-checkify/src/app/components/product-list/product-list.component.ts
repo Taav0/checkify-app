@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
+import { CheckifyService } from 'src/app/services/checkify.service';
 import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -28,7 +29,8 @@ export class ProductListComponent implements OnInit {
     
     previousKeyword: string = null;
 
-  constructor(private productService: ProductService,
+  constructor(
+    private checkifyService: CheckifyService,
               private route: ActivatedRoute) { }
 
   // tslint:disable-next-line:typedef
@@ -65,9 +67,8 @@ export class ProductListComponent implements OnInit {
     console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
 
     // now search for the products using keyword
-    this.productService.searchProductsPaginate(this.thePageNumber - 1,
-                                               this.thePageSize,
-                                               theKeyword).subscribe(this.processResult());
+    this.checkifyService.searchProductsByName(theKeyword).subscribe(data => this.products = data);
+                                               
                                                
   }
 
@@ -92,16 +93,13 @@ export class ProductListComponent implements OnInit {
 
 
 
-    this.productService.getProductListPaginate(this.thePageNumber - 1,
-                                              this.thePageSize,
-                                              this.currentFridgeId)
-                                    .subscribe(this.processResult());
+    this.checkifyService.getProductListByFridgeID(this.currentFridgeId)
+                                    .subscribe(data => this.products = data);
   }
 
   processResult() {
     return data => {
-      this.products = data._embedded.products;
-      this.thePageNumber = data.page.number + 1;
+      this.products = data.products;
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
     };
@@ -114,7 +112,7 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteFromFridge(id: string) {
-    this.productService.deleteProduct(id)
+    this.checkifyService.deleteProduct(id)
     .subscribe(
       data => {
         console.log(data);
@@ -134,8 +132,11 @@ export class ProductListComponent implements OnInit {
         {return "expired";}
 
     }
-    showCategoryName(theCategory : Category){
-      var categoryName = jp.query(theCategory, '$..name');
-      return categoryName;
-    }   
+
+    addProduct():void{
+      
+    }
+    
+    
+
 }

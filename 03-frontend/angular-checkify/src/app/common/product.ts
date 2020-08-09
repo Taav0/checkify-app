@@ -1,4 +1,5 @@
 import { Category } from './category';
+import { Fridge } from './fridge';
 
 export class Product {
 
@@ -9,5 +10,6 @@ export class Product {
     description: string;
     imageUrl: string;
     category: Category;
+    fridge: Fridge;
     
 }

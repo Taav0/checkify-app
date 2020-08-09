@@ -1,20 +1,20 @@
 import { Product } from './product';
 
 export class Category {
-    id: string;
+    id: number;
     name: string;
-    products: Product[];
+ /*    products: Product[];
 
-    constructor(theId: string, theName: string) {
+    constructor(theId: number, theName: string) {
         this.id = theId;
         this.name = theName;
     }
 
-    getId(): string {
+    getId(): number {
         return this.id;
     }
 
-    setId(newId: string) {
+    setId(newId: number) {
          this.id = newId;
     }
 
@@ -24,5 +24,5 @@ export class Category {
 
     setName(newName: string) {
          this.name = newName;
-    }
+    } */
 }

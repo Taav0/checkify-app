@@ -1,7 +1,7 @@
+import { CheckifyService } from 'src/app/services/checkify.service';
 import { Category } from './../../common/category';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Product } from 'src/app/common/product';
-import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DatePipe } from '@angular/common';
@@ -22,12 +22,12 @@ export class EditProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
-  categories: any[] =['DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS'];
+  categories: any[] =[];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
 
-  constructor(private productService: ProductService,
+  constructor(private checkifyService: CheckifyService,
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
@@ -48,7 +48,7 @@ export class EditProductViewComponent implements OnInit {
     // get the "id" param string. convert string to a number using the "+" symbol
     const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
-    this.productService.getProduct(theProductId).subscribe(
+    this.checkifyService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
@@ -56,7 +56,7 @@ export class EditProductViewComponent implements OnInit {
   }
  
 updateTheProduct(): void {
-  this.productService.updateProduct(this.product.id, this.product)
+  this.checkifyService.updateProduct(this.product.id, this.product)
     .subscribe(
       response => {
         console.log(response);
@@ -79,10 +79,19 @@ showCategoryName(theCategory : Category){
 }  
 
 listFridges() {
-  this.productService.getFridges().subscribe(
+  this.checkifyService.getFridges().subscribe(
     data => {
       console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;
+    }
+  )
+}
+
+listCategories() {
+  this.checkifyService.getCategories().subscribe(
+    data => {
+      console.log('Category=' + JSON.stringify(data));
+      this.categories = data;
     }
   )
 }

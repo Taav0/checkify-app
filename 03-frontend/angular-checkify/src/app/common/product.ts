@@ -1,3 +1,4 @@
+import { Fridge } from 'src/app/common/fridge';
 import { Category } from './category';
 
 export class Product {
@@ -9,4 +10,5 @@ export class Product {
     description: string;
     imageUrl: string;
     productCategory: Category;
+    fridge: Fridge;
 }

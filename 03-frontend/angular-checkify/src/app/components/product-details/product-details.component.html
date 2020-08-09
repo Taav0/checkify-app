@@ -2,7 +2,7 @@
 <div class="detail-section">
   <div class="container-fluid">
     <!--<a routerLink="/products"><i class="material-icons">arrow_back_ios</i></a>-->
-    <button class="detailViewBtnBack" a routerLink="/products"><i class="material-icons">arrow_back_ios</i>Back</button>
+    <button class="detailViewBtnBack" a routerLink="/product-list"><i class="material-icons">arrow_back_ios</i>Back</button>
 
     <img src="{{ product.imageUrl }}" class="detail-img">
 
@@ -17,7 +17,7 @@
     <div class="detailBtns">
       <button routerLink="editProduct" class="detailViewBtnEdit">Edit</button>
 
-      <button (click)="deleteFromFridge(product.id)" class="detailViewBtnDelete" a routerLink="/products">Delete</button>
+      <button (click)="deleteFromFridge(product.id)" class="detailViewBtnDelete" a routerLink="/product-list">Delete</button>
       
     </div>
   </div>

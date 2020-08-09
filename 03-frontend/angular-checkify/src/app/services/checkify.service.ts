@@ -1,4 +1,3 @@
-import { Category } from 'src/app/common/category';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -6,6 +5,7 @@ import { Barcode } from '../common/barcode'
 import { Product } from '../common/product';
 import { Fridge } from '../common/fridge';
 import { map } from 'rxjs/operators';
+import { Category } from '../common/category';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,6 @@ export class CheckifyService {
   }
   private productListURL = "http://localhost:8080/api/product-list";
   private fridgeUrl = 'http://localhost:8080/api/fridge';
-  private categoryUrl = 'http://localhost:8080/api/category';
 
 
   getAllProducts():Observable<Product[]>{
@@ -29,11 +28,6 @@ export class CheckifyService {
 
   getFridges(): Observable<Fridge[]> {
     return this.http.get<Fridge[]>(this.fridgeUrl)
-
-  }
-
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoryUrl)
 
   }
 
@@ -66,10 +60,10 @@ getProduct(theProductId: number): Observable<Product> {
   return this.http.get<Product>(productUrl);
 }
 
-  // PUT: update the product on the db
-  updateProduct(id, data): Observable<any> {
-    return this.http.put(`${this.productListURL}/${id}`, data);
-  }
+updateProduct(id, data): Observable<any> {
+  return this.http.put(`${this.productListURL}/${id}`, data);
+}
+
 
 }
 interface GetResponseProducts {

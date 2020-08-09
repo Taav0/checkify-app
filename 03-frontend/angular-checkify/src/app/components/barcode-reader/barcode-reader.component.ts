@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import Quagga from 'quagga';
-import { Product } from "src/app/common/product";
+import { Product } from 'src/app/common/product';
 import {BarcodeService} from "src/app/services/barcode.service"
 
 

@@ -36,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
 
 // tslint:disable-next-line:typedef
 deleteFromFridge(id: string) {
-  this.productService.deleteProduct(id)
+  this.checkifyService.deleteProduct(id)
   .subscribe(
     data => {
       console.log(data);

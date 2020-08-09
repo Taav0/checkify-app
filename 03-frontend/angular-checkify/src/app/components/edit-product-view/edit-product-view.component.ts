@@ -1,5 +1,4 @@
 import { CheckifyService } from 'src/app/services/checkify.service';
-import { Category } from './../../common/category';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -10,7 +9,6 @@ import { Fridge } from 'src/app/common/fridge';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
-import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-product-view',
@@ -31,7 +29,7 @@ export class EditProductViewComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
-              public datepipe: DatePipe,) {
+              public datepipe: DatePipe) {
                 this.datePickerConfig = Object.assign({}, { showWeekNumbers: false,
                 });
                }

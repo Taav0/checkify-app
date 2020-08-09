@@ -24,7 +24,6 @@ export class AddProductViewComponent implements OnInit {
   productToDatabase: Product = new Product;
 
   productAPI = {
-    id: '1',
     barcode: '11111111',
     name: 'ProductFromAPI',
     description: 'This is sample Product from API',
@@ -49,6 +48,15 @@ export class AddProductViewComponent implements OnInit {
   // tslint:disable-next-line:typedef
 
 saveTheProduct(): void {
+  this.checkifyService.saveProduct(this.productToDatabase)
+  .subscribe(
+    response => {
+      console.log(response);
+        this.message = 'The product was saved successfully!';
+},
+    error => {
+      console.log(error);
+    });
     console.log('Product was saved')
   }
 

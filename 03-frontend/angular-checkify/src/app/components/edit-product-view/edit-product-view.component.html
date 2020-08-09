@@ -43,14 +43,14 @@
       </div>
   
       <div id="productCategoryInputContainer" class="form-group"><!--hardcoded at the moment!-->
-        <label for="productCategory"><b>Choose a category:</b></label>
+        <label for="productCategory"><b>Change category:</b></label>
         <select formControlName="productCategory">
           <option *ngFor="let tempcategory of categories" [ngValue]="product.category">{{ tempcategory.name}}</option>
         </select>
       </div>
 
       <div id="fridgeInputContainer" class="form-group">
-        <label for="fridge"><b>Choose a fridge: </b></label>
+        <label for="fridge"><b>Change fridge: </b></label>
         <select formControlName="fridge">
           <option *ngFor="let tempFridge of fridges" [ngValue]="product.fridge">{{ tempFridge.name}}</option>
         </select>

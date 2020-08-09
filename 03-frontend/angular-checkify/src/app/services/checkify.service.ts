@@ -65,6 +65,10 @@ updateProduct(data): Observable<any> {
   return this.http.put(`${this.productListURL}`, data);
 }
 
+saveProduct(data): Observable<any> {
+  return this.http.post(`${this.productListURL}`, data);
+}
+
 getCategories():Observable<Category[]>{
   console.log('inside getCategories()')
   console.log(this.http.get<Category[]>(this.categoryUrl))

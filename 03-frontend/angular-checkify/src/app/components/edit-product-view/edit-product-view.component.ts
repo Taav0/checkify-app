@@ -23,7 +23,7 @@ export class EditProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
-  categories: any[] =['DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS', 'DRINKS'];
+  categories: Category[] =[];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
@@ -39,6 +39,7 @@ export class EditProductViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.listFridges();
+    this.listCategories();
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     });
@@ -57,7 +58,7 @@ export class EditProductViewComponent implements OnInit {
   }
  
 updateTheProduct(): void {
-  this.checkifyService.updateProduct(this.product.id, this.product)
+  this.checkifyService.updateProduct(this.product)
     .subscribe(
       response => {
         console.log(response);
@@ -84,6 +85,15 @@ listFridges() {
     data => {
       console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;
+    }
+  )
+}
+
+listCategories(){
+  console.log('inside listCategories()')
+  this.checkifyService.getCategories().subscribe(
+    data => {
+      this.categories = data;
     }
   )
 }

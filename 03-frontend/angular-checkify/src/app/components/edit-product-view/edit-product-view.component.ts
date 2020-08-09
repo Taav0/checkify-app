@@ -11,6 +11,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import {FormBuilder, Validators} from '@angular/forms';
+import { CheckifyService } from 'src/app/services/checkify.service';
 
 @Component({
   selector: 'app-edit-product-view',
@@ -27,7 +28,7 @@ export class EditProductViewComponent implements OnInit {
   model: NgbDateStruct;
   message = '';
 
-  constructor(private productService: ProductService,
+  constructor(private checkifyService: CheckifyService,
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
@@ -48,7 +49,7 @@ export class EditProductViewComponent implements OnInit {
     // get the "id" param string. convert string to a number using the "+" symbol
     const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
-    this.productService.getProduct(theProductId).subscribe(
+    this.checkifyService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
@@ -56,7 +57,7 @@ export class EditProductViewComponent implements OnInit {
   }
  
 updateTheProduct(): void {
-  this.productService.updateProduct(this.product.id, this.product)
+  this.checkifyService.updateProduct(this.product.id, this.product)
     .subscribe(
       response => {
         console.log(response);
@@ -79,7 +80,7 @@ showCategoryName(theCategory : Category){
 }  
 
 listFridges() {
-  this.productService.getFridges().subscribe(
+  this.checkifyService.getFridges().subscribe(
     data => {
       console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;

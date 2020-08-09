@@ -32,12 +32,12 @@ public class ProductListController {
 
         return productListService.findById(productId);
     }
-    @PutMapping("/")
+    @PutMapping()
     public void updateProduct(@RequestBody ProductList productList) {
         productListService.save(productList);
     }
 
-    @PostMapping("/{id}")
+    @PostMapping()
     public void saveProduct(@RequestBody ProductList productList){
         productListService.save(productList);
     }

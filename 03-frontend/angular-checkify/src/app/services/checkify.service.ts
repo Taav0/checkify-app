@@ -5,6 +5,7 @@ import { Barcode } from '../common/barcode'
 import { Product } from '../common/product';
 import { Fridge } from '../common/fridge';
 import { map } from 'rxjs/operators';
+import { Category } from '../common/category';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,11 @@ getProduct(theProductId: number): Observable<Product> {
 
   return this.http.get<Product>(productUrl);
 }
+
+updateProduct(id, data): Observable<any> {
+  return this.http.put(`${this.productListURL}/${id}`, data);
+}
+
 
 }
 interface GetResponseProducts {

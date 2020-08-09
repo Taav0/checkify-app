@@ -1,5 +1,6 @@
 package com.finalProject.checkify.controller;
 
+import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.entity.ProductList;
 import com.finalProject.checkify.service.ProductListServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class ProductListController {
     public ProductList getProductById(@PathVariable(value = "id") Long productId) {
 
         return productListService.findById(productId);
+    }
+    @PutMapping("/")
+    public void updateProduct(@RequestBody ProductList productList) {
+        productListService.save(productList);
     }
 
     @PostMapping("/{id}")

@@ -1,7 +1,7 @@
-import { CheckifyService } from 'src/app/services/checkify.service';
 import { Category } from './../../common/category';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Product } from 'src/app/common/product';
+import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DatePipe } from '@angular/common';
@@ -11,6 +11,7 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import {FormBuilder, Validators} from '@angular/forms';
+import { CheckifyService } from 'src/app/services/checkify.service';
 
 @Component({
   selector: 'app-edit-product-view',
@@ -22,7 +23,7 @@ export class EditProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
-  categories: any[] =[];
+  categories: Category[] =[];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
@@ -38,6 +39,7 @@ export class EditProductViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.listFridges();
+    this.listCategories();
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     });
@@ -56,7 +58,7 @@ export class EditProductViewComponent implements OnInit {
   }
  
 updateTheProduct(): void {
-  this.checkifyService.updateProduct(this.product.id, this.product)
+  this.checkifyService.updateProduct(this.product)
     .subscribe(
       response => {
         console.log(response);
@@ -73,6 +75,10 @@ goBack():void {
   this.location.back();
 }
 
+showCategoryName(theCategory : Category){
+  var categoryName = jp.query(theCategory, '$..name') ;
+  return categoryName ;
+}  
 
 listFridges() {
   this.checkifyService.getFridges().subscribe(
@@ -83,10 +89,10 @@ listFridges() {
   )
 }
 
-listCategories() {
+listCategories(){
+  console.log('inside listCategories()')
   this.checkifyService.getCategories().subscribe(
     data => {
-      console.log('Category=' + JSON.stringify(data));
       this.categories = data;
     }
   )

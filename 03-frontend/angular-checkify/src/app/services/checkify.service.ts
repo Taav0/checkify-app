@@ -6,7 +6,6 @@ import { Product } from '../common/product';
 import { Fridge } from '../common/fridge';
 import { map } from 'rxjs/operators';
 import { Category } from '../common/category';
-import * as jp from 'jsonpath';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class CheckifyService {
   }
   private productListURL = "http://localhost:8080/api/product-list";
   private fridgeUrl = 'http://localhost:8080/api/fridge';
-  private categoryUrl = 'http://localhost:8080/api/fridge';
+  private categoryUrl = 'http://localhost:8080/api/category';
 
 
   getAllProducts():Observable<Product[]>{
@@ -30,10 +29,6 @@ export class CheckifyService {
 
   getFridges(): Observable<Fridge[]> {
     return this.http.get<Fridge[]>(this.fridgeUrl)
-
-  }
-  getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoryUrl)
 
   }
 
@@ -66,8 +61,14 @@ getProduct(theProductId: number): Observable<Product> {
   return this.http.get<Product>(productUrl);
 }
 
-updateProduct(id, data): Observable<any> {
-  return this.http.put(`${this.productListURL}/${id}`, data);
+updateProduct(data): Observable<any> {
+  return this.http.put(`${this.productListURL}`, data);
+}
+
+getCategories():Observable<Category[]>{
+  console.log('inside getCategories()')
+  console.log(this.http.get<Category[]>(this.categoryUrl))
+  return this.http.get<Category[]>(this.categoryUrl);
 }
 
 

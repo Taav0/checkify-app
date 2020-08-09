@@ -9,6 +9,6 @@ export class Product {
     date: Date;
     description: string;
     imageUrl: string;
-    productCategory: Category;
+    category: Category;
     fridge: Fridge;
 }

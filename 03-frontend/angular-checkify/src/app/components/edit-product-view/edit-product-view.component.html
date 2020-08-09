@@ -15,7 +15,7 @@
     <p>{{ product.description }}</p>
    
     <h6>Category</h6>
-    <p>{{product.productCategory.name}}</p>
+    <p>{{product.category.name}}</p>
 
     <h6>Fridge</h6>
     <p>{{product.fridge.name}}</p>
@@ -44,7 +44,7 @@
       <div id="productCategoryInputContainer" class="form-group"><!--hardcoded at the moment!-->
         <label for="productCategory"><b>Choose a category:</b></label>
         <select formControlName="productCategory">
-          <option *ngFor="let tempcategory of categories" [ngValue]="tempcategory">{{ tempcategory}}</option>
+          <option *ngFor="let tempcategory of categories" [ngValue]="tempcategory">{{ product.category.name}}</option>
         </select>
       </div>
 

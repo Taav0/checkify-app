@@ -11,7 +11,6 @@ import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 import {FormBuilder, Validators} from '@angular/forms';
-import { CheckifyService } from 'src/app/services/checkify.service';
 
 @Component({
   selector: 'app-edit-product-view',
@@ -74,10 +73,6 @@ goBack():void {
   this.location.back();
 }
 
-showCategoryName(theCategory : Category){
-  var categoryName = jp.query(theCategory, '$..name') ;
-  return categoryName ;
-}  
 
 listFridges() {
   this.checkifyService.getFridges().subscribe(

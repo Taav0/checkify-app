@@ -4,6 +4,10 @@ GRANT ALL PRIVILEGES ON * . * TO 'final-project'@'localhost';
 ALTER USER 'final-project'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Checkify';
 */
 
+drop database if exists checkify;
+create database checkify;
+use checkify;
+
 create table if not exists `CHECKIFY`.`category`
 (
 	id bigint auto_increment

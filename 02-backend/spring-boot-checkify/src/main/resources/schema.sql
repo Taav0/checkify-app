@@ -6,6 +6,7 @@ ALTER USER 'final-project'@'localhost' IDENTIFIED WITH mysql_native_password BY 
 
 drop database if exists checkify;
 create database checkify;
+use checkify;
 
 create table if not exists `CHECKIFY`.`category`
 (

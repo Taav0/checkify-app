@@ -2,6 +2,8 @@ package com.finalProject.checkify.controller;
 
 import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.entity.ProductList;
+import com.finalProject.checkify.service.ProductListServiceImpl;
 import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,11 +17,13 @@ import java.util.List;
 
 public class ProductController {
 
+    private final ProductListServiceImpl productListService;
     private final ProductServiceImpl productService;
     private String localBarcode;
 
     @Autowired
-    public ProductController(ProductServiceImpl productService) {
+    public ProductController(ProductServiceImpl productService, ProductListServiceImpl productListService) {
+        this.productListService = productListService;
         this.productService = productService;
     }
 
@@ -45,21 +49,21 @@ public class ProductController {
     }
 
 
-    @PostMapping("/register")
-    public Product getBarcodeProcessAndReturnProduct(@RequestBody String barcode){
+    @GetMapping("/register/{code}")
+    public ProductList getBarcodeProcessAndReturnProduct(@PathVariable(value = "code") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);
-        Product productTest = null;
+        ProductList productTest = null;
 
         if (productService.findByBarcode(localBarcode) != null){
-            return productService.findByBarcode(localBarcode);
+            return productListService.findByBarcode(localBarcode);
 
         }else if (productService.getProductFromMonsterApi(localBarcode) != null){
             productService.save(productService.getProductFromMonsterApi(localBarcode));
-            return productService.findByBarcode(localBarcode);
+            return productListService.findByBarcode(localBarcode);
 
         }else {
-            productTest = new Product();
+            productTest = new ProductList();
             productTest.setBarcode(localBarcode);
             productTest.setImageUrl("assets/images/products/placeholder.png");
             return productTest;

@@ -48,6 +48,11 @@ public class ProductListServiceImpl implements ProductListService {
     }
 
     @Override
+    public ProductList findByBarcode(String barcode) {
+        return productListRepository.findByBarcode(barcode);
+    }
+
+    @Override
     public void save(ProductList productList) {
         productListRepository.save(productList);
 

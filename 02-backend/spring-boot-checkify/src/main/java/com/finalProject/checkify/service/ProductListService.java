@@ -12,6 +12,7 @@ public interface ProductListService {
      ProductList findById(Long theId);
      Page<ProductList> findByFridgeId(Long fridgeId, Pageable pageable);
      Page<ProductList> findByNameContaining(String name, Pageable pageable);
+     ProductList findByBarcode(String barcode);
 
      void save(ProductList productList);
      void deleteById(Long id);

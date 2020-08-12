@@ -9,6 +9,8 @@ import * as jp from 'jsonpath';
 import { Fridge } from 'src/app/common/fridge';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { BarcodeService } from 'src/app/services/barcode.service';
+import { Category } from 'src/app/common/category';
 
 @Component({
   selector: 'app-add-product-view',
@@ -20,37 +22,45 @@ export class AddProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
-  categories: any[] =[];
-  productToDatabase: Product = new Product;
-
-  productAPI = {
-    id: '1',
-    barcode: '11111111',
-    name: 'ProductFromAPI',
-    description: 'This is sample Product from API',
-    imageUrl: 'https://m2.kaubamaja.ee/media/catalog/product/cache/1/image/840x/6dcdb3bec3b7d3d8fa2d31ce95a0090e/5/0/5060335636225.jpg'
-  }
-
+  categories: Category[] =[];
+  product: Product;
   model: NgbDateStruct;
   message = '';
 
   constructor(private checkifyService: CheckifyService,
               private route: ActivatedRoute,
               private location: Location,
-              public datepipe: DatePipe) {
-                this.datePickerConfig = Object.assign({}, { showWeekNumbers: false,
+              public datepipe: DatePipe,
+              private dataService: BarcodeService) {
+              this.datePickerConfig = Object.assign({}, { showWeekNumbers: false,
                 });
+              this.product = this.dataService.sharedData;
                }
 
   ngOnInit(): void {
     this.listFridges();
-    this.listCategories();
+    this.listCategories()
+    this.product.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png"
+    ;
+    console.log("Product: " + JSON.stringify(this.product));
   }
   // tslint:disable-next-line:typedef
 
-saveTheProduct(): void {
-    console.log('Product was saved')
-  }
+  saveTheProduct(): void {
+    this.checkifyService.updateProduct(this.product)
+      .subscribe(
+        response => {
+          console.log(response);
+            this.message = 'The product was updated successfully!';
+    },
+        error => {
+          console.log(error);
+        });
+    }
+    
+    logInfo(){
+      console.log(JSON.stringify(this.product));
+    }
 
 
   // takes back to the previous component

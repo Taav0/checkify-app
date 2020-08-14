@@ -1,14 +1,35 @@
+import { CheckifyService } from 'src/app/services/checkify.service';
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
+import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
+import { SearchComponent } from './components/search/search.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        FridgeMenuComponent,
+        SearchComponent,
+        CheckifyService,
+        HttpClientTestingModule,
+        HttpClientModule
+
       ],
-      imports: [ HttpClientTestingModule]
+      imports: [    
+        RouterModule,
+        BrowserModule,
+        HttpClientModule,
+        NgbModule,
+        CommonModule
+  ],
+        providers: [CheckifyService]
     }).compileComponents();
   }));
 

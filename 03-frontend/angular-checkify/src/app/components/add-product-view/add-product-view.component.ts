@@ -26,7 +26,6 @@ export class AddProductViewComponent implements OnInit {
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
-
   constructor(private checkifyService: CheckifyService,
               private route: ActivatedRoute,
               private location: Location,
@@ -41,7 +40,7 @@ export class AddProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.listFridges();
     this.listCategories();
-    console.log('Category=' + JSON.stringify(this.fridges));
+    console.log('Product: ' + JSON.stringify(this.product));
   }
   // tslint:disable-next-line:typedef
 

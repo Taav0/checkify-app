@@ -17,13 +17,11 @@ import java.util.List;
 
 public class ProductController {
 
-    private final ProductListServiceImpl productListService;
     private final ProductServiceImpl productService;
     private String localBarcode;
 
     @Autowired
-    public ProductController(ProductServiceImpl productService, ProductListServiceImpl productListService) {
-        this.productListService = productListService;
+    public ProductController(ProductServiceImpl productService) {
         this.productService = productService;
     }
 
@@ -50,20 +48,20 @@ public class ProductController {
 
 
     @GetMapping("/register/{code}")
-    public ProductList getBarcodeProcessAndReturnProduct(@PathVariable(value = "code") String barcode){
+    public Product getBarcodeProcessAndReturnProduct(@PathVariable(value = "code") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);
-        ProductList productTest = null;
+        Product productTest = null;
 
         if (productService.findByBarcode(localBarcode) != null){
-            return productListService.findByBarcode(localBarcode);
+            return productService.findByBarcode(localBarcode);
 
         }else if (productService.getProductFromMonsterApi(localBarcode) != null){
             productService.save(productService.getProductFromMonsterApi(localBarcode));
-            return productListService.findByBarcode(localBarcode);
+            return productService.findByBarcode(localBarcode);
 
         }else {
-            productTest = new ProductList();
+            productTest = new Product();
             productTest.setBarcode(localBarcode);
             productTest.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png");
             return productTest;

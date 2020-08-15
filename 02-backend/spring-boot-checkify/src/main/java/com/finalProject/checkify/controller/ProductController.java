@@ -65,7 +65,7 @@ public class ProductController {
         }else {
             productTest = new ProductList();
             productTest.setBarcode(localBarcode);
-            productTest.setImageUrl("assets/images/products/placeholder.png");
+            productTest.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png");
             return productTest;
         }
     }

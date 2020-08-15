@@ -23,7 +23,7 @@ export class AddProductViewComponent implements OnInit {
 
   fridges: Fridge[] = [];
   categories: Category[] =[];
-  product: Product;
+  product: Product = new Product();
   model: NgbDateStruct;
   message = '';
 
@@ -31,7 +31,8 @@ export class AddProductViewComponent implements OnInit {
               private route: ActivatedRoute,
               private location: Location,
               public datepipe: DatePipe,
-              private dataService: BarcodeService) {
+              private dataService: BarcodeService,
+              private navRouter:Router) {
               this.datePickerConfig = Object.assign({}, { showWeekNumbers: false,
                 });
               this.product = this.dataService.sharedData;
@@ -39,10 +40,8 @@ export class AddProductViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.listFridges();
-    this.listCategories()
-    this.product.imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png"
-    ;
-    console.log("Product: " + JSON.stringify(this.product));
+    this.listCategories();
+    console.log('Category=' + JSON.stringify(this.fridges));
   }
   // tslint:disable-next-line:typedef
 
@@ -56,6 +55,7 @@ export class AddProductViewComponent implements OnInit {
         error => {
           console.log(error);
         });
+        this.navRouter.navigate(['app-product-list']);
     }
     
     logInfo(){
@@ -72,7 +72,6 @@ goBack():void {
 listFridges() {
   this.checkifyService.getFridges().subscribe(
     data => {
-      console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;
     }
   )
@@ -81,7 +80,6 @@ listFridges() {
 listCategories() {
   this.checkifyService.getCategories().subscribe(
     data => {
-      console.log('Category=' + JSON.stringify(data));
       this.categories = data;
     }
   )

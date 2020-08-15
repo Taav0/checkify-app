@@ -1,13 +1,9 @@
 package com.finalProject.checkify.controller;
 
 
-
 import com.finalProject.checkify.entity.Product;
-import com.finalProject.checkify.entity.ProductList;
-import com.finalProject.checkify.service.ProductListServiceImpl;
 import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

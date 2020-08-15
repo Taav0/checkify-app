@@ -10,6 +10,13 @@ VALUES
 ('WORK'),
 ('MUM"S');
 
+
+INSERT INTO CHECKIFY.USER (NAME,USERNAME,PASSWORD, ROLE)
+VALUES
+('password is "user"', 'user', '$2a$10$Xidj7/LKesjcgmwCwleio.HMIl18bxXz4VoXXh7PMgOv/omgVFUJG', 'USER'),
+('password is "root"', 'root', '$2a$10$X3HZU7Jta8SPUJkdJXOufuFPfFwPI0nXQIiPgIgDiT627xtnnoHUK', 'USER'),
+('password is "admin"', 'admin', '$2a$10$cZSU2k8/yQXmCERB1.kwsum5Uuc6af.lkKsEP8riXri9z8YPGvzqS', 'ADMIN');
+
 INSERT INTO CHECKIFY.CUSTOMER_FRIDGE (CUSTOMER_ID, FRIDGE_ID)
 VALUES
 (1, 1),

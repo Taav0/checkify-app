@@ -26,10 +26,7 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
-  {path: '' , redirectTo: '/login', pathMatch: 'full'},
-  {path: 'login', component : LoginPageComponent},
-  {path: 'register', component :RegisterComponent },
-
+  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
   {path: 'product-list/:id/editProduct' , component : EditProductViewComponent},
   {path: 'product-list/:id' , component : ProductDetailsComponent},
   {path: 'addProduct' , component : AddProductViewComponent},

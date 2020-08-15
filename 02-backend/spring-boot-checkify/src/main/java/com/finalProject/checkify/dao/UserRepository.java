@@ -1,5 +1,6 @@
-package com.finalProject.checkify.security;
+package com.finalProject.checkify.dao;
 
+import com.finalProject.checkify.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

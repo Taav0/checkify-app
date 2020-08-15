@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {User} from 'src/app/common/user';
+import { Router } from '@angular/router';
 
 let API_URL = "http://localhost:8080/api/user/";
 
@@ -23,7 +24,8 @@ export class UserService {
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private router : Router) {
     this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -53,11 +55,12 @@ export class UserService {
   logOut(): Observable<any> {
     console.log("inside user.service")
     console.log(localStorage.getItem('currentUser'))
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/product-list']);
+
     return this.http.post(API_URL + "logout", {headers:this.userHeaders}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
-        console.log("------------------------------------------------------------")
-        console.log(localStorage.getItem('currentUser'))
         this.currentUserSubject.next(null);
       })
     );

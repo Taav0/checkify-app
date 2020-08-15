@@ -50,12 +50,13 @@ export class AddProductViewComponent implements OnInit {
         response => {
           console.log(response);
             this.message = 'The product was updated successfully!';
+            this.navRouter.navigate(['./product-list']);
     },
         error => {
           console.log(error);
         });
         // this.navRouter.navigate(['app-product-list']);
-        this.navRouter.navigate(['./product-list']);
+        
 
     }
     

@@ -61,11 +61,12 @@ updateTheProduct(): void {
       response => {
         console.log(response);
           this.message = 'The product was updated successfully!';
+          this.router.navigate(['./product-list/' + this.product.id]);
   },
       error => {
         console.log(error);
       });
-      this.location.back();
+      
   }
 
 

@@ -15,7 +15,10 @@ export class UserService {
   onClickBoolean(): boolean {
         return this.onClickLogin;
 
+        
   }
+  userHeaders: HttpHeaders;
+
 
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
@@ -34,6 +37,7 @@ export class UserService {
     const headers = new HttpHeaders(user ? {
       authorization:'Basic ' + btoa(user.username + ':' + user.password)
     }:{});
+    this.userHeaders = headers;
 
     return this.http.get<any> (API_URL + "login", {headers:headers}).pipe(
       map(response => {
@@ -48,9 +52,12 @@ export class UserService {
 
   logOut(): Observable<any> {
     console.log("inside user.service")
-    return this.http.post(API_URL + "logout", {}).pipe(
+    console.log(localStorage.getItem('currentUser'))
+    return this.http.post(API_URL + "logout", {headers:this.userHeaders}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
+        console.log("------------------------------------------------------------")
+        console.log(localStorage.getItem('currentUser'))
         this.currentUserSubject.next(null);
       })
     );

@@ -1,7 +1,6 @@
-import { ProductService } from './../../services/product.service';
 import { Fridge } from './../../common/fridge';
 import { Component, OnInit } from '@angular/core';
-import { CheckifyService } from 'src/app/services/checkify.service';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -16,7 +15,7 @@ export class FridgeMenuComponent implements OnInit {
 
   fridges: Fridge[];
 
-  constructor(private checkifyService: CheckifyService,
+  constructor(private productService: ProductService,
               private userService : UserService,
               private router: Router) { }
 
@@ -26,7 +25,7 @@ export class FridgeMenuComponent implements OnInit {
 
   listFridges() {
 
-    this.checkifyService.getFridges().subscribe(
+    this.productService.getFridges().subscribe(
       data => {
         this.fridges = data;
       }

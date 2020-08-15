@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewCh
 import Quagga from 'quagga';
 import { Product } from 'src/app/common/product';
 import {BarcodeService} from "src/app/services/barcode.service"
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,9 +18,12 @@ export class BarcodeReaderComponent implements AfterViewInit {
   barCode: string;
   product: Product;
   receivedCode: string;
+  redirection:boolean = false;
 
-  constructor(private service: BarcodeService){
+  constructor(private service: BarcodeService, 
+    private router:Router){
     this.product = new Product();
+    
   }
   ngAfterViewInit(): void {
 
@@ -53,8 +57,18 @@ export class BarcodeReaderComponent implements AfterViewInit {
 
   onBarcodeScanned(code: string) {
     console.log('this is code: ' + code);
-    this.service.getAll(code);
+    this.service.getAll(code).subscribe((data =>
+      {
+        console.log('Product=' + JSON.stringify(data));
+        this.product = data;
+        console.log('execution complete');
+        this.service.sharedData = this.product;
+        this.router.navigate(['addProduct']);
+      }))
+      
     Quagga.stop();
+    
+    
   }
 
    

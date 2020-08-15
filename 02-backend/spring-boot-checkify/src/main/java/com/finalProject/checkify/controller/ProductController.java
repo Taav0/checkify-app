@@ -2,6 +2,8 @@ package com.finalProject.checkify.controller;
 
 import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
+import com.finalProject.checkify.entity.ProductList;
+import com.finalProject.checkify.service.ProductListServiceImpl;
 import com.finalProject.checkify.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -45,8 +47,8 @@ public class ProductController {
     }
 
 
-    @PostMapping("/register")
-    public Product getBarcodeProcessAndReturnProduct(@RequestBody String barcode){
+    @GetMapping("/register/{code}")
+    public Product getBarcodeProcessAndReturnProduct(@PathVariable(value = "code") String barcode){
         localBarcode = barcode;
         System.out.println(localBarcode);
         Product productTest = null;
@@ -61,7 +63,7 @@ public class ProductController {
         }else {
             productTest = new Product();
             productTest.setBarcode(localBarcode);
-            productTest.setImageUrl("assets/images/products/placeholder.png");
+            productTest.setImageUrl("https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Question_mark_%28black%29.svg/800px-Question_mark_%28black%29.svg.png");
             return productTest;
         }
     }

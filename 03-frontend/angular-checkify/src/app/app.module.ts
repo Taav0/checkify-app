@@ -14,7 +14,6 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { FridgeMenuComponent } from './components/fridge-menu/fridge-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import {Barcode} from "./common/barcode"
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditProductViewComponent } from './components/edit-product-view/edit-product-view.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +21,7 @@ import { DatePipe } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
+
 
 
 const routes: Routes = [

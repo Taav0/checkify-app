@@ -8,6 +8,8 @@ import * as jp from 'jsonpath';
 import { Fridge } from 'src/app/common/fridge';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
+import { FormGroup, FormControl, Validators} from '@angular/forms'
+import { Category } from 'src/app/common/category';
 
 
 @Component({
@@ -20,12 +22,11 @@ export class EditProductViewComponent implements OnInit {
   datePickerConfig: Partial<BsDatepickerConfig>;
 
   fridges: Fridge[] = [];
-  categories: any[] =[];
+  categories: Category[] =[];
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
-
-  constructor(private checkifyService: CheckifyService,
+      constructor(private checkifyService: CheckifyService,
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
@@ -64,6 +65,7 @@ updateTheProduct(): void {
       error => {
         console.log(error);
       });
+      this.location.back();
   }
 
 
@@ -71,6 +73,8 @@ updateTheProduct(): void {
 goBack():void {
   this.location.back();
 }
+
+
 
 
 listFridges() {
@@ -91,6 +95,13 @@ listCategories() {
   )
 }
 
+
+
+
+onSubmit(){
+  console.log("Product submited: " + JSON.stringify(this.product));
+  
+}
 
 
 }

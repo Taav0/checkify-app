@@ -12,6 +12,8 @@ import { Category } from '../common/category';
 })
 export class CheckifyService {
 
+ 
+
   constructor(private http: HttpClient) { 
   }
   private productListURL = "http://localhost:8080/api/product-list";
@@ -52,6 +54,10 @@ deleteProduct(theProductId: string): Observable<any>  {
 
   return this.http.delete(`${this.productListURL}/${theProductId}`, { responseType: 'text' });
 }
+
+saveProduct(product: Product) {
+    this.http.post(this.productListURL, product).subscribe();
+  }
 
 getProduct(theProductId: number): Observable<Product> {
 

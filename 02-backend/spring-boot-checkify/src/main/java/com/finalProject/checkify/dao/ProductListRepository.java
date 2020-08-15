@@ -13,5 +13,7 @@ public interface ProductListRepository extends JpaRepository<ProductList, Long> 
 
     Page<ProductList> findByNameContaining(String name, Pageable pageable);
 
+    ProductList findByBarcode(String barcode);
+
 }
 

@@ -1,11 +1,14 @@
-package com.finalProject.checkify.security;
+package com.finalProject.checkify.controller;
 
 
+import com.finalProject.checkify.entity.Role;
+import com.finalProject.checkify.entity.User;
+import com.finalProject.checkify.security.JwtTokenProvider;
+import com.finalProject.checkify.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;

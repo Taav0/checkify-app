@@ -1,23 +1,17 @@
 
-INSERT INTO CHECKIFY.CUSTOMER (CUSTOMER_NAME, PASSWORD, NAME, EMAIL, IS_PREMIUM)
-VALUES
-('USER1', 'USER1', 'USER1 NAME','USER1@SDA.EE', 0),
-('USER2', 'USER2', 'USER2 NAME','USER2@SDA.EE', 1);
-
-
 INSERT INTO CHECKIFY.FRIDGE (NAME)
 VALUES
 ('WORK'),
 ('MUM''S');
 
 
-INSERT INTO CHECKIFY.USER (NAME,USERNAME,PASSWORD, ROLE)
+INSERT INTO CHECKIFY.USER (USERNAME,PASSWORD, NAME, EMAIL , IS_PREMIUM,ROLE)
 VALUES
-('password is "user"', 'user', '$2a$10$Xidj7/LKesjcgmwCwleio.HMIl18bxXz4VoXXh7PMgOv/omgVFUJG', 'USER'),
-('password is "root"', 'root', '$2a$10$X3HZU7Jta8SPUJkdJXOufuFPfFwPI0nXQIiPgIgDiT627xtnnoHUK', 'USER'),
-('password is "admin"', 'admin', '$2a$10$cZSU2k8/yQXmCERB1.kwsum5Uuc6af.lkKsEP8riXri9z8YPGvzqS', 'ADMIN');
+('user', '$2a$10$Xidj7/LKesjcgmwCwleio.HMIl18bxXz4VoXXh7PMgOv/omgVFUJG', 'password is "user"', null,0,'USER'),
+('root', '$2a$10$X3HZU7Jta8SPUJkdJXOufuFPfFwPI0nXQIiPgIgDiT627xtnnoHUK', 'password is "root"', null,0,'USER'),
+('admin', '$2a$10$cZSU2k8/yQXmCERB1.kwsum5Uuc6af.lkKsEP8riXri9z8YPGvzqS','password is "admin"',  null,0,'ADMIN');
 
-INSERT INTO CHECKIFY.CUSTOMER_FRIDGE (CUSTOMER_ID, FRIDGE_ID)
+INSERT INTO CHECKIFY.USER_FRIDGE (USER_ID, FRIDGE_ID)
 VALUES
 (1, 1),
 (1, 2),

@@ -1,5 +1,7 @@
-package com.finalProject.checkify.security;
+package com.finalProject.checkify.service;
 
+import com.finalProject.checkify.dao.UserRepository;
+import com.finalProject.checkify.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

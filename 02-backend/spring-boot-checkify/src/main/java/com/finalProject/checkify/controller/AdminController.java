@@ -1,5 +1,6 @@
-package com.finalProject.checkify.security;
+package com.finalProject.checkify.controller;
 
+import com.finalProject.checkify.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

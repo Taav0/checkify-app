@@ -28,8 +28,8 @@ public class Fridge {
 
     @JsonIgnoreProperties("fridges")
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "CUSTOMER_FRIDGE",
+    @JoinTable(name = "USER_FRIDGE",
             joinColumns = @JoinColumn(name = "FRIDGE_ID"),
-            inverseJoinColumns = @JoinColumn(name= "CUSTOMER_ID"))
-    private Set<Customer> customers;
+            inverseJoinColumns = @JoinColumn(name= "USER_ID"))
+    private Set<User> users;
 }

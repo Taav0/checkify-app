@@ -1,21 +1,7 @@
-/*CREATE USER IF NOT EXISTS 'final-project'@'localhost' IDENTIFIED BY 'Checkify';
-GRANT ALL PRIVILEGES ON * . * TO 'final-project'@'localhost';
-
-ALTER USER 'final-project'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Checkify';
-*/
-
 drop database if exists checkify;
 create database checkify;
 use checkify;
 
-CREATE TABLE user (
-                      id BIGINT NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(255) NOT NULL,
-                      username VARCHAR(255) NOT NULL,
-                      password VARCHAR(255) NOT NULL,
-                      role VARCHAR(255) NOT NULL,
-                      CONSTRAINT PK_id PRIMARY KEY (id)
-);
 
 create table if not exists `CHECKIFY`.`category`
 (
@@ -58,24 +44,29 @@ create table if not exists `CHECKIFY`.`product`
     description varchar(255) null
 );
 
-create table if not exists `CHECKIFY`.`customer`
+create table if not exists `CHECKIFY`.`USER`
 (
-	id bigint auto_increment
-		primary key,
-    name varchar(100) not null unique ,
-    password varchar(100) not null,
-	email varchar(100) null,
-    customer_name varchar(100) null,
-    is_premium bit null
+    id         bigint auto_increment
+        primary key,
+    username   varchar(100) not null,
+    password   varchar(100) not null,
+    name       varchar(100) null,
+    role       varchar(255) null,
+    email      varchar(100) null,
+    is_premium bit          null,
+    constraint UK_ob8kqyqqgmefl0aco34akdtpe
+        unique (email),
+    constraint UK_sb8bbouer5wak8vyiiy4pf2bx
+        unique (username)
 );
 
-create table if not exists `CHECKIFY`.`customer_fridge`
+create table if not exists `CHECKIFY`.`user_fridge`
 (
     fridge_id bigint not null,
-    customer_id bigint not null,
-    primary key (fridge_id, customer_id),
+    user_id bigint not null,
+    primary key (fridge_id, user_id),
     constraint FK8511hcb3kg8df04kgyc37kkqo
-        foreign key (customer_id) references customer (id),
+        foreign key (user_id) references checkify.USER (id),
     constraint FKnms6ne0881bgwxrdka38qanpw
         foreign key (fridge_id) references fridge (id)
 );

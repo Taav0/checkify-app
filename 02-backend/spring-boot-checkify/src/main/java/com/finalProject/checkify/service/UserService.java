@@ -1,5 +1,7 @@
-package com.finalProject.checkify.security;
+package com.finalProject.checkify.service;
 
+
+import com.finalProject.checkify.entity.User;
 
 import java.util.List;
 

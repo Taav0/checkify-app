@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,4 +16,3 @@ public class AdminController {
         return ResponseEntity.ok(userService.findAllUsers());
     }
 }
-*/

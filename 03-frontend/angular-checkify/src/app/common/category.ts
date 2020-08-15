@@ -2,7 +2,7 @@ import { Product } from './product';
 
 export class Category {
     id: number;
-    name: string;
+    name: string = "";
  /*    products: Product[];
 
     constructor(theId: number, theName: string) {

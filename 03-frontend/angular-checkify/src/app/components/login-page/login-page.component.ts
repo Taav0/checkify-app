@@ -10,16 +10,24 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  
+  user: User = new User();
+  errorMessage: string;
 
-  constructor(private router: Router,private userService: UserService) { }
-  
+  constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    if(this.userService.currentUserValue) {
+      // this.router.navigate(['/product-list']);
+      return;
+    }
   }
 
-  public onLoginClick(){
-    this.userService.onClickLogin = true;
+  login() {
+     this.userService.login(this.user).subscribe(data => {
+      this.router.navigate(['/product-list']);
+    }, err => {
+      this.errorMessage = "Username or password is incorrect";
+    });
   }
 
 }

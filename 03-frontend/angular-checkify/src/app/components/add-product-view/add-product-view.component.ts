@@ -1,6 +1,6 @@
 import { ProductAPI } from './../../common/product-api';
 import { Component, OnInit } from '@angular/core';
-import { CheckifyService } from 'src/app/services/checkify.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
@@ -26,7 +26,7 @@ export class AddProductViewComponent implements OnInit {
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
-  constructor(private checkifyService: CheckifyService,
+  constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private location: Location,
               public datepipe: DatePipe,
@@ -45,16 +45,19 @@ export class AddProductViewComponent implements OnInit {
   // tslint:disable-next-line:typedef
 
   saveTheProduct(): void {
-    this.checkifyService.updateProduct(this.product)
+    this.productService.updateProduct(this.product)
       .subscribe(
         response => {
           console.log(response);
             this.message = 'The product was updated successfully!';
+            this.navRouter.navigate(['./product-list']);
     },
         error => {
           console.log(error);
         });
-        this.navRouter.navigate(['app-product-list']);
+        // this.navRouter.navigate(['app-product-list']);
+        
+
     }
     
     logInfo(){
@@ -69,7 +72,7 @@ goBack():void {
 
 
 listFridges() {
-  this.checkifyService.getFridges().subscribe(
+  this.productService.getFridges().subscribe(
     data => {
       this.fridges = data;
     }
@@ -77,7 +80,7 @@ listFridges() {
 }
 
 listCategories() {
-  this.checkifyService.getCategories().subscribe(
+  this.productService.getCategories().subscribe(
     data => {
       this.categories = data;
     }

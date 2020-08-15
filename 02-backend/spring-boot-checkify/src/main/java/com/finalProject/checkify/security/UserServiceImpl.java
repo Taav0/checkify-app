@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +33,3 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 }
-*/

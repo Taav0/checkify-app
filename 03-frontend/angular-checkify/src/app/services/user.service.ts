@@ -11,14 +11,17 @@ let API_URL = "http://localhost:8080/api/user/";
 })
 export class UserService {
 
+  onClickLogin : boolean = false;
   onClickBoolean(): boolean {
         return this.onClickLogin;
 
+        
   }
+  userHeaders: HttpHeaders;
+
 
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
-  onClickLogin : boolean = false;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));
@@ -29,10 +32,12 @@ export class UserService {
     return this.currentUserSubject.value;
   }
 
+  
   login(user: User): Observable<any> {
     const headers = new HttpHeaders(user ? {
       authorization:'Basic ' + btoa(user.username + ':' + user.password)
     }:{});
+    this.userHeaders = headers;
 
     return this.http.get<any> (API_URL + "login", {headers:headers}).pipe(
       map(response => {
@@ -46,9 +51,13 @@ export class UserService {
   }
 
   logOut(): Observable<any> {
-    return this.http.post(API_URL + "logout", {}).pipe(
+    console.log("inside user.service")
+    console.log(localStorage.getItem('currentUser'))
+    return this.http.post(API_URL + "logout", {headers:this.userHeaders}).pipe(
       map(response => {
         localStorage.removeItem('currentUser');
+        console.log("------------------------------------------------------------")
+        console.log(localStorage.getItem('currentUser'))
         this.currentUserSubject.next(null);
       })
     );

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/common/product';
-import { CheckifyService } from 'src/app/services/checkify.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Category } from 'src/app/common/category';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -30,7 +29,7 @@ export class ProductListComponent implements OnInit {
     previousKeyword: string = null;
 
   constructor(
-    private checkifyService: CheckifyService,
+    private productService: ProductService,
               private route: ActivatedRoute) { }
 
   // tslint:disable-next-line:typedef
@@ -67,7 +66,7 @@ export class ProductListComponent implements OnInit {
     console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
 
     // now search for the products using keyword
-    this.checkifyService.searchProductsByName(theKeyword).subscribe(data => this.products = data);
+    this.productService.searchProductsByName(theKeyword).subscribe(data => this.products = data);
                                                
                                                
   }
@@ -93,7 +92,7 @@ export class ProductListComponent implements OnInit {
 
 
 
-    this.checkifyService.getProductListByFridgeID(this.currentFridgeId)
+    this.productService.getProductListByFridgeID(this.currentFridgeId)
                                     .subscribe(data => this.products = data);
   }
 
@@ -112,7 +111,7 @@ export class ProductListComponent implements OnInit {
   }
 
   deleteFromFridge(id: string) {
-    this.checkifyService.deleteProduct(id)
+    this.productService.deleteProduct(id)
     .subscribe(
       data => {
         console.log(data);

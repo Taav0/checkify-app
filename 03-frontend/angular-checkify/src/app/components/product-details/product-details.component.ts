@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/common/product';
-import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
-import { CheckifyService } from 'src/app/services/checkify.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +12,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product = new Product();
 
-  constructor(private checkifyService: CheckifyService,
+  constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -27,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
     // get the "id" param string. convert string to a number using the "+" symbol
     const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
-    this.checkifyService.getProduct(theProductId).subscribe(
+    this.productService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
@@ -36,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
 
 // tslint:disable-next-line:typedef
 deleteFromFridge(id: string) {
-  this.checkifyService.deleteProduct(id)
+  this.productService.deleteProduct(id)
   .subscribe(
     data => {
       console.log(data);

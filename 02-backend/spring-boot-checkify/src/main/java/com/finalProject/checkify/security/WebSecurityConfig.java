@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,4 +72,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
     }
 }
-*/

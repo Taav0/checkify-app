@@ -1,104 +1,110 @@
-import { Category } from './../common/category';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { Barcode } from '../common/barcode'
 import { Product } from '../common/product';
-import { Fridge } from './../common/fridge';
+import { Fridge } from '../common/fridge';
+import { map } from 'rxjs/operators';
+import { Category } from '../common/category';
+import { User } from '../common/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-
-  private baseUrl = 'http://localhost:8080/api/products';
-
+  currentUser: User;
+  headers: HttpHeaders;
+      
+  private productListURL = "http://localhost:8080/api/product-list";
   private fridgeUrl = 'http://localhost:8080/api/fridge';
+  private categoryUrl = 'http://localhost:8080/api/category';
 
-  constructor(private httpClient: HttpClient) { }
 
-  getProductList(theFridgeId: number): Observable<Product[]> {
-
-    const searchUrl = `${this.baseUrl}/search/findByFridgeId?id=${theFridgeId}`;
-
-    return this.getProducts(searchUrl);
+  constructor(private http: HttpClient) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.headers = new HttpHeaders({
+      authorization:'Bearer ' + this.currentUser.token,
+      "Content-Type":"application/json; charset=UTF-8"
+    });
   }
 
-  // list products according to fridges with pagination
-  getProductListPaginate(thePage: number,
-                          thePageSize: number,
-                          theFridgeId: number): Observable<GetResponseProducts> {
+  
+  // findAllUsers(): Observable<any> {
+  //   return this.http.get(API_URL + "all", {headers: this.headers});
+  // }
 
-// need to build URL based on category id, page and size
-  const searchUrl = `${this.baseUrl}/search/findByFridgeId?id=${theFridgeId}`
-                  + `&page=${thePage}&size=${thePageSize}`;
 
-  return this.httpClient.get<GetResponseProducts>(searchUrl);
-}
-
-// search products according to keyword using searchbar
-searchProductsPaginate(thePage: number,
-                      thePageSize: number,
-                      theKeyword: string): Observable<GetResponseProducts> {
-
-// need to build URL based on keyword, page and size
-const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
-                + `&page=${thePage}&size=${thePageSize}`;
-
-return this.httpClient.get<GetResponseProducts>(searchUrl);
-}
-
-  getProduct(theProductId: number): Observable<Product> {
-
-    // need to build URL based on product id
-    const productUrl = `${this.baseUrl}/${theProductId}`;
-
-    return this.httpClient.get<Product>(productUrl);
+  getAllProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(this.productListURL,{headers: this.headers});
   }
 
-  deleteProduct(theProductId: string): Observable<any>  {
-
-    return this.httpClient.delete(`${this.baseUrl}/${theProductId}`, { responseType: 'text' });
+  getProductListByFridge(fridgeID: number){
+    return this.http.get<GetResponseProducts>(
+      `${this.productListURL}/search/findByFridgeId/${fridgeID}`,
+      {headers: this.headers})
+      .pipe(map(response => response.content));
   }
-
-  searchProducts(theKeyword: string): Observable<Product[]> {
-    const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`;
-      return this.getProducts(searchUrl);
-  }
-
-  private getProducts(searchUrl: string): Observable<Product[]> {
-    return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(map(response => response.content));
-  }
-
-
 
   getFridges(): Observable<Fridge[]> {
+    return this.http.get<Fridge[]>(this.fridgeUrl, {headers: this.headers})
 
-      return this.httpClient.get<Fridge[]>(this.fridgeUrl);
-      
   }
 
-  // PUT: update the product on the db
-  updateProduct(id, data): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl}/${id}`, data);
-  }
+getProductListByFridgeID(theFridgeId: number): Observable<Product[]> {
 
+// need to build URL based on category id, page and size 
+const searchUrl = `${this.productListURL}/search/findByFridgeId/${theFridgeId}`;
+return this.http.get<GetResponseProducts>(searchUrl, {headers: this.headers})
+.pipe(map(response => response.content));
 }
 
+searchProductsByName(theKeyword: string): Observable<Product[]> {
+
+// need to build URL based on keyword, page and size 
+const searchUrl = `${this.productListURL}/search/findByNameContaining/${theKeyword}`;
+
+return this.http.get<GetResponseProducts>(searchUrl, {headers: this.headers})
+.pipe(map(response => response.content));
+}
+
+
+deleteProduct(theProductId: string): Observable<any>  {
+
+  return this.http.delete(`${this.productListURL}/${theProductId}`, {headers: this.headers});
+}
+
+saveProduct(product: Product) {
+    this.http.post(this.productListURL, product, {headers: this.headers})
+    .subscribe();
+  }
+
+getProduct(theProductId: number): Observable<Product> {
+
+  // need to build URL based on product id
+  const productUrl = `${this.productListURL}/${theProductId}`;
+
+  return this.http.get<Product>(productUrl, {headers: this.headers});
+}
+
+updateProduct(data): Observable<any> {
+  return this.http.put(`${this.productListURL}`,data, {headers: this.headers});
+}
+
+getCategories():Observable<Category[]>{
+  console.log('inside getCategories()')
+  console.log(this.http.get<Category[]>(this.categoryUrl))
+  return this.http.get<Category[]>(this.categoryUrl, {headers: this.headers});
+}
+
+
+}
 interface GetResponseProducts {
-  content: Product[];
-page: {
-  size: number,
-  totalElements: number,
-  totalPages: number,
-  number: number
-}
-}
-interface GetResponseCategory {
-  _embedded: {
-    category: Category[];
+    content: Product[];
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
   }
 }
-

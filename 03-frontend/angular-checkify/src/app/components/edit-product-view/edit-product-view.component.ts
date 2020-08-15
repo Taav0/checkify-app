@@ -1,4 +1,4 @@
-import { CheckifyService } from 'src/app/services/checkify.service';
+import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit, NgModule } from '@angular/core';
 import { Product } from 'src/app/common/product';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -26,7 +26,7 @@ export class EditProductViewComponent implements OnInit {
   product: Product = new Product();
   model: NgbDateStruct;
   message = '';
-      constructor(private checkifyService: CheckifyService,
+      constructor(private productService: ProductService,
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
@@ -48,7 +48,7 @@ export class EditProductViewComponent implements OnInit {
     // get the "id" param string. convert string to a number using the "+" symbol
     const theProductId: number = +this.route.snapshot.paramMap.get('id');
 
-    this.checkifyService.getProduct(theProductId).subscribe(
+    this.productService.getProduct(theProductId).subscribe(
       data => {
         this.product = data;
       }
@@ -56,16 +56,17 @@ export class EditProductViewComponent implements OnInit {
   }
 
 updateTheProduct(): void {
-  this.checkifyService.updateProduct(this.product)
+  this.productService.updateProduct(this.product)
     .subscribe(
       response => {
         console.log(response);
           this.message = 'The product was updated successfully!';
+          this.router.navigate(['./product-list/' + this.product.id]);
   },
       error => {
         console.log(error);
       });
-      this.location.back();
+      
   }
 
 
@@ -78,7 +79,7 @@ goBack():void {
 
 
 listFridges() {
-  this.checkifyService.getFridges().subscribe(
+  this.productService.getFridges().subscribe(
     data => {
       console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;
@@ -87,7 +88,7 @@ listFridges() {
 }
 
 listCategories() {
-  this.checkifyService.getCategories().subscribe(
+  this.productService.getCategories().subscribe(
     data => {
       console.log('Category=' + JSON.stringify(data));
       this.categories = data;

@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 
@@ -40,18 +39,4 @@ public class UserController {
         user.setToken(jwtTokenProvider.generateToken(authenticationToken));
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
-*/
-/*
-    @RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
-            throws JwtAuthenticationException {
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
-        final UserDetails userDetails = jwtUserDetailsService
-                .loadUserByUsername(authenticationRequest.getUsername());
-        log.info(userDetails.getAuthorities().toString());
-        final String token = jwtTokenUtil.generateToken(userDetails);
-        return ResponseEntity.ok(new JwtTokenResponse(token, userDetails.getUsername(), userDetails.getAuthorities()));
-    }*//*
-
 }
-*/

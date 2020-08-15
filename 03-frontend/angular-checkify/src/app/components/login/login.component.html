@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="img/jpg" href="/src/assets/images/loginBackground1920.jpg">
+  <!--<link rel="stylesheet" type="text/css" href="/src/app/components/login-page/login-page.component.css">-->
+</head>
+<body class="login_body">
+  <div class="loginBackground"> 
+<form class="login-form" action="./" method="POST">
+  <div class="login-form-logo-container">
+    <img class="login-form-logo" src="assets/images/logo.png" alt="Logo">
+  </div>
+  <div class="login-form-content">
+    <div class="login-form-custom">Login to your account</div>
+    <input class="login-form-input" type="text" name="dc_username" placeholder="Username">
+    <input class="login-form-input" type="password" name="dc_username" placeholder="Password">
+
+    <button class="login-form-button" (click)="onLoginClick()">Login</button>
+
+    <div class="login-form-links">
+      <a class="login-form-link" href="./">Forgot your password?</a>
+    </div>
+  </div>
+  <div class="login-form-bottom-fade"></div>
+</form>
+</div>
+</body>
+</html> 

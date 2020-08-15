@@ -21,10 +21,13 @@ import { DatePipe } from '@angular/common';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 
 const routes: Routes = [
+  {path: 'login', component : LoginComponent},
   {path: 'product-list/:id/editProduct' , component : EditProductViewComponent},
   {path: 'product-list/:id' , component : ProductDetailsComponent},
   {path: 'addProduct' , component : AddProductViewComponent},
@@ -34,7 +37,7 @@ const routes: Routes = [
   {path: 'product-list' , component : ProductListComponent},
   {path: 'barcode', component : BarcodeReaderComponent},
   
-  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
+  {path: '' , redirectTo: '/login', pathMatch: 'full'},
   {path: '**' , redirectTo: '/product-list', pathMatch: 'full'},
   
 
@@ -49,7 +52,9 @@ const routes: Routes = [
     FridgeMenuComponent,
     SearchComponent,
     EditProductViewComponent,
-    AddProductViewComponent
+    AddProductViewComponent,
+    LoginComponent,
+    MainPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

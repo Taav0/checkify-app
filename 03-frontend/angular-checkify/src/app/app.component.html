@@ -1,61 +1,62 @@
 <div class="page-wrapper">
 
-  <!-- MENU SIDEBAR-->
-  <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-      <a href="#">
-        <img src="assets/images/logo.png" alt="checkify" class="img-responsive">
-      </a>
-    </div>
-
-    <app-fridge-menu></app-fridge-menu>
-
-
-
-  </aside>
-  <!-- END MENU SIDEBAR-->
-
-  <!-- PAGE CONTAINER-->
-  <div class="page-container">
-    <!-- HEADER DESKTOP-->
-    <header class="header-desktop">
-      <div class="section-content section-content-p30">
-        <div class="container-fluid">
-          <div class="header-wrap">
-
-            <app-search></app-search>
-
-
-            <div class="cart-area d-n">
-              <a href=" ">
-                <div id="addBtn" class="wrapper">
-                  <button routerLink="/barcode" class="circle">
-                    <img id="addSign" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png" alt="" />
-                  </button>
-                </div>
-              
-              </a>
-            </div>
-
-          </div>
-          <div class="account-wrap"></div>
-        </div>
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+      <div class="logo">
+        <a href="#">
+          <img src="assets/images/logo.png" alt="checkify" class="img-responsive">
+        </a>
       </div>
-    </header>
-    <!-- END HEADER DESKTOP-->
-
-    <!-- MAIN CONTENT-->
-    <router-outlet></router-outlet>
-
+  
+      <app-fridge-menu></app-fridge-menu>
+  
+  
+  
+    </aside>
+    <!-- END MENU SIDEBAR-->
+  
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+      <!-- HEADER DESKTOP-->
+      <header class="header-desktop">
+        <div class="section-content section-content-p30">
+          <div class="container-fluid">
+            <div class="header-wrap">
+  
+              <app-search></app-search>
+  
+  
+              <div class="cart-area d-n">
+                <a href=" ">
+                  <div id="addBtn" class="wrapper">
+                    <button routerLink="/barcode" class="circle">
+                      <img id="addSign" src="https://ssl.gstatic.com/bt/C3341AA7A1A076756462EE2E5CD71C11/2x/btw_ic_speeddial_white_24dp_2x.png" alt="" />
+                    </button>
+                  </div>
+                
+                </a>
+              </div>
+  
+            </div>
+            <div class="account-wrap"></div>
+          </div>
+        </div>
+      </header>
+      <!-- END HEADER DESKTOP-->
+  
+      <!-- MAIN CONTENT-->
+      <router-outlet></router-outlet>
+  
+    </div>
   </div>
-</div>
-
-<!--END PAGE CONTAINER-->
-
-<footer>
-  <ul>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Help</a></li>
-  </ul>
-</footer>
+  
+  <!--END PAGE CONTAINER-->
+  
+  <footer>
+    <ul>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
+  </footer>
+  

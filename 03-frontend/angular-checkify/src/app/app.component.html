@@ -1,9 +1,9 @@
 
-<div *ngIf = "!onClickLogin">
+<div *ngIf = "!logged()">
   <app-login-page></app-login-page>
 </div>
 
-<div *ngIf = "onClickLogin">
+<div *ngIf="logged()">
   <div class="page-wrapper">
 
     <!-- MENU SIDEBAR-->
@@ -63,3 +63,4 @@
     </ul>
   </footer>
 </div>
+

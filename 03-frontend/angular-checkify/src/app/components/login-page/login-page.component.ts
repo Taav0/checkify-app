@@ -10,16 +10,16 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
+  
+
   constructor(private router: Router,private userService: UserService) { }
-  onClickLogin : boolean = false;
+  
 
   ngOnInit(): void {
   }
 
   public onLoginClick(){
-    console.log(this.onClickLogin);
-    this.onClickLogin = this.userService.onClickBoolean();
-    console.log(this.onClickLogin)
+    this.userService.onClickLogin = true;
   }
 
 }

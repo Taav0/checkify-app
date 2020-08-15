@@ -12,12 +12,13 @@ let API_URL = "http://localhost:8080/api/user/";
 export class UserService {
 
   onClickBoolean(): boolean {
-        return true;
+        return this.onClickLogin;
 
   }
 
   public currentUser: Observable<User>;
   private currentUserSubject: BehaviorSubject<User>;
+  onClickLogin : boolean = false;
 
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User> (JSON.parse(localStorage.getItem('currentUser')));

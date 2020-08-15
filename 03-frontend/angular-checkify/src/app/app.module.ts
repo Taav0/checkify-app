@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'barcode', component : BarcodeReaderComponent},
   {path: 'login', component : LoginPageComponent},
   
-  {path: '' , redirectTo: '/login', pathMatch: 'full'},
+  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
   {path: '**' , redirectTo: '/product-list', pathMatch: 'full'}
   ];
 

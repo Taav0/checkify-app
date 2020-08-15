@@ -9,11 +9,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class AppComponent {
   title = 'angular-checkify';
-  onClickLogin : boolean = false;
-
-  constructor(private userService: UserService){}
   
-  public onLoginClick(){
-    this.onClickLogin = this.userService.onClickBoolean();
+
+  constructor(private userService: UserService){
+  }
+
+  logged():boolean{
+    return this.userService.onClickLogin;
   }
 }

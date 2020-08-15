@@ -22,9 +22,14 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddProductViewComponent } from './components/add-product-view/add-product-view.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
+  {path: '' , redirectTo: '/login', pathMatch: 'full'},
+  {path: 'login', component : LoginPageComponent},
+  {path: 'register', component :RegisterComponent },
+
   {path: 'product-list/:id/editProduct' , component : EditProductViewComponent},
   {path: 'product-list/:id' , component : ProductDetailsComponent},
   {path: 'addProduct' , component : AddProductViewComponent},
@@ -32,11 +37,9 @@ const routes: Routes = [
   {path: 'fridge/:id' , component : ProductListComponent},
   {path: 'fridge' , component : ProductListComponent},
   {path: 'product-list' , component : ProductListComponent},
-  {path: 'barcode', component : BarcodeReaderComponent},
-  {path: 'login', component : LoginPageComponent},
+  {path: 'barcode', component : BarcodeReaderComponent}
   
-  {path: '' , redirectTo: '/product-list', pathMatch: 'full'},
-  {path: '**' , redirectTo: '/product-list', pathMatch: 'full'}
+  // {path: '**' , redirectTo: '/product-list', pathMatch: 'full'}
   ];
 
 @NgModule({
@@ -49,7 +52,8 @@ const routes: Routes = [
     SearchComponent,
     EditProductViewComponent,
     AddProductViewComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

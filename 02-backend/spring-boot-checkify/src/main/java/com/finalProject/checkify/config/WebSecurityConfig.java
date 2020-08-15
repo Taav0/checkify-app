@@ -1,3 +1,4 @@
+/*
 package com.finalProject.checkify.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -15,4 +16,4 @@ public class WebSecurityConfig extends WebMvcConfigurerAdapter {
         .allowedOrigins("http://localhost:4200")
         .allowedHeaders("Access-Control-Allow-Origin");
     }
-}
+}*/

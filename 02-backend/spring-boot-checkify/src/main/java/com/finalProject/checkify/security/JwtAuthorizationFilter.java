@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 import org.springframework.security.authentication.AuthenticationManager;
@@ -34,4 +33,3 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
 
     }
 }
-*/

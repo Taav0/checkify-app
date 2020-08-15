@@ -1,4 +1,3 @@
-/*
 package com.finalProject.checkify.security;
 
 
@@ -11,4 +10,3 @@ public interface UserService {
 
     List<User> findAllUsers();
 }
-*/

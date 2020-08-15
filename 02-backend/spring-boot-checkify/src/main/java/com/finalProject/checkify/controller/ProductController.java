@@ -1,6 +1,5 @@
 package com.finalProject.checkify.controller;
 
-import com.finalProject.checkify.common.Barcode;
 import com.finalProject.checkify.entity.Product;
 import com.finalProject.checkify.entity.ProductList;
 import com.finalProject.checkify.service.ProductListServiceImpl;

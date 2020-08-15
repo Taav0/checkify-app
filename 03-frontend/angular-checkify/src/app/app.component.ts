@@ -15,6 +15,10 @@ export class AppComponent {
   }
 
   logged():boolean{
-    return this.userService.onClickLogin;
+    if(this.userService.currentUserValue) {
+      return true}
+      else{
+    return false;
+  }
   }
 }

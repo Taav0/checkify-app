@@ -54,7 +54,9 @@ export class AddProductViewComponent implements OnInit {
         error => {
           console.log(error);
         });
-        this.navRouter.navigate(['app-product-list']);
+        // this.navRouter.navigate(['app-product-list']);
+        this.navRouter.navigate(['./product-list']);
+
     }
     
     logInfo(){

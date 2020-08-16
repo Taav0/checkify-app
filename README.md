@@ -10,8 +10,8 @@ This app is good for saving your money by reminding you when the food in the fri
 
 #### Screenshots
  <p align="left">
-      <img src="https://github.com/Shpakovsky94/checkify-app/blob/Taavo2/01-starter-files/readme/loginpage.png" "loginPage" width=400>
-      <img src="https://github.com/Shpakovsky94/checkify-app/blob/Taavo2/01-starter-files/readme/mainpage.png" "mainPage" width=400>
+      <img src="https://github.com/Shpakovsky94/checkify-app/blob/master/01-starter-files/readme/loginpage.png" "loginPage" width=400>
+      <img src="https://github.com/Shpakovsky94/checkify-app/blob/master/01-starter-files/readme/mainpage.png" "mainPage" width=400>
  </p>
 
 ## Getting Started

@@ -5,6 +5,10 @@
 
     
       <img src="{{ product.imageUrl }}" class="detail-img">
+
+      <div>
+        <h2>Barcode:{{product.barcode}} </h2>
+      </div>
     
      
 
@@ -54,7 +58,7 @@
       <div class="detailBtns">
         <button  type="submit" (click)="saveTheProduct()" class="detailViewBtnEdit">Save</button>
 
-        <button (click)="goBack()" class="detailViewBtnDelete">Cancel</button>
+        <button (click)="goBack()" class="detailViewBtnDelete">Retry scanning!</button>
 
         <p>{{ message }}</p>
       

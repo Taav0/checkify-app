@@ -1,33 +1,70 @@
-### checkify-app
-Oleksandr - Lead / a bit of everything 
-Triin Rebane = database / testing 
-Vladyslav Cherkashyn = Backend 
-Taavo Leidorp = FrontEnd
-
+<p align="center">
+<img src="https://github.com/Shpakovsky94/checkify-app/blob/master/03-frontend/angular-checkify/src/assets/images/logo.png" width="300">
+ </p>
 
 # Welcome to Checkify App
+ 
+## Introduction
+ 
+This app is good for saving your money by reminding you when the food in the fridge is about to expire.
 
-### To run this application
+#### Screenshots
+ <p align="left">
+      <img src="https://github.com/Shpakovsky94/checkify-app/blob/Taavo2/01-starter-files/readme/loginpage.png" "loginPage" width=400>
+      <img src="https://github.com/Shpakovsky94/checkify-app/blob/Taavo2/01-starter-files/readme/mainpage.png" "mainPage" width=400>
+ </p>
 
-##### Open MySQL Workbench
+## Getting Started
 
-Run local server
+To install this example application, run the following commands:
 
-##### Open IntelliJ IDEA
+```bash
+git clone https://github.com/Shpakovsky94/checkify-app.git
+```
 
-Open `02-backend/spring-boot-checkify` folder
+This will get a copy of the project installed locally. To install all of its dependencies and start each app, follow the instructions below.
 
-Run `SpringBootCheckifyApplication`
+To run the server, click run button or cd into the `02-backend/spring-boot-checkify` folder and run:
+ 
+```
+mvnw spring-boot:run
+```
 
- ##### Open MySQL Workbench
-    
-Open SQL Script `01-starter-files/test-data.sql`
+To run the client, cd into the `03-frontend/angular-checkify` folder and run:
+ 
+```
+npm install 
+```
+and run:
+```
+ npm start
+```
+Login in with  
+```
+ username: root
+ password: root
+```
 
-Execute `test.data.sql` script
+## Built With
+ItelliJ IDEA, Visual Studio Code and MySQL Workbench
 
-##### Open Visual Code Studio
+### Using technologies
 
-Open folder `03-frontend/angular-checkifyv
+ - Spring Boot
+ - Spring Security 
+ - Maven
+ - Angular CLI 
+ - MySQL
+ - Quagga.js
+ - Barcode Monster API
 
-Run `ng serve` in terminal. Navigate to http://localhost:4200/
+### Team
+- Oleksandr Shpakovskyi - Lead / a bit of everything 
 
+- Triin Rebane - Database / Testing 
+
+- Vladyslav Cherkashyn - Backend 
+
+- Taavo Leidorp - FrontEnd
+
+- Hatef Palizgar - Security

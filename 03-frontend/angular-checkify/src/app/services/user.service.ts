@@ -12,12 +12,6 @@ let API_URL = "http://localhost:8080/api/user/";
 })
 export class UserService {
 
-  onClickLogin : boolean = false;
-  onClickBoolean(): boolean {
-        return this.onClickLogin;
-
-        
-  }
   userHeaders: HttpHeaders;
 
 
@@ -53,8 +47,6 @@ export class UserService {
   }
 
   logOut(): Observable<any> {
-    console.log("inside user.service")
-    console.log(localStorage.getItem('currentUser'))
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
 

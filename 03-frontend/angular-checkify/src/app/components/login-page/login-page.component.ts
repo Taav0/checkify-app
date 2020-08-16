@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     if(this.userService.currentUserValue) {
-      // this.router.navigate(['/product-list']);
+      this.router.navigate(['/product-list']);
       return;
     }
   }

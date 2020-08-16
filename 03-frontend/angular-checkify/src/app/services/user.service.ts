@@ -56,7 +56,7 @@ export class UserService {
     console.log("inside user.service")
     console.log(localStorage.getItem('currentUser'))
     localStorage.removeItem('currentUser');
-    this.router.navigate(['/product-list']);
+    this.currentUserSubject.next(null);
 
     return this.http.post(API_URL + "logout", {headers:this.userHeaders}).pipe(
       map(response => {

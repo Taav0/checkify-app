@@ -29,12 +29,6 @@ export class ProductService {
     });
   }
 
-  
-  // findAllUsers(): Observable<any> {
-  //   return this.http.get(API_URL + "all", {headers: this.headers});
-  // }
-
-
   getAllProducts():Observable<Product[]>{
     return this.http.get<Product[]>(this.productListURL,{headers: this.headers});
   }
@@ -92,8 +86,6 @@ updateProduct(data): Observable<any> {
 }
 
 getCategories():Observable<Category[]>{
-  console.log('inside getCategories()')
-  console.log(this.http.get<Category[]>(this.categoryUrl))
   return this.http.get<Category[]>(this.categoryUrl, {headers: this.headers});
 }
 

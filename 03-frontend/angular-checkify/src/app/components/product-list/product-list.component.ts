@@ -62,9 +62,6 @@ export class ProductListComponent implements OnInit {
     }
 
     this.previousKeyword = theKeyword;
-
-    console.log(`keyword=${theKeyword}, thePageNumber=${this.thePageNumber}`);
-
     // now search for the products using keyword
     this.productService.searchProductsByName(theKeyword).subscribe(data => this.products = data);
                                                
@@ -87,11 +84,6 @@ export class ProductListComponent implements OnInit {
     }
 
     this.previousFridgeId = this.currentFridgeId;
-
-    console.log(`currentFridgeId=${this.currentFridgeId}, thePageNumber=${this.thePageNumber}`);
-
-
-
     this.productService.getProductListByFridgeID(this.currentFridgeId)
                                     .subscribe(data => this.products = data);
   }
@@ -114,11 +106,9 @@ export class ProductListComponent implements OnInit {
     this.productService.deleteProduct(id)
     .subscribe(
       data => {
-        console.log(data);
         this.handleListProducts();
       },
       error => console.log(error));
-      console.log("inside compnent.ts");
 }
      showDaysLeft(date : Date){
       let todayDate = new Date();

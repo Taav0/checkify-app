@@ -36,7 +36,7 @@ public class User implements Serializable {
     @Column(name="role")
     private Role role;
 
-    @JsonIgnoreProperties("users")
+    @JsonIgnoreProperties("fridges")
     @ManyToMany(mappedBy = "users")
     private Set<Fridge> fridges;
 

@@ -40,7 +40,6 @@ export class AddProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.listFridges();
     this.listCategories();
-    console.log('Product: ' + JSON.stringify(this.product));
   }
   // tslint:disable-next-line:typedef
 
@@ -48,7 +47,6 @@ export class AddProductViewComponent implements OnInit {
     this.productService.updateProduct(this.product)
       .subscribe(
         response => {
-          console.log(response);
             this.message = 'The product was updated successfully!';
             this.navRouter.navigate(['./product-list']);
     },
@@ -59,11 +57,6 @@ export class AddProductViewComponent implements OnInit {
         
 
     }
-    
-    logInfo(){
-      console.log(JSON.stringify(this.product));
-    }
-
 
   // takes back to the previous component
 goBack():void {

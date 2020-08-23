@@ -15,10 +15,10 @@
    
     
     <h6>Category</h6>
-    <p>{{ product.category.name}}</p>
+    <p> {{product.category ? product.category.name : ""}}</p>
 
     <h6>Fridge</h6>
-    <p>{{ product.fridge.name }}</p>
+    <p>{{product.fridge ? product.fridge.name : "" }}</p>
 
     <h6>Expire Date</h6>
     <p>{{ product.date | date:'dd-MM-yyyy'}}</p>
@@ -56,7 +56,6 @@
           <option *ngFor="let fridge of fridges" [ngValue]="fridge">{{fridge.name}}</option>
         </select>
       </div>
-      
       
       <div id="dateInputContainer" class="form-group">
         <label for="date"><b class="label">Set Expire Date: </b></label>

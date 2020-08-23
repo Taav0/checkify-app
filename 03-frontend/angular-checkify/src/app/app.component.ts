@@ -17,11 +17,7 @@ export class AppComponent {
   }
 
   logged():boolean{
-    if(this.userService.currentUserValue) {
-      return true}
-      else{
-    return false;
-  }
+    return this.userService.currentUserValue ? true : false;
 }
 
   logOut() {

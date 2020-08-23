@@ -59,9 +59,7 @@ export class BarcodeReaderComponent implements AfterViewInit {
     console.log('this is code: ' + code);
     this.service.getAll(code).subscribe((data =>
       {
-        console.log('Product=' + JSON.stringify(data));
         this.product = data;
-        console.log('execution complete');
         this.service.sharedData = this.product;
         this.router.navigate(['addProduct']);
       }))

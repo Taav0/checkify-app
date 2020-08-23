@@ -13,9 +13,11 @@ export class ProductDetailsComponent implements OnInit {
   product: Product = new Product();
 
   constructor(private productService: ProductService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+               }
 
   ngOnInit(): void {
+    
     this.route.paramMap.subscribe(() => {
       this.handleProductDetails();
     });
@@ -38,10 +40,8 @@ deleteFromFridge(id: string) {
   this.productService.deleteProduct(id)
   .subscribe(
     data => {
-      console.log(data);
       this.handleProductDetails;
     },
     error => console.log(error));
-  //console.log(`Deleting item from fridge: ${theProduct.id}`);
 }
 }

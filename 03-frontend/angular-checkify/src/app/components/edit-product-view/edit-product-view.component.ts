@@ -59,7 +59,6 @@ updateTheProduct(): void {
   this.productService.updateProduct(this.product)
     .subscribe(
       response => {
-        console.log(response);
           this.message = 'The product was updated successfully!';
           this.router.navigate(['./product-list/' + this.product.id]);
   },
@@ -81,7 +80,6 @@ goBack():void {
 listFridges() {
   this.productService.getFridges().subscribe(
     data => {
-      console.log('Fridge=' + JSON.stringify(data));
       this.fridges = data;
     }
   )
@@ -90,19 +88,8 @@ listFridges() {
 listCategories() {
   this.productService.getCategories().subscribe(
     data => {
-      console.log('Category=' + JSON.stringify(data));
       this.categories = data;
     }
   )
 }
-
-
-
-
-onSubmit(){
-  console.log("Product submited: " + JSON.stringify(this.product));
-  
-}
-
-
 }

@@ -29,9 +29,6 @@ export class BarcodeService {
 
    
    public getAll(barcode: string){
-    console.log("called getAll()");
-    //console.log('prodcut: ' + JSON.stringify(this.http.get<string>( this.barcodeAPI + barcode).subscribe()));
-    console.log("----------------------------------------------------------------------------------------------");
     return this.http.get<Product>( this.barcodeAPI + barcode, {headers: this.headers});
     
    }
